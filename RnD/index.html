@@ -1,0 +1,42 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+	<meta charset="UTF-8" />
+	<title>Save the Minions : CMPE 202</title>
+	<script type="text/javascript" src="src/phaser.min.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<p id="gameCanvas" align="center" style="vertical-align: middle;"></p>
+
+<script type="text/javascript">
+
+var game = new Phaser.Game(800, 600, Phaser.CANVAS, "gameCanvas", { preload: preload, create: create, update: update });
+
+function preload() {
+	game.load.image('sjsu', 'img/sjsu.png');
+	game.load.image('playBtn', 'img/btn_play.png');
+}
+
+function create() {
+	//  We're going to be using physics, so enable the Arcade Physics system
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+
+    //  A simple background for our game
+    game.add.sprite(0, 0, 'sjsu');
+    game.add.sprite(300, 300, 'playBtn');
+}
+
+function update() {
+}
+
+</script>
+
+</body>
+</html>
