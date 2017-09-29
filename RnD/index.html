@@ -22,15 +22,30 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, "gameCanvas", { preload: pre
 function preload() {
 	game.load.image('sjsu', 'img/sjsu.png');
 	game.load.image('playBtn', 'img/btn_play.png');
+    game.load.image('settingsBtn', 'img/settingsBtnBg.png');
 }
 
 function create() {
-	//  We're going to be using physics, so enable the Arcade Physics system
-    game.physics.startSystem(Phaser.Physics.ARCADE);
-
-    //  A simple background for our game
+	
+    //  Background image for our game.
     game.add.sprite(0, 0, 'sjsu');
-    game.add.sprite(300, 300, 'playBtn');
+    
+    // A button made from an image including text
+    startButton = this.add.button(300, 300, 'playBtn', function(){alert("Starting Game")}, this, 1, 0, 2);
+    startButton.input.useHandCursor = true;
+
+    // A button made with just plain solid background color image.
+    settingsButton = this.add.button(370, 400, 'settingsBtn', function(){alert("Change Settings Screen")}, this, 0, 1, 0);
+
+    settingsButton.anchor.setTo(0.5,0.5);
+
+    // This property is needed to display Hand cursor everytime. By default it only displays it once before being clicked. After that normal arrow head cursor is displayed.
+    settingsButton.input.useHandCursor = true;
+    
+    // adding text to the screen over the settings button image to give it a text.
+    var btnText = game.add.text(settingsButton.x, settingsButton.y, "Settings",
+        {font:"20px Arial",fill:"#000", align:"center"})
+    btnText.anchor.setTo(0.5,0.5);
 }
 
 function update() {
