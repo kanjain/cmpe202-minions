@@ -1,4 +1,5 @@
-# Team Name : cmpe202-minions
+# Team Name : 
+cmpe202-minions
 
 ## Team Members
 * [Anusha Mulumoodi](https://sjsu.instructure.com/courses/1244332/users/4298854) 
