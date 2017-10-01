@@ -12,4 +12,6 @@ Given below is the description of how the team followed XP/Agile values this wee
 * We distributed the tasks amongst ourselves to come up with findings of all game engines so that we can eliminate the options and keep one which suits our development and project needs.  
 
 
-### 5. Respect (Owner - **Snusha**)
+### 5. Respect (Owner - **Anusha**)
+* We made sure each one of us chose a game engine of our choice and one idea for the game and get to discuss the pros and cons of each. We **respected ** each one's opinion and took a cumulative decision on building a criteria for what would de ideal for our team. We collectively decided to build a game on phaser that involves minions-in- search game with some hurdles to cross
+
