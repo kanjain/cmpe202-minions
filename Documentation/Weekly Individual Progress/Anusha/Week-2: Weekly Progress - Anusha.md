@@ -6,12 +6,12 @@ Since am not very comfortable with XD tools like Adobe Photoshop, I decide to ma
 
 This is how we designed our app. This will be refined further during the course of our project
 ## 1. Home Page
-![](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Wireframes/HomePage.png)
+![](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Wireframes/Home-Page.png)
 
 This is the page our Game opens to. Since game app involves saving minions, we wanted a very bright, colorful and peppy opening. We haven't yet named our game, so I used the name 'Catch my minions' as a place holder since it is relevant
 
 ## 2. About the Game
-![](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Wireframes/aboutgame.png)
+![](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Wireframes/About-Game.png)
 
 This the page that should have text describing the game (which I didn't add yet). 
  
