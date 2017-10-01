@@ -1,4 +1,4 @@
-# Team Name : 
+# Team Name
 cmpe202-minions
 
 ## Team Members
