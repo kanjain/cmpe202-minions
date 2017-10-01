@@ -2,9 +2,7 @@
 Given below is the description of how the team followed XP/Agile values this week:
 
 ### 1. Communication (Owner - **Kanika**)
-* To **communicate** transparently and effectively we have planned to meet twice in week. In the first meeting we planned our 
-weekly tasks and assigned those tasks amongst each other. In the second meeting we discussed the challenges, team faced and 
-tried to solve them and also discussed the individual's progress. 
+* To **communicate** transparently and effectively we have planned to meet twice in week. In the first meeting we planned our weekly tasks and assigned those tasks amongst each other. In the second meeting we discussed the challenges, team faced and tried to solve them and also discussed the individual's progress.
 
 ### 2. Simplicity (Owner - **Manish**)
 * For **simplicity** sake  we divided the tasks up to the granular level and ensured that every is having one task in his plate
