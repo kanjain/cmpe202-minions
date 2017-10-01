@@ -13,7 +13,7 @@ cmpe202-minions
 ### Week-2 (9/24 - 9/30)
 
 * [Minutes of Meeting]()
-* [XP Agile Core Values - Journal]()
+* [XP Agile Core Values - Journal](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Journal%20-%20XP%20Agile%20Core%20Values/Week-2:%20XP%20Agile%20Core%20Value%20Journal.md)
 * [CFD](https://docs.google.com/a/sjsu.edu/spreadsheets/d/1ywqgSxxhLNuXJpvcGkD8-U0gqS3t0mgaTow4z22S518/edit?usp=sharing)
 * Links to Individual Weekly Progress:
      * [Anusha Mulumoodi]
