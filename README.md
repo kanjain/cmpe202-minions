@@ -20,7 +20,7 @@ cmpe202-minions
      * [Kanika Jain](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Kanika/Week-2:%20Weekly%20Progress%20-%20Kanika.md)
      * [Manish Pandey](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Manish/Week-2:%20Weekly%20Progress%20-%20Manish.md)
      * [Saurabh Ghotane](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Saurabh/Week-2:%20Weekly%20Progress%20-%20Saurabh.md)
-     * [Trung Huynh (Ryan)]
+     * [Trung Huynh (Ryan)](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Trung/Week-2:%20Weekly%20Progress%20-%20Trung.md)
 * [Definition Of Done]
 
 ### Week-1 (9/17 - 9/23)
