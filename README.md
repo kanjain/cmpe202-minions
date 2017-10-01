@@ -21,7 +21,7 @@ cmpe202-minions
      * [Manish Pandey](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Manish/Week-2:%20Weekly%20Progress%20-%20Manish.md)
      * [Saurabh Ghotane](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Saurabh/Week-2:%20Weekly%20Progress%20-%20Saurabh.md)
      * [Trung Huynh (Ryan)](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Trung/Week-2:%20Weekly%20Progress%20-%20Trung.md)
-* [Definition Of Done]
+* [Definition Of Done](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Definition%20of%20Done.md)
 
 ### Week-1 (9/17 - 9/23)
 
@@ -34,4 +34,4 @@ cmpe202-minions
      * [Manish Pandey](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Manish/Week-1:%20Weekly%20Progress%20-%20Manish.md)
      * [Saurabh Ghotane](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Saurabh/Week-1:%20Weekly%20Progress%20-%20Saurabh.md)
      * [Trung Huynh (Ryan)](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Trung/Week-1:%20Weekly%20Progress%20-%20Trung.md)
-* [Definition Of Done]
+* [Definition Of Done](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Definition%20of%20Done.md)
