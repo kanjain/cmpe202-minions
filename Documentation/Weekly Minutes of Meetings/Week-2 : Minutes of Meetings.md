@@ -11,7 +11,7 @@
 
 ## 2.  What is the team going to do next week?
 * Implement touch event, animation, sound, game state.
-* Start with Use Case diagram and Use Case specialization
+* Start with Use Case diagram and Use Case specification.
 
 ## 3.  What are the current blockers/challenges the team is facing?
 * JavaScript design pattern takes different form compare to Java design pattern, so there is uncertainty on how we can apply these design pattern into the project.
