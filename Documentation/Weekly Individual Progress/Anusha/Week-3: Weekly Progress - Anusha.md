@@ -1,3 +1,5 @@
+Made draft for a use case spec document as below
+
 Use Case Name: Jumping Minions
 
 Brief Description:
