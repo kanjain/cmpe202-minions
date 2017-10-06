@@ -1,8 +1,10 @@
 # Week-3 (10/1 - 10/7) Weekly Progress : Kanika
 
-Developed a **prototype design** for implementing the display of score card, health bar and implementing the
-score calculation logic. I have followed the steps below:
+## Goal: 
+To build a **prototype design** for implementing the display of score card, health bar and implementing the
+score calculation logic.
 
+## Steps: 
 Download and install a web server. I have downloaded XAMPP.
 
 Download the Sublime IDE for all the coding work.
