@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Catch My Minion</title>
+	<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+	<meta name="description" content="Catch My Minion" />
+	<style>
+		body { margin: 0; background: #B4D9E7; }
+		@font-face {
+			font-family: 'ComicBook';
+			src: url('fonts/comicbook.eot');
+			src: url('fonts/comicbook.eot?#iefix') format('embedded-opentype'),
+				url('fonts/comicbook.woff') format('woff'),
+				url('fonts/comicbook.ttf') format('truetype'),
+				url('fonts/comicbook.svg#comic_booknormal') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+	</style>
+	<script src="src/phaser.min.js"></script>
+	<script src="src/Boot.js"></script>
+	<script src="src/Preloader.js"></script>
+	<script src="src/MainMenu.js"></script>
+	<script src="src/Game.js"></script>
+</head>
+<body>
+<script>
+(function(){
+	var game = new Phaser.Game(640, 960, Phaser.CANVAS, 'game');
+	game.state.add('Boot', Minion.Boot);
+	game.state.add('Preloader', Minion.Preloader);
+	game.state.add('MainMenu', Minion.MainMenu);
+	game.state.add('Game', Minion.Game);
+	game.state.start('Boot');
+})();
+</script>
+</body>
+</html>
