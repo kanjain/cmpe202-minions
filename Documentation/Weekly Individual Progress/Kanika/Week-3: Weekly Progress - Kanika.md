@@ -26,4 +26,7 @@ Game.js and MainMenu.js are the files in which I did all my coding.
 ## Result :
 When you start the index.html on webserver, A startup-screen is displayed with a start button on it. If you click the start button, a new game screen will appear. On the game screen, there are 2 objects (minion and gru) and one bar that calculates the score and one healthbar. If you click on minion image, the score will increase and if you click on Gru image, the heathbar will keep decreasing. Once the healthbar will vanish completey, the gameover screen will appear with two buttons on it-Try Again and Back To Main.
 
-Please find the screenshots below:
+The code for this you can find in :
+
+
+
