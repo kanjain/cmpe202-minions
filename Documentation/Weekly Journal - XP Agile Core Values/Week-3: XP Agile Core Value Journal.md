@@ -14,4 +14,4 @@ Given below is the description of how the team followed XP/Agile values this wee
 * Discuss about team's schedule on midterm week, our team share thoughts on implementing physics, sound, input, animation. There is a confusion with physics object x, y location on the game. The team takes note on it.
 
 ### 5. Eliminate Waste (Owner - **Saurabh**)
-* 
+* After initial discussion the tasks for the week were found to be very high level and couple of team members had common components in their tasks. We discussed further and fine grained the objectives of the tasks so as to eliminate dependency between each team member's task thereby avoiding any wastage of efforts with both team members working on the common parts individually.
