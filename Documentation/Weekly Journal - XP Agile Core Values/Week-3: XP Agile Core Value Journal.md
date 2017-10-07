@@ -11,7 +11,7 @@ Given below is the description of how the team followed XP/Agile values this wee
 * 
 
 ### 4. Feedback (Owner - **Trung**).  
-* Discuss about team's schedule on midterm week, our team share thoughts on implementing physics, sound, input, animation.  
+* Discuss about team's schedule on midterm week, our team share thoughts on implementing physics, sound, input, animation. There is a confusion with physics object x, y location on the game. The team takes note on it.
 
 ### 5. Eliminate Waste (Owner - **Saurabh**)
 * 
