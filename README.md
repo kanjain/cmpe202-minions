@@ -10,6 +10,19 @@ cmpe202-minions
 
 ## Weekly Progress
 
+### Week-3 (10/1 - 10/7)
+
+* [Minutes of Meeting](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Minutes%20of%20Meetings/Week-3%20:%20Minutes%20of%20Meetings.md)
+* [XP Agile Core Values - Journal](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Journal%20-%20XP%20Agile%20Core%20Values/Week-3:%20XP%20Agile%20Core%20Value%20Journal.md)
+* [CFD](https://docs.google.com/a/sjsu.edu/spreadsheets/d/1ywqgSxxhLNuXJpvcGkD8-U0gqS3t0mgaTow4z22S518/edit?usp=sharing)
+* Links to Individual Weekly Progress:
+     * [Anusha Mulumoodi](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Anusha/Week-3:%20Weekly%20Progress%20-%20Anusha.md)
+     * [Kanika Jain](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Kanika/Week-3:%20Weekly%20Progress%20-%20Kanika.md)
+     * [Manish Pandey]()
+     * [Saurabh Ghotane]()
+     * [Trung Huynh (Ryan)](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Trung/Week-3:%20Weekly%20Progress%20-%20Trung.md)
+
+
 ### Week-2 (9/24 - 9/30)
 
 * [Minutes of Meeting](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Minutes%20of%20Meetings/Week-2%20:%20Minutes%20of%20Meetings.md)
