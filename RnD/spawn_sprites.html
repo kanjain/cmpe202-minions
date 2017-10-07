@@ -1,0 +1,69 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+	<meta charset="UTF-8" />
+	<title>Save the Minions : CMPE 202</title>
+	<script type="text/javascript" src="src/phaser.min.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<p id="gameCanvas" align="center" style="vertical-align: middle;"></p>
+
+<script type="text/javascript">
+
+var game = new Phaser.Game(800, 600, Phaser.CANVAS, "gameCanvas", { preload: preload, create: create, update: update });
+
+var greenEnemies;
+var frameArray = [0,1,2];
+
+function preload() {
+	game.load.image('sjsu', 'img/sjsu.png');
+    game.load.image('playBtn', 'img/btn_play.png');
+    game.load.spritesheet('minions_spritesheet', 'img/newIdea.png', 78.2, 90, 3);
+}
+
+function create() {
+	
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+
+    //  Background image for our game.
+    game.add.sprite(0, 0, 'sjsu');
+
+    // A button made from an image including text
+    startButton = this.add.button(300, 300, 'playBtn', 
+        function(){
+            displaySprites();
+        }, this, 1, 0, 2);
+    startButton.input.useHandCursor = true;
+
+    
+
+
+}
+
+function update() {
+    
+}
+
+function displaySprites(){
+
+    var randomX = Math.floor(Math.random()*800);
+    minion = game.add.sprite(randomX,-100,'minions_spritesheet'); 
+    var rand = frameArray[Math.floor(Math.random() * frameArray.length)];
+    minion.anchor.setTo(0.5, 0.5);
+    minion.frame=rand;
+    // minion.animations.add('changeMinion',[0,1,2],1,true);
+    // minion.animations.play('changeMinion');
+    game.add.tween(minion).to({y: 600}, 2400, Phaser.Easing.Bounce.Out, true, 1000 + 400 * Math.random(), false);
+}
+
+</script>
+
+</body>
+</html>
