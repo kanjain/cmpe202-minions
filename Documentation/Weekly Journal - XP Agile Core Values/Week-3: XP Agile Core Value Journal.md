@@ -8,7 +8,7 @@ Given below is the description of how the team followed XP/Agile values this wee
 * 
 
 ### 3. Respect (Owner - **Anusha**)
-* 
+* We honered the 'Respect' value by coming to a common understanding of what would be the ideal activities that each of us would have to do in order to create the game in the big picture. We divided the different assets/features in the game like bouncing ball, responsive score etc. We also decided we would come up with a use case specification document. that helps us in our goals
 
 ### 4. Feedback (Owner - **Trung**).  
 * Discuss about team's schedule on midterm week, our team share thoughts on implementing physics, sound, input, animation. There is a confusion with physics object x, y location on the game. The team takes note on it.
