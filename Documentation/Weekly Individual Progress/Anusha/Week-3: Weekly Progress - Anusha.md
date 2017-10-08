@@ -8,8 +8,15 @@ An object (a minion in this case ) should pop from the bottom of the screen and 
 Actors: Game developer, player
 
 Basic Flow of events:
+1. User clicks on 'Play'
+2. Screen with the game background appears
+3. Minions start appearing as a function of a random generator
+3. User clicks on the minion
+4. Minion expression changes
+5. Score gets updated
+6. Health gets updated
 
-Alternate Flows:
+Alternate Flows: None
 
 Preconditions:
 A backdrop for the game of mxn dimensions with an appropriate background
