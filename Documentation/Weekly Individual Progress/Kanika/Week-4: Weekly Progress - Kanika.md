@@ -18,3 +18,7 @@ difficulty levels. Player can go to How-to screen to make himself familiar with 
 start playing the game. When the user starts playing the game, the system triggers an animation loop (jumping minions appear 
 on the screen). Based on the rules of the game and how well the player is playing the game, the internal system/Subsystem will 
 decrement the health bar and increment the score. The score will update the highScore whenever the player makes a new highscore.Then if the player exits the game. Before exiting,system makes sure that the Highscore is updated and stored in the hard disk.
+
+Please **click** on the link below for the use case diagram:
+
+https://drive.google.com/open?id=0Byhd7Zvn68K3S2l6TG1zcThacEk
