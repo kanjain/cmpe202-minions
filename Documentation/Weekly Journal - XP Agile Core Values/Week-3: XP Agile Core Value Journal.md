@@ -5,7 +5,7 @@ Given below is the description of how the team followed XP/Agile values this wee
 * To achieve the communication goal for this week properly,we met once a week in person because the goals to achieve for the week were discussed elaboratively and clearly in the fist meeting only and the tasks were assigned to individual team member on that basis. Then to make sure the work is properly done and no one is facing any sort of problem, we have formed one common group on whatsapp(an online chat messenger) on which every individual can update his/her progress for the 3rd week and can discuss the difficulty if he/she is facing while doing the tasks which helped us to save alot of time this week.
 
 ### 2. Simplicity (Owner - **Manish**)
-* 
+* To achieve simplicity, we have broken down the tasks in to very granular level and distributed the task amongst us depending on the individual preferences. We decided to give more focus on our individual assigned main functionality rather than on look, feel and other supporting tasks.
 
 ### 3. Respect (Owner - **Anusha**)
 * We honered the 'Respect' value by coming to a common understanding of what would be the ideal activities that each of us would have to do in order to create the game in the big picture. We divided the different assets/features in the game like bouncing ball, responsive score etc. We also decided we would come up with a use case specification document. that helps us in our goals
