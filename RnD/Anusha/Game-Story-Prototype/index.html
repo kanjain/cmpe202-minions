@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script src="src/phaser.min.js"></script>
+	<script src="src/Boot.js"></script>
+	<script src="src/Preloader.js"></script>
+	<script src="src/StoryHowto.js"></script>
+	<script src="src/MainMenu.js"></script>
+</head>
+<body>
+<script>
+(function(){
+	var game = new Phaser.Game(640, 960, Phaser.CANVAS, 'game');
+	game.state.add('Boot', Minion.Boot);
+	game.state.add('Preloader', Minion.Preloader);
+	game.state.add('StoryHowto', Minion.StoryHowto);
+	game.state.add('MainMenu', Minion.MainMenu);
+	game.state.start('Boot');
+})();
+</script>
+</body>
+</html>
