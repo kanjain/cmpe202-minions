@@ -1,8 +1,10 @@
 SaveTheMinions.Game = function(game) {
 	cTime = 0;
     count = 0;
-    count1 = 0;
-    frameArray = [0,1,2];
+	count1 = 0;
+	test = 0;
+	frameArray = [0,1,2];
+
 	minionEnum = {
 		'Dave': 0,
 		'Tim': 1,
@@ -21,7 +23,8 @@ SaveTheMinions.Game.prototype = {
     		this.game.add.sprite(0, 0, 'sjsu');
 
 		    // add group
-    		flyingMinions = this.game.add.group();
+			flyingMinions = this.game.add.group();
+			
 
 		},
 	update: function() {
@@ -35,7 +38,11 @@ SaveTheMinions.Game.prototype = {
 				var randomY = Math.floor(Math.random()*960);
 
 
-    			minion = this.game.add.sprite(0,300,'minions_spritesheet'); 
+				minion = this.game.add.sprite(0,300,'minions_spritesheet');
+
+				minion.inputEnabled = true;
+				minion.events.onInputUp.add(selectt, minion);
+				
 	            var rand = frameArray[Math.floor(Math.random() * frameArray.length)];
 			    minion.anchor.setTo(0.5, 0.5);
 			    minion.frame=rand;
@@ -56,7 +63,11 @@ SaveTheMinions.Game.prototype = {
 	        else{
 	            cTime = this.game.time.totalElapsedSeconds();
 	            
-	            minion = this.game.add.sprite(640,300,'minions_spritesheet'); 
+				minion = this.game.add.sprite(640,300,'minions_spritesheet'); 
+
+				minion.inputEnabled = true;
+				minion.events.onInputUp.add(selectt, minion);
+
 	            var rand = frameArray[Math.floor(Math.random() * frameArray.length)];
 			    minion.anchor.setTo(0.5, 0.5);
 			    minion.frame=rand;
@@ -80,7 +91,18 @@ SaveTheMinions.Game.prototype = {
 	    });
 	},
 	render: function() {
-		this.game.debug.text('Destroy item count: ' + count, 100, 100);
-    	this.game.debug.text('all item count: ' + count1, 100, 120);
+		this.game.debug.text('dead minions: ' + count, 100, 100);
+		this.game.debug.text('total number of minions: ' + count1, 100, 120);
+		this.game.debug.text('saved minion: ' + test, 100, 140);
 	}
+
+
 };
+
+function selectt(sprite){
+	test +=1;
+	sprite.destroy()
+	
+	
+	
+}
