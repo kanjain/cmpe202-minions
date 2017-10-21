@@ -44,7 +44,7 @@ SaveTheMinions.Game.prototype = {
 				minion = this.game.add.sprite(0,300,'minions_spritesheet');
 
 				minion.inputEnabled = true;
-				minion.events.onInputUp.add(selectt, minion);
+				minion.events.onInputUp.add(this.selectt, minion);
 				
 	            var rand = frameArray[Math.floor(Math.random() * frameArray.length)];
 			    minion.anchor.setTo(0.5, 0.5);
@@ -69,7 +69,7 @@ SaveTheMinions.Game.prototype = {
 				minion = this.game.add.sprite(640,300,'minions_spritesheet'); 
 
 				minion.inputEnabled = true;
-				minion.events.onInputUp.add(selectt, minion);
+				minion.events.onInputUp.add(this.selectt, minion);
 
 	            var rand = frameArray[Math.floor(Math.random() * frameArray.length)];
 			    minion.anchor.setTo(0.5, 0.5);
@@ -98,12 +98,13 @@ SaveTheMinions.Game.prototype = {
 		this.game.debug.text('dead minions: ' + count, 100, 100);
 		this.game.debug.text('total number of minions: ' + count1, 100, 120);
 		this.game.debug.text('saved minion: ' + test, 100, 140);		
+	},
+
+	selectt: function(sprite){
+		test +=1;
+		sprite.destroy()
 	}
 
 
 };
 
-function selectt(sprite){
-	test +=1;
-	sprite.destroy()
-}
