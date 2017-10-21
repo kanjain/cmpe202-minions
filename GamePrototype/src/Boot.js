@@ -1,8 +1,9 @@
-var SaveTheMinions = {};
+SaveTheMinions = {};
 SaveTheMinions.Boot = function(game){};
 SaveTheMinions.Boot.prototype = {
 	preload: function(){
-		this.load.image('preloaderBar', 'img/loading.png');
+		if(test=1){
+			this.load.image('preloaderBar', 'img/loading.png');}
 	},
 	create: function(){
 		this.game.input.maxPointers = 1;
