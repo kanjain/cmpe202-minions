@@ -22,6 +22,8 @@
 	<script src="src/MainMenu.js"></script>
 	<script src="src/StoryHowto.js"></script>
 	<script src="src/Game.js"></script>
+	<script src="src/LevelSelect.js"></script>
+
 </head>
 <body>
 <p id="gameCanvas" align="center" style="vertical-align: middle;"></p>
@@ -33,6 +35,7 @@
 	game.state.add('MainMenu', SaveTheMinions.MainMenu);
 	game.state.add('Game', SaveTheMinions.Game);
 	game.state.add('StoryHowto', SaveTheMinions.StoryHowto);
+    game.state.add('LevelSelect', SaveTheMinions.LevelSelect);
 	game.state.start('Boot');
 })();
 </script>
