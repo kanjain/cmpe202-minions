@@ -4,7 +4,6 @@ SaveTheMinions.Game = function(game) {
 	count1 = 0;
 	test = 0;
 	frameArray = [0,1,2];
-
 	minionEnum = {
 		'Dave': 0,
 		'Tim': 1,
@@ -22,12 +21,16 @@ SaveTheMinions.Game.prototype = {
 		    //  Background image for our game.
     		this.game.add.sprite(0, 0, 'sjsu');
 
+    		// Adding a new Truck object to save the minions.
+    		this.game.add.sprite(0, 482, 'truck');
+
 		    // add group
 			flyingMinions = this.game.add.group();
 			
 
 		},
 	update: function() {
+
 		// add ball randomly between 0-15 sec
 	    if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.integerInRange(0, 15)){
 	        // add ball in the bottom left corner
@@ -81,9 +84,10 @@ SaveTheMinions.Game.prototype = {
 	        }
 
 	    }
+	    
 	    // destroy object after it drop to bottom
 	    flyingMinions.forEach(function(obj){
-	        if(obj.y >=540){
+	        if(obj.y >=545){
 	            obj.destroy();
 	            count++;
 	            
@@ -93,7 +97,7 @@ SaveTheMinions.Game.prototype = {
 	render: function() {
 		this.game.debug.text('dead minions: ' + count, 100, 100);
 		this.game.debug.text('total number of minions: ' + count1, 100, 120);
-		this.game.debug.text('saved minion: ' + test, 100, 140);
+		this.game.debug.text('saved minion: ' + test, 100, 140);		
 	}
 
 
@@ -102,7 +106,4 @@ SaveTheMinions.Game.prototype = {
 function selectt(sprite){
 	test +=1;
 	sprite.destroy()
-	
-	
-	
 }
