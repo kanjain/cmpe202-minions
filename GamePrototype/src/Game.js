@@ -4,6 +4,7 @@ SaveTheMinions.Game = function(game) {
 	count1 = 0;
 	test = 0;
 	frameArray = [0,1,2];
+	truck = null;
 	minionEnum = {
 		'Dave': 0,
 		'Tim': 1,
@@ -22,7 +23,7 @@ SaveTheMinions.Game.prototype = {
     		this.game.add.sprite(0, 0, 'sjsu');
 
     		// Adding a new Truck object to save the minions.
-    		this.game.add.sprite(0, 482, 'truck');
+    		truck = this.game.add.sprite(0, 482, 'truck');
 
 		    // add group
 			flyingMinions = this.game.add.group();
@@ -44,7 +45,7 @@ SaveTheMinions.Game.prototype = {
 				minion = this.game.add.sprite(0,300,'minions_spritesheet');
 
 				minion.inputEnabled = true;
-				minion.events.onInputUp.add(this.selectt, minion);
+				minion.events.onInputDown.add(this.selectt, minion);
 				
 	            var rand = frameArray[Math.floor(Math.random() * frameArray.length)];
 			    minion.anchor.setTo(0.5, 0.5);
@@ -69,7 +70,7 @@ SaveTheMinions.Game.prototype = {
 				minion = this.game.add.sprite(640,300,'minions_spritesheet'); 
 
 				minion.inputEnabled = true;
-				minion.events.onInputUp.add(this.selectt, minion);
+				minion.events.onInputDown.add(this.selectt, minion);
 
 	            var rand = frameArray[Math.floor(Math.random() * frameArray.length)];
 			    minion.anchor.setTo(0.5, 0.5);
@@ -85,24 +86,27 @@ SaveTheMinions.Game.prototype = {
 
 	    }
 	    
-	    // destroy object after it drop to bottom
-	    flyingMinions.forEach(function(obj){
-	        if(obj.y >=545){
-	            obj.destroy();
+		// destroy object after it drop to bottom
+		
+	    flyingMinions.forEach(function(sprite){
+	        if(sprite.y >=545){
+	            sprite.destroy();
 	            count++;
 	            
-	         }
+			}
+
 	    });
 	},
 	render: function() {
 		this.game.debug.text('dead minions: ' + count, 100, 100);
 		this.game.debug.text('total number of minions: ' + count1, 100, 120);
-		this.game.debug.text('saved minion: ' + test, 100, 160);		
+		this.game.debug.text('saved minion: ' + test, 100, 140);
 	},
 
 	selectt: function(sprite){
+		this.game.physics.arcade.moveToObject(sprite, truck, 0, 50);
+		sprite.lifespan = 55;
 		test +=1;
-		sprite.destroy()
 	}
 
 
