@@ -12,6 +12,7 @@ SaveTheMinions.Preloader.prototype = {
 		this.game.load.image('playBtn', 'img/btn_play.png');
 	    this.game.load.image('howToBtn','img/btn_how_to.png');
 	    this.game.load.image('loading', 'img/loading.png');
+			this.game.load.image('story', 'img/story.png');
 	    this.game.load.spritesheet('minions_spritesheet', 'img/minions_spritesheet.png', 78.2, 90, 3);
 
 		},
