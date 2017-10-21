@@ -97,7 +97,7 @@ SaveTheMinions.Game.prototype = {
 	render: function() {
 		this.game.debug.text('dead minions: ' + count, 100, 100);
 		this.game.debug.text('total number of minions: ' + count1, 100, 120);
-		this.game.debug.text('saved minion: ' + test, 100, 140);		
+		this.game.debug.text('saved minion: ' + test, 100, 160);		
 	},
 
 	selectt: function(sprite){
