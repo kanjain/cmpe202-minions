@@ -15,3 +15,5 @@ location for the saved minions. This needs to be finalized based on further team
 This working prototype has given a common platform to all the members of the team to contribute and extend the features of the 
 game such as killing the sprite objects on click event of the user and so on. This also will avoid any wastage of efforts in 
 future for integrating or rewriting parts of code so as to work together with other parts of the game.
+
+Also created a use case specification for changing or selecting levels in the game.
