@@ -13,3 +13,5 @@ To make sure communication is done properly for this week, we met on Monday to s
 ## 4. Feedback (Owner - Trung)
 
 ## 5. Eliminate Waste (Owner - Saurabh)
+
+During previous weeks each individual was allowed to research and implement a feature in his or her own way in order to first learn how a particular task is to be performed. This week however, in order to give a form to the game and maintain a common strategy we decided to eliminate the various options and continue with an option that is coherent with what the team is implementing thereby eliminating the rework that would be needed for integrating the code. Also, instead of researching and working in individual silos we decided to merge the code base and develop a working game prototype which can be converted into a full fledged game in the upcoming weeks.
