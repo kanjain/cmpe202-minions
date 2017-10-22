@@ -1,6 +1,7 @@
 # Week-4 (10/7 - 10/22) - Minutes of Meeting
 
 ## 1.  What did the team do the past week?
+* Built a use case specification document
 * Built a Use-case diagram for the game 
 * Built a game prototype that contains:
 	* A home screen
@@ -9,7 +10,7 @@
 	* A score meter  
 
 ## 2.  What is the team going to do next week?
-* Move to Scrom style project planning
+* Move to Scrum style project planning
 * Create a class diagram for the game
 * Build the game as per the wireframe
 * Research on how to integrate design patterns 
