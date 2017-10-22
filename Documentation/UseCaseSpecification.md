@@ -61,3 +61,24 @@ A player can exit the game whenever he likes to stop the game from running in th
 4 The call game.destroy() to destroy the game  
 **Alternative course**
 
+**5)Use case:** Change level  
+
+**Preconditions:** game state must be in MainMenu State 
+
+**Actors:** Player  
+
+**Goal:** to set a different level for the game    
+
+**Overview:**  
+A player can choose the starting level for his new game   
+
+**Typical course of events:**  
+* **Actor action**  
+1 Player clicks on change setting button  
+3 Player chooses a level and hit ok  
+
+* **System response**  
+2 The game state set to ChangeLevel State which show the different level the player can choose  
+4 The game change to Game State with level property set to player choice  
+
+**Alternative course**
