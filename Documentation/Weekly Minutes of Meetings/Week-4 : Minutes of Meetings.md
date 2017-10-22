@@ -1,4 +1,4 @@
-# Week-3 (10/1 - 10/7) - Minutes of Meeting
+# Week-4 (10/1 - 10/7) - Minutes of Meeting
 
 ## 1.  What did the team do the past week?
 * Built a Use-case diagram for the game 
