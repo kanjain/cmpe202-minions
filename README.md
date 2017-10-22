@@ -12,7 +12,7 @@ cmpe202-minions
 
 ### Week-4 (10/15 - 10/21)
 
-* [Minutes of Meeting]
+* [Minutes of Meeting](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Minutes%20of%20Meetings/Week-4%20:%20Minutes%20of%20Meetings.md)
 * [XP Agile Core Values - Journal](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Journal%20-%20XP%20Agile%20Core%20Values/Week-4:%20XP%20Agile%20Core%20Value%20Journal.md)
 * [CFD](https://docs.google.com/a/sjsu.edu/spreadsheets/d/1ywqgSxxhLNuXJpvcGkD8-U0gqS3t0mgaTow4z22S518/edit?usp=sharing)
 * Links to Individual Weekly Progress:
