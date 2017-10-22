@@ -9,9 +9,10 @@
 	* A score meter  
 
 ## 2.  What is the team going to do next week?
+* Move to Scrom style project planning
 * Create a class diagram for the game
 * Build the game as per the wireframe
-* Research on hoe tointegrate design patterns 
+* Research on how to integrate design patterns 
 
 ## 3.  What are the current blockers/challenges the team is facing?
 * The concept of design patterns in Javascript is new to us
