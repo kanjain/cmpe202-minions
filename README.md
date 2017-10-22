@@ -16,7 +16,7 @@ cmpe202-minions
 * [XP Agile Core Values - Journal](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Journal%20-%20XP%20Agile%20Core%20Values/Week-4:%20XP%20Agile%20Core%20Value%20Journal.md)
 * [CFD](https://docs.google.com/a/sjsu.edu/spreadsheets/d/1ywqgSxxhLNuXJpvcGkD8-U0gqS3t0mgaTow4z22S518/edit?usp=sharing)
 * Links to Individual Weekly Progress:
-     * [Anusha Mulumoodi]
+     * [Anusha Mulumoodi](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Anusha/Week-4:%20Weekly%20Progress%20-%20Anusha.md)
      * [Kanika Jain](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Kanika/Week-4:%20Weekly%20Progress%20-%20Kanika.md)
      * [Manish Pandey]
      * [Saurabh Ghotane](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Saurabh/Week-4:%20Weekly%20Progress%20-%20Saurabh.md)
