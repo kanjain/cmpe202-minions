@@ -2,7 +2,7 @@
 
 ## 1.  What did the team do the past week?
 * Built a Use-case diagram for the game 
-* Built a game prototype
+* Built a game prototype that contains:
 	* A home screen
 	* A game story
 	* Minion objects jumping on screen
