@@ -9,6 +9,7 @@ To make sure communication is done properly for this week, we met on Monday to s
 ## 2. Simplicity (Owner - Manish)
 
 ## 3. Respect (Owner - Anusha)
+We worked on building a prototype this week. We made sure each one got to work on one aspect of the game in code. We made sure we followed continuous integration. Code written by every team member should be pulled from git, worked upon and pushed back to git. Thus we respected each other by not breaking each other's code and working with integrity.
 
 ## 4. Feedback (Owner - Trung)
 
