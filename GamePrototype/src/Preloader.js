@@ -17,7 +17,7 @@ SaveTheMinions.Preloader.prototype = {
 		this.game.load.image('playBtn', 'img/btn_play.png');
         this.game.load.image('forest_of_doom_button', 'img/forest_of_doom_button.png');
         this.game.load.image('space_park_button', 'img/space_park_button.png');
-
+	this.game.load.image('truck', 'img/truck.png');
 	    this.game.load.image('howToBtn','img/btn_how_to.png');
 	    this.game.load.image('loading', 'img/loading.png');
 		this.game.load.image('story', 'img/story.png');
