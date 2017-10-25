@@ -12,7 +12,7 @@ When building web apps you end up writing many event handlers. Event handlers ar
 
 The event and event-handler paradigm in JavaScript is the manifestation of the Observer design pattern. Another name for the Observer pattern is Pub/Sub, short for Publication/Subscription.
 
-**Implementation of Observer pattern for score change:**
+**Implementation of Observer pattern for score change event:**
 
 The change of score is an event that two modules decoupled pieces of the game are interested in. First is the total score of the player. Second is the health based on which the game is over. Consider score as the subject (or publisher) and the totalScore and healthScore as the observers (or subscriber).
 
