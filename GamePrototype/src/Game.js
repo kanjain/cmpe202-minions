@@ -10,6 +10,9 @@ SaveTheMinions.Game = function(game) {
 		'Tim': 1,
 		'jerry': 2
 	};
+
+	// define observer
+	onScoreChange = null;
 };
 
 SaveTheMinions.Game.prototype = {
@@ -27,8 +30,11 @@ SaveTheMinions.Game.prototype = {
 
 		    // add group
 			flyingMinions = this.game.add.group();
-			
 
+			// instantiate the observer
+			onScoreChange = new Observer();
+
+			onScoreChange.subscribe(this.updateScore);
 		},
 	update: function() {
 
@@ -60,7 +66,7 @@ SaveTheMinions.Game.prototype = {
 	            minion.body.collideWorldBounds = false;
 	            minion.body.velocity.y = this.game.rnd.realInRange(-300.0, -500.0);
 	            minion.body.velocity.x = this.game.rnd.realInRange(150.0, 200.0);
-	            count1++
+	            count1++;
 	            
 	        }
 	        // same logic as the block above but for right corner
@@ -81,18 +87,16 @@ SaveTheMinions.Game.prototype = {
 	            minion.body.collideWorldBounds = false;
 	            minion.body.velocity.y = this.game.rnd.realInRange(-300.0, -500.0);
 	            minion.body.velocity.x = this.game.rnd.realInRange(-150.0, -200.0);
-	            count1++
+	            count1++;
 	        }
 
 	    }
 	    
 		// destroy object after it drop to bottom
-		
 	    flyingMinions.forEach(function(sprite){
 	        if(sprite.y >=545){
 	            sprite.destroy();
 	            count++;
-	            
 			}
 
 	    });
@@ -103,10 +107,16 @@ SaveTheMinions.Game.prototype = {
 		this.game.debug.text('saved minion: ' + test, 100, 140);
 	},
 
+	updateScore: function(event) {
+		if (event === 'addOne') {
+			test += 1;
+		}
+	},
+
 	selectt: function(sprite){
 		this.game.physics.arcade.moveToObject(sprite, truck, 0, 50);
 		sprite.lifespan = 55;
-		test +=1;
+		onScoreChange.notify('addOne');
 	}
 
 
