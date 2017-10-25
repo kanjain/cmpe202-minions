@@ -55,4 +55,15 @@ In JavaScript there are different ways to create new objects:
     This is most common way of creating an object in which we define a normal JavaScript function and then create an object 
     by using the new keyword. 
     
-    
+### What is Prototype in Javascript?
+
+Every JavaScript object has a prototype and all JavaScript objects inherit their properties and methods from their prototype.
+
+Usually the object prototypes are created by using an object constructor function. However if we need to add properties or methods to an existing prototype we can do so by using the JavaScript **prototype property**.
+
+   ```javascript
+   player.prototype.displayName = function() {
+      return this.firstName + " " + this.lastName;
+   };
+   ```
+This will add the 'displayName()' method for both the objects player1 and player2 and all the subsequent objects of type player.
