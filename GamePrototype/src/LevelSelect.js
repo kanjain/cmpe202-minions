@@ -17,8 +17,24 @@ SaveTheMinions.LevelSelect.prototype = {
         startButton.anchor.setTo(0.5,0.5);
 
     },
+    setGameStrategicTheme:function(theme){
+      //this.game.state.start('Game');
+      this.theme.applyTheme();
+    },
     startGame:function(){
       this.game.state.start('Game');
     }
 
+};
+
+var forestTheme = function() {
+  this.applyTheme=function(){
+    this.game.state.start('Game');
+  }
+};
+
+var cityTheme = function() {
+  this.applyTheme=function(){
+    this.game.state.start('Game');
+  }
 };
