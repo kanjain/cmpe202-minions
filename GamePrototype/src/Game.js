@@ -3,35 +3,12 @@ SaveTheMinions.Game = function(game) {
     count = 0;
 	count1 = 0;
 	test = 0;
-	frameArray = [0,1,2];
+	// frameArray = [0,1,2];
 	truck = null;
-	minionEnum = {
-		'Dave': 0,
-		'Tim': 1,
-		'jerry': 2
-	};
+	minionArray = ['Dave','Tim','Jerry'];
 
 	// define observer
 	onScoreChange = null;
-};
-
-function MinionFactory(){
-	this.createMinionOrBomb = function(game, typeOfMinion){
-		var minion;
-
-		if(typeOfMinion === 'Dave'){
-			console.log('Create Dave!');
-		}else if (typeOfMinion === "Tim") {
-			console.log('Create Tim!');
-		} else if (typeOfMinion === "Jerry") {
-			console.log('Create Jerry!');
-		} else{
-			console.log('Create Nothing!');
-		}
-		minion.type = typeOfMinion;
-
-		return minion;
-	}
 };
 
 SaveTheMinions.Game.prototype = {
@@ -66,15 +43,14 @@ SaveTheMinions.Game.prototype = {
 				var randomX = Math.floor(Math.random()*800);
 				var randomY = Math.floor(Math.random()*960);
 
+				// Get a random item from minions and bomb spritesheet
+				var rand = minionArray[Math.floor(Math.random() * minionArray.length)];
 
-				minion = this.game.add.sprite(0,300,'minions_spritesheet');
+				// Create an object of a specific type using Factory method.
+				minionFactoryObj = new MinionFactory();
+				minion = minionFactoryObj.createMinions(this.game, rand).minion;
 
-				minion.inputEnabled = true;
 				minion.events.onInputDown.add(this.selectt, minion);
-				
-	            var rand = frameArray[Math.floor(Math.random() * frameArray.length)];
-			    minion.anchor.setTo(0.5, 0.5);
-			    minion.frame=rand;
 
 			    // add minion to flyingMinions group so you can loop all the obj in the flyingMinions group and exclude obj that not in flyingMinions 
 	            flyingMinions.add(minion);
@@ -92,14 +68,18 @@ SaveTheMinions.Game.prototype = {
 	        else{
 	            cTime = this.game.time.totalElapsedSeconds();
 	            
-				minion = this.game.add.sprite(640,300,'minions_spritesheet'); 
+				// Get a random item from minions and bomb spritesheet
+				var rand = minionArray[Math.floor(Math.random() * minionArray.length)];
 
-				minion.inputEnabled = true;
-				minion.events.onInputDown.add(this.selectt, minion);
+				// Create an object of a specific type using Factory method.
+				minionFactoryObj = new MinionFactory();
+				minion = minionFactoryObj.createMinions(this.game, rand).minion;
 
-	            var rand = frameArray[Math.floor(Math.random() * frameArray.length)];
-			    minion.anchor.setTo(0.5, 0.5);
-			    minion.frame=rand;
+				// Changing the x & y co-ordinates to appear from right side of screen.
+				minion.x = 640;
+				minion.y = 300;
+
+			    minion.events.onInputDown.add(this.selectt, minion);
 
 	            flyingMinions.add(minion);
 	            this.game.physics.enable(minion, Phaser.Physics.ARCADE);
