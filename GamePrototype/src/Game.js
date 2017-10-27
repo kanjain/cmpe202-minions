@@ -15,6 +15,25 @@ SaveTheMinions.Game = function(game) {
 	onScoreChange = null;
 };
 
+function MinionFactory(){
+	this.createMinionOrBomb = function(game, typeOfMinion){
+		var minion;
+
+		if(typeOfMinion === 'Dave'){
+			console.log('Create Dave!');
+		}else if (typeOfMinion === "Tim") {
+			console.log('Create Tim!');
+		} else if (typeOfMinion === "Jerry") {
+			console.log('Create Jerry!');
+		} else{
+			console.log('Create Nothing!');
+		}
+		minion.type = typeOfMinion;
+
+		return minion;
+	}
+};
+
 SaveTheMinions.Game.prototype = {
 	create: function() {
 
