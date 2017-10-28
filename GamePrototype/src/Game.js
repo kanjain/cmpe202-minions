@@ -3,6 +3,8 @@ SaveTheMinions.Game = function(game) {
     count = 0;
 	count1 = 0;
 	test = 0;
+	scoreIncrement =1;
+	consecutiveCount=0;
 	// frameArray = [0,1,2];
 	truck = null;
 	minionArray = ['Dave','Tim','Jerry'];
@@ -10,7 +12,6 @@ SaveTheMinions.Game = function(game) {
 	// define observer
 	onScoreChange = null;
 };
-
 SaveTheMinions.Game.prototype = {
 	create: function() {
 
@@ -30,7 +31,7 @@ SaveTheMinions.Game.prototype = {
 			// instantiate the observer
 			onScoreChange = new Observer();
 
-			onScoreChange.subscribe(this.updateScore);
+        onScoreChange.subscribe(this.updateScore);
 		},
 	update: function() {
 
@@ -95,6 +96,8 @@ SaveTheMinions.Game.prototype = {
 	    flyingMinions.forEach(function(sprite){
 	        if(sprite.y >=545){
 	            sprite.destroy();
+                consecutiveCount = 0;
+                scoreIncrement =1;
 	            count++;
 			}
 
@@ -103,12 +106,23 @@ SaveTheMinions.Game.prototype = {
 	render: function() {
 		this.game.debug.text('dead minions: ' + count, 100, 100);
 		this.game.debug.text('total number of minions: ' + count1, 100, 120);
-		this.game.debug.text('saved minion: ' + test, 100, 140);
+		this.decorateScore();
+        this.game.debug.text('saved minion: ' + test, 100, 140);
 	},
+
+    decorateScore: function() {
+    if(consecutiveCount> 2 && consecutiveCount < 4 ){
+        scoreIncrement = 2 * scoreIncrement;
+    }
+        if(consecutiveCount> 4 && consecutiveCount < 8){
+            scoreIncrement = 2 * scoreIncrement;
+        }
+    },
 
 	updateScore: function(event) {
 		if (event === 'addOne') {
-			test += 1;
+			test += scoreIncrement;
+			consecutiveCount+=1;
 		}
 	},
 
