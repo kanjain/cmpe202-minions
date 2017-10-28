@@ -9,8 +9,8 @@ SaveTheMinions.Preloader.prototype = {
 		this.load.setPreloadSprite(this.preloadBar);
 
 		this.game.load.image('sjsu', 'img/sjsu.png');
-        this.game.load.image('city', 'img/sjsu.png');
-        this.game.load.image('forest', 'img/sjsu.png');
+        this.game.load.image('city', 'img/city.jpg');
+        this.game.load.image('forest', 'img/forest.jpg');
 
         this.game.load.image('levelBtn', 'img/select_level.png');
         this.game.load.image('backBtn', 'img/back_button.png');

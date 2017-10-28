@@ -1,6 +1,7 @@
 SaveTheMinions.Game = function(game) {
 	cTime = 0;
     count = 0;
+		//theme=0;
 	count1 = 0;
 	test = 0;
 	scoreIncrement =1;
@@ -20,7 +21,12 @@ SaveTheMinions.Game.prototype = {
 		    this.game.physics.arcade.gravity.y = 500;
 
 		    //  Background image for our game.
-    		this.game.add.sprite(0, 0, 'sjsu');
+    		//this.game.add.sprite(0, 0, 'sjsu');
+				if (this.game.theme == "forest")
+					this.game.add.sprite(0, 0, 'forest');
+				if (this.game.theme == "city")
+						this.game.add.sprite(0, 0, 'city');
+
 
     		// Adding a new Truck object to save the minions.
     		truck = this.game.add.sprite(0, 482, 'truck');
@@ -40,7 +46,7 @@ SaveTheMinions.Game.prototype = {
 	        // add ball in the bottom left corner
 	        if(this.game.rnd.integerInRange(0, 1) == 0){
 	            cTime = this.game.time.totalElapsedSeconds();
-	   
+
 				var randomX = Math.floor(Math.random()*800);
 				var randomY = Math.floor(Math.random()*960);
 
@@ -53,7 +59,7 @@ SaveTheMinions.Game.prototype = {
 
 				minion.events.onInputDown.add(this.selectt, minion);
 
-			    // add minion to flyingMinions group so you can loop all the obj in the flyingMinions group and exclude obj that not in flyingMinions 
+			    // add minion to flyingMinions group so you can loop all the obj in the flyingMinions group and exclude obj that not in flyingMinions
 	            flyingMinions.add(minion);
 
 
@@ -63,12 +69,12 @@ SaveTheMinions.Game.prototype = {
 	            minion.body.velocity.y = this.game.rnd.realInRange(-300.0, -500.0);
 	            minion.body.velocity.x = this.game.rnd.realInRange(150.0, 200.0);
 	            count1++;
-	            
+
 	        }
 	        // same logic as the block above but for right corner
 	        else{
 	            cTime = this.game.time.totalElapsedSeconds();
-	            
+
 				// Get a random item from minions and bomb spritesheet
 				var rand = minionArray[Math.floor(Math.random() * minionArray.length)];
 
@@ -91,7 +97,7 @@ SaveTheMinions.Game.prototype = {
 	        }
 
 	    }
-	    
+
 		// destroy object after it drop to bottom
 	    flyingMinions.forEach(function(sprite){
 	        if(sprite.y >=545){
@@ -134,4 +140,3 @@ SaveTheMinions.Game.prototype = {
 
 
 };
-
