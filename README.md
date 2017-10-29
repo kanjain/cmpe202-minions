@@ -19,7 +19,7 @@ cmpe202-minions
 * Links to Individual Weekly Progress:
      * [Anusha Mulumoodi](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Anusha/Week-5:%20Weekly%20Progress%20-%20Anusha.md)
      * [Kanika Jain](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Kanika/Week-5:%20Weekly%20Progress%20-%20Kanika.md)
-     * [Manish Pandey]
+     * [Manish Pandey](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Manish/Week-5:%20Weekly%20Progress%20-%20Manish.md)
      * [Saurabh Ghotane](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Saurabh/Week-5:%20Weekly%20Progress%20-%20Saurabh.md)
      * [Trung Huynh (Ryan)]
 
