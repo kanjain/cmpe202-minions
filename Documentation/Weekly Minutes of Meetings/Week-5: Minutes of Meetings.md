@@ -1,7 +1,7 @@
 # Week-5 (10/22 - 10/28) - Minutes of Meeting
 
 ## 1.  What did the team do the past week?
-* Refactor the code to organize it better.
+* Refactoring the code to organize it better.
 * Implemented dynamic scoring using Decorator Design Pattern. 
 * Implemented scoring using observer design pattern. 
 * Implemented themese using strategy design pattern.
