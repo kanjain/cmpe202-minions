@@ -10,7 +10,7 @@ We have started our week early so that everyone would be able to complete their 
  
 
 ## 3. Respect (Owner - Anusha)
-
+To honor the Respect value in our Agile practice, we made sure that each of us came up with an idea/feature that can implement a design pattern. Each of us chose and implemented a design pattern that was associated with the idea proposed. In this manner we made sure each one of us gets to brainstorm
 
 ## 4. Feedback (Owner - Trung)
 
