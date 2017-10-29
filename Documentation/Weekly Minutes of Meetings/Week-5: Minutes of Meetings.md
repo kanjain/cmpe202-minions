@@ -1,4 +1,4 @@
-# Week-4 (10/7 - 10/22) - Minutes of Meeting
+# Week-5 (10/22 - 10/28) - Minutes of Meeting
 
 ## 1.  What did the team do the past week?
 * Refactor the code to organize it better.
