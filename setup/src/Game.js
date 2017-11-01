@@ -1,13 +1,12 @@
 SaveTheMinions.Game = function(game) {
 	cTime = 0;
     count = 0;
-		//theme=0;
 	count1 = 0;
 	test = 0;
 	scoreIncrement =1;
 	consecutiveCount=0;
-	// frameArray = [0,1,2];
-	truck = null;
+
+	transportation = null;
 	minionArray = ['Dave','Tim','Jerry'];
 
 	// define observer
@@ -21,16 +20,30 @@ SaveTheMinions.Game.prototype = {
 		    this.game.physics.arcade.gravity.y = 500;
 
 		    //  Background image for our game.
-    		//this.game.add.sprite(0, 0, 'sjsu');
-				if (this.game.theme == "forest")
-					this.game.add.sprite(0, 0, 'forest');
-				if (this.game.theme == "city")
-						this.game.add.sprite(0, 0, 'city');
+				if (this.game.theme == "forest"){
+					this.game.add.sprite(0, 0, 'background_forest');
+					// Adding a new transportation object to save the minions.
+		    		transportation = this.game.add.sprite(100, 608, 'truck');
+				}
+				else if (this.game.theme == "city"){
+					this.game.add.sprite(0, 0, 'background_city');
+					// Adding a new transportation object to save the minions.
+		    		transportation = this.game.add.sprite(100, 608, 'truck');
+				}
+					
+				else if (this.game.theme == "space"){
+					this.game.add.sprite(0, 0, 'background_space');
+					// Adding a new transportation object to save the minions.
+		    		transportation = this.game.add.sprite(60, 628, 'spaceship');
+				}
+				else {
+					this.game.add.sprite(0, 0, 'background_city');
+					// Adding a new transportation object to save the minions.
+		    		transportation = this.game.add.sprite(100, 608, 'truck');
 
+				}
 
-    		// Adding a new Truck object to save the minions.
-    		truck = this.game.add.sprite(0, 482, 'truck');
-
+			transportation.anchor.setTo(0.5,0.5);
 		    // add group
 			flyingMinions = this.game.add.group();
 
@@ -100,7 +113,7 @@ SaveTheMinions.Game.prototype = {
 
 		// destroy object after it drop to bottom
 	    flyingMinions.forEach(function(sprite){
-	        if(sprite.y >=545){
+	        if(sprite.y >=605){
 	            sprite.destroy();
                 consecutiveCount = 0;
                 scoreIncrement =1;
@@ -133,7 +146,7 @@ SaveTheMinions.Game.prototype = {
 	},
 
 	selectt: function(sprite){
-		this.game.physics.arcade.moveToObject(sprite, truck, 0, 50);
+		this.game.physics.arcade.moveToObject(sprite, transportation, 0, 50);
 		sprite.lifespan = 55;
 		onScoreChange.notify('addOne');
 	}
