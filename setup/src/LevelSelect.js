@@ -10,12 +10,19 @@ SaveTheMinions.LevelSelect.prototype = {
     },
 
     createButton:function () {
-        this.game.add.sprite(0, 0, 'sjsu');
+        this.game.add.sprite(0, 0, 'background_city');
 
-        var forest =this.add.button(0, 200, 'forest_of_doom_button', function(){this.setGameStrategicTheme(new forestTheme())}, this, 1, 0, 3);
-        var city =this.add.button(80, 300, 'space_park_button', function(){this.setGameStrategicTheme(new cityTheme())}, this, 1, 0, 4);
-        startButton.input.useHandCursor = true;
-        startButton.anchor.setTo(0.5,0.5);
+        var forestBtn =this.add.button(320, 250, 'moderate', function(){this.setGameStrategicTheme(new forestTheme())}, this, 1, 0, 3);
+        var spaceBtn =this.add.button(320, 350, 'hard', function(){this.setGameStrategicTheme(new spaceTheme())}, this, 1, 0, 4);
+        var backBtn =this.add.button(320, 450, 'backBtn', function(){this.game.state.start('MainMenu')}, this, 1, 0, 4);
+        forestBtn.input.useHandCursor = true;
+        forestBtn.anchor.setTo(0.5,0.5);
+
+        spaceBtn.input.useHandCursor = true;
+        spaceBtn.anchor.setTo(0.5,0.5);
+
+        backBtn.input.useHandCursor = true;
+        backBtn.anchor.setTo(0.5,0.5);
 
     },
     setGameStrategicTheme:function(theme){
@@ -43,6 +50,13 @@ var forestTheme = function() {
 var cityTheme = function() {
   this.applyTheme=function(){
     this.game.theme="city";
+    this.game.state.start('Game');
+  }
+};
+
+var spaceTheme = function() {
+  this.applyTheme=function(){
+    this.game.theme="space";
     this.game.state.start('Game');
   }
 };
