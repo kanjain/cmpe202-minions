@@ -1,1 +1,1 @@
-Contains all the javascript files related to the game.
+This folder for storing all javascript files used in the game.
