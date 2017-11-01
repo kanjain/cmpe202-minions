@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<title>Save The Minions</title>
 	<style>
-		body { margin: 0; background: #B4D9E7; }
+		body { margin: 0; background: #00695C; }
 		@font-face {
 			font-family: 'ComicBook';
 			src: url('fonts/comicbook.eot');
@@ -28,16 +28,16 @@
 
 </head>
 <body>
-<p id="gameCanvas" align="center" style="vertical-align: middle;"></p>
+<p id="gameCanvas" align="center" style="vertical-align: middle;margin: 0;"></p>
 <script>
 (function(){
-	var game = new Phaser.Game(640, 960, Phaser.CANVAS, 'gameCanvas');
+	var game = new Phaser.Game(640, 665, Phaser.CANVAS, 'gameCanvas');
 	game.state.add('Boot', SaveTheMinions.Boot);
 	game.state.add('Preloader', SaveTheMinions.Preloader);
 	game.state.add('MainMenu', SaveTheMinions.MainMenu);
 	game.state.add('Game', SaveTheMinions.Game);
 	game.state.add('StoryHowto', SaveTheMinions.StoryHowto);
-    game.state.add('LevelSelect', SaveTheMinions.LevelSelect);
+    	game.state.add('LevelSelect', SaveTheMinions.LevelSelect);
 	game.state.start('Boot');
 })();
 </script>
