@@ -2,11 +2,12 @@ SaveTheMinions.Game = function(game) {
 	cTime = 0;
     healthScore = 0;
 	totalMinions = 0;
-	score = 0;
-	scoreIncrement =1;
-	consecutiveCount=0;
+	consecutiveCount = 0;
+	scoreIncrement = 1;
     score = 0;
     health = 0;
+    hungerMeter = null;
+    scoreText = null;
 
 	transportation = null;
 	minionArray = ['Dave','Tim','Jerry'];
@@ -16,34 +17,36 @@ SaveTheMinions.Game = function(game) {
 };
 SaveTheMinions.Game.prototype = {
 	create: function() {
+        score = 0;
+        health = 0;
 
         // physic global setup
         this.game.physics.startSystem(Phaser.Physics.ARCANE);
         this.game.physics.arcade.gravity.y = 500;
 
         //  Background image for our game.
-            if (this.game.theme == "forest"){
-                this.game.add.sprite(0, 0, 'background_forest');
-                // Adding a new transportation object to save the minions.
-                transportation = this.game.add.sprite(100, 608, 'truck');
-            }
-            else if (this.game.theme == "city"){
-                this.game.add.sprite(0, 0, 'background_city');
-                // Adding a new transportation object to save the minions.
-                transportation = this.game.add.sprite(100, 608, 'truck');
-            }
+        if (this.game.theme == "forest"){
+            this.game.add.sprite(0, 0, 'background_forest');
+            // Adding a new transportation object to save the minions.
+            transportation = this.game.add.sprite(100, 608, 'truck');
+        }
+        else if (this.game.theme == "city"){
+            this.game.add.sprite(0, 0, 'background_city');
+            // Adding a new transportation object to save the minions.
+            transportation = this.game.add.sprite(100, 608, 'truck');
+        }
 
-            else if (this.game.theme == "space"){
-                this.game.add.sprite(0, 0, 'background_space');
-                // Adding a new transportation object to save the minions.
-                transportation = this.game.add.sprite(60, 628, 'spaceship');
-            }
-            else {
-                this.game.add.sprite(0, 0, 'background_city');
-                // Adding a new transportation object to save the minions.
-                transportation = this.game.add.sprite(100, 608, 'truck');
+        else if (this.game.theme == "space"){
+            this.game.add.sprite(0, 0, 'background_space');
+            // Adding a new transportation object to save the minions.
+            transportation = this.game.add.sprite(60, 628, 'spaceship');
+        }
+        else {
+            this.game.add.sprite(0, 0, 'background_city');
+            // Adding a new transportation object to save the minions.
+            transportation = this.game.add.sprite(100, 608, 'truck');
 
-            }
+        }
 
         transportation.anchor.setTo(0.5,0.5);
         // add group
@@ -53,9 +56,20 @@ SaveTheMinions.Game.prototype = {
         onScoreChange = new Observer();
         // subscribe to a subject
         onScoreChange.subscribe(this.updateScore);
+
+
+        health = 25;
+        hungerMeter = this.add.sprite(235, 20, 'hunger-meter');
+
+        for(var h = 0; h < 25; h++) {
+            hungerMeter.animations.add(''+(25-h), [h], 10, true);
+        }
+
+        hungerMeter.animations.play('25');
+
+        scoreText = this.game.add.text(120, 20, "0", { font: "40px ComicBook", fill: "#FFCC00", align: "right" });
 		},
 	update: function() {
-
 		// add ball randomly between 0-15 sec
 	    if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.integerInRange(0, 15)){
 	        // add ball in the bottom left corner
@@ -126,15 +140,15 @@ SaveTheMinions.Game.prototype = {
 	},
 	render: function() {
 		this.game.debug.text('dead minions: ' + healthScore, 100, 100);
-		this.game.debug.text('total number of minions: ' + totalMinions, 100, 120);
 		this.decorateScore();
         this.game.debug.text('saved minion: ' + score, 100, 140);
 	},
     decorateScore: function() {
-    if(consecutiveCount> 2 && consecutiveCount < 4 ){
-        scoreIncrement = 2 * scoreIncrement;
-    }
-        if(consecutiveCount> 4 && consecutiveCount < 8){
+        if(consecutiveCount > 2 && consecutiveCount < 4 ) {
+            scoreIncrement = 2 * scoreIncrement;
+        }
+
+        if(consecutiveCount > 4 && consecutiveCount < 8) {
             scoreIncrement = 2 * scoreIncrement;
         }
     },
@@ -142,6 +156,7 @@ SaveTheMinions.Game.prototype = {
 		if (event === 'addOne') {
 			score += scoreIncrement;
 			consecutiveCount+=1;
+			scoreText.setText(score);
 		}
 	},
 	selectt: function(sprite){
