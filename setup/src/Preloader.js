@@ -9,9 +9,12 @@ SaveTheMinions.Preloader.prototype = {
 	this.preloadBar = this.add.sprite((640-311)/2, (960-27)/2, 'preloaderBar');
 	this.load.setPreloadSprite(this.preloadBar);
 
+    /* Images */
     this.game.load.image('background_city', 'img/min2.png');
     this.game.load.image('background_forest', 'img/background_forest.jpg');
     this.game.load.image('background_space', 'img/background_space.jpg');
+    this.game.load.image('score-bg', 'img/score-bg.png');
+    this.game.load.image('score-bg-minion-icon', 'img/minion-icon.png');
 
     this.game.load.image('levelBtn', 'img/btn_select_level.png');
     this.game.load.image('backBtn', 'img/btn_back.png');
@@ -23,7 +26,18 @@ SaveTheMinions.Preloader.prototype = {
 	this.game.load.image('howToBtn','img/btn_how_to.png');
 	this.game.load.image('loading', 'img/loading.png');
 	this.game.load.image('story', 'img/story.png');
+
+	/* Fonts */
+    this.game.load.text('font-ttf', 'fonts/comicbook.ttf');
+    this.game.load.text('font-svg', 'fonts/comicbook.svg');
+    this.game.load.text('font-ttf', 'fonts/comicbook.ttf');
+    this.game.load.text('font-woff', 'fonts/comicbook.woff');
+
+    /* Sprites */
 	this.game.load.spritesheet('minions_spritesheet', 'img/minions_spritesheet.png', 78.2, 90, 3);
+	this.game.load.spritesheet('hunger-meter', 'img/hunger-meter.png', 289, 45);
+
+
 
 	},
 	create: function() {

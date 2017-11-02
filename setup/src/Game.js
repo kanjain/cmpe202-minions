@@ -35,7 +35,6 @@ SaveTheMinions.Game.prototype = {
             // Adding a new transportation object to save the minions.
             transportation = this.game.add.sprite(100, 608, 'truck');
         }
-
         else if (this.game.theme == "space"){
             this.game.add.sprite(0, 0, 'background_space');
             // Adding a new transportation object to save the minions.
@@ -45,7 +44,6 @@ SaveTheMinions.Game.prototype = {
             this.game.add.sprite(0, 0, 'background_city');
             // Adding a new transportation object to save the minions.
             transportation = this.game.add.sprite(100, 608, 'truck');
-
         }
 
         transportation.anchor.setTo(0.5,0.5);
@@ -58,17 +56,20 @@ SaveTheMinions.Game.prototype = {
         onScoreChange.subscribe(this.updateScore);
 
 
+        // add score background
+        this.game.add.sprite(10, 10, 'score-bg');
+        this.game.add.sprite(13, 13, 'score-bg-minion-icon');
         health = 25;
-        hungerMeter = this.add.sprite(235, 20, 'hunger-meter');
+        hungerMeter = this.add.sprite(635, 20, 'hunger-meter');
 
         for(var h = 0; h < 25; h++) {
-            hungerMeter.animations.add(''+(25-h), [h], 10, true);
+            hungerMeter.animations.add(''+(25 - h), [h], 10, true);
         }
 
         hungerMeter.animations.play('25');
 
-        scoreText = this.game.add.text(120, 20, "0", { font: "40px ComicBook", fill: "#FFCC00", align: "right" });
-		},
+        scoreText = this.game.add.text(150, 20, "0", { font: "40px ComicBook", fill: "#FFCC00", align: "right" });
+	},
 	update: function() {
 		// add ball randomly between 0-15 sec
 	    if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.integerInRange(0, 15)){
@@ -132,16 +133,16 @@ SaveTheMinions.Game.prototype = {
 	        if(sprite.y >=605){
 	            sprite.destroy();
                 consecutiveCount = 0;
-                scoreIncrement =1;
+                scoreIncrement = 1;
 	            healthScore++;
 			}
 
 	    });
 	},
 	render: function() {
-		this.game.debug.text('dead minions: ' + healthScore, 100, 100);
+	    health -= healthScore;
+        hungerMeter.animations.play(''+health);
 		this.decorateScore();
-        this.game.debug.text('saved minion: ' + score, 100, 140);
 	},
     decorateScore: function() {
         if(consecutiveCount > 2 && consecutiveCount < 4 ) {
