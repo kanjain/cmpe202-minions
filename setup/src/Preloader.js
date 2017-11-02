@@ -8,7 +8,7 @@ SaveTheMinions.Preloader.prototype = {
 	this.preloadBar = this.add.sprite((640-311)/2, (960-27)/2, 'preloaderBar');
 	this.load.setPreloadSprite(this.preloadBar);
 
-        this.game.load.image('background_city', 'img/background_city.jpg');
+        this.game.load.image('background_city', 'img/min2.png');
         this.game.load.image('background_forest', 'img/background_forest.jpg');
         this.game.load.image('background_space', 'img/background_space.jpg');
 
