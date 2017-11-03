@@ -27,6 +27,7 @@ SaveTheMinions.Preloader.prototype = {
 	this.game.load.image('howToBtn','img/btn_how_to.png');
 	this.game.load.image('loading', 'img/loading.png');
 	this.game.load.image('story', 'img/story.png');
+	this.game.load.image('bomb', 'img/bomb.png');
 
 	/* Fonts */
     this.game.load.text('font-ttf', 'fonts/comicbook.ttf');

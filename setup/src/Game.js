@@ -10,7 +10,7 @@ SaveTheMinions.Game = function(game) {
     scoreText = null;
 
 	transportation = null;
-	minionArray = ['Dave','Tim','Jerry'];
+	minionArray = ['Dave','Tim','Jerry','Bomb'];
 
 	// define observer
 	onScoreChange = null;
@@ -102,12 +102,14 @@ SaveTheMinions.Game.prototype = {
 				var randomX = Math.floor(Math.random()*800);
 				var randomY = Math.floor(Math.random()*960);
 
+
 				// Get a random item from minions and bomb spritesheet
 				var rand = minionArray[Math.floor(Math.random() * minionArray.length)];
 
 				// Create an object of a specific type using Factory method.
 				minionFactoryObj = new MinionFactory();
 				minion = minionFactoryObj.createMinions(this.game, rand).minion;
+
 
 				minion.events.onInputDown.add(this.selectt, minion);
 
@@ -183,6 +185,8 @@ SaveTheMinions.Game.prototype = {
 		}
 	},
 	selectt: function(sprite){
+		if(sprite.name == "Bomb")
+			this.game.state.start('MainMenu');
 		this.game.physics.arcade.moveToObject(sprite, transportation, 0, 50);
 		sprite.lifespan = 55;
 		onScoreChange.notify('addOne');
