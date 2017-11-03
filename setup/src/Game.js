@@ -46,6 +46,28 @@ SaveTheMinions.Game.prototype = {
             transportation = this.game.add.sprite(100, 608, 'truck');
         }
 
+
+        // Adding the pause button to pause the game.
+        pauseButton = this.add.button(608, 40, 'pauseBtn', function(){console.log('Game Paused!!!')}, this, 1, 0, 2);
+		pauseButton.input.useHandCursor = true;
+		pauseButton.anchor.setTo(0.5,0.5);
+
+		pauseButton.inputEnabled = true;
+
+    	currentGame = this.game;
+
+    	pauseButton.events.onInputUp.add(function () {
+        // When the paus button is pressed, we pause the game
+        	currentGame.paused = true;
+    	});
+
+    	this.game.input.onDown.add(function(){
+    		console.log('Game Resumed!!!')
+    		currentGame.paused = false;
+    	});
+
+
+
         transportation.anchor.setTo(0.5,0.5);
         // add group
         flyingMinions = this.game.add.group();
