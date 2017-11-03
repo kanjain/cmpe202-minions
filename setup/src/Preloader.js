@@ -19,6 +19,7 @@ SaveTheMinions.Preloader.prototype = {
     this.game.load.image('levelBtn', 'img/btn_select_level.png');
     this.game.load.image('backBtn', 'img/btn_back.png');
 	this.game.load.image('playBtn', 'img/btn_play.png');
+	this.game.load.image('pauseBtn', 'img/btn_pause.png');
 	this.game.load.image('moderate', 'img/btn_moderate.png');
 	this.game.load.image('hard', 'img/btn_hard.png');
 	this.game.load.image('truck', 'img/truck.png');
