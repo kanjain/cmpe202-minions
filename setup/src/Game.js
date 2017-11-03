@@ -94,7 +94,7 @@ SaveTheMinions.Game.prototype = {
 	},
 	update: function() {
 		// add ball randomly between 0-15 sec
-	    if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.integerInRange(0, 15)){
+	    if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.integerInRange(0, 60)){
 	        // add ball in the bottom left corner
 	        if(this.game.rnd.integerInRange(0, 1) == 0){
 	            cTime = this.game.time.totalElapsedSeconds();
@@ -125,7 +125,7 @@ SaveTheMinions.Game.prototype = {
 	        }
 	        // same logic as the block above but for right corner
 	        else{
-	            cTime = this.game.time.totalElapsedSeconds();
+	            cTime = cTime + 1;
 
 				// Get a random item from minions and bomb spritesheet
 				var rand = minionArray[Math.floor(Math.random() * minionArray.length)];
@@ -135,7 +135,7 @@ SaveTheMinions.Game.prototype = {
 				minion = minionFactoryObj.createMinions(this.game, rand).minion;
 
 				// Changing the x & y co-ordinates to appear from right side of screen.
-				minion.x = 640;
+				minion.x = 960;
 				minion.y = 300;
 
 			    minion.events.onInputDown.add(this.selectt, minion);
@@ -152,7 +152,7 @@ SaveTheMinions.Game.prototype = {
 
 		// destroy object after it drop to bottom
 	    flyingMinions.forEach(function(sprite){
-	        if(sprite.y >=605){
+	        if(sprite.y >=500){
 	            sprite.destroy();
                 consecutiveCount = 0;
                 scoreIncrement = 1;
