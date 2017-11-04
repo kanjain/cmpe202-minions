@@ -15,9 +15,8 @@ SaveTheMinions.Game = function(game) {
 	// define observer
 	onScoreChange = null;
 
-
-    var minionSelect =null;
-    var minionSound =null;
+    var minionSelect = null;
+    var minionSound = null;
     var bombSound = null;
     var pauseSound = null;
 
@@ -80,8 +79,6 @@ SaveTheMinions.Game.prototype = {
     		currentGame.paused = false;
     	});
 
-
-
         transportation.anchor.setTo(0.5,0.5);
         // add group
         flyingMinions = this.game.add.group();
@@ -90,7 +87,6 @@ SaveTheMinions.Game.prototype = {
         onScoreChange = new Observer();
         // subscribe to a subject
         onScoreChange.subscribe(this.updateScore);
-
 
         // add score background
         this.game.add.sprite(10, 10, 'score-bg');
@@ -108,62 +104,15 @@ SaveTheMinions.Game.prototype = {
 	},
 	update: function() {
 		// add ball randomly between 0-15 sec
-	    if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.integerInRange(0, 60)){
+	    if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.integerInRange(0, 60)) {
 	        // add ball in the bottom left corner
-	        if(this.game.rnd.integerInRange(0, 1) == 0){
-	            cTime = this.game.time.totalElapsedSeconds();
-
-				var randomX = Math.floor(Math.random()*800);
-				var randomY = Math.floor(Math.random()*960);
-
-
-				// Get a random item from minions and bomb spritesheet
-				var rand = minionArray[Math.floor(Math.random() * minionArray.length)];
-
-				// Create an object of a specific type using Factory method.
-				minionFactoryObj = new MinionFactory();
-				minion = minionFactoryObj.createMinions(this.game, rand).minion;
-
-
-				minion.events.onInputDown.add(this.selectt, minion);
-
-			    // add minion to flyingMinions group so you can loop all the obj in the flyingMinions group and exclude obj that not in flyingMinions
-	            flyingMinions.add(minion);
-
-
-	            // enable physics for minion. You have to do this or else your obj wont react to physics.
-	            this.game.physics.enable(minion, Phaser.Physics.ARCADE);
-	            minion.body.collideWorldBounds = false;
-	            minion.body.velocity.y = this.game.rnd.realInRange(-300.0, -500.0);
-	            minion.body.velocity.x = this.game.rnd.realInRange(150.0, 200.0);
-	            totalMinions++;
-
+	        if(this.game.rnd.integerInRange(0, 1) == 0) {
+	            this.addBalls(false);
 	        }
 	        // same logic as the block above but for right corner
-	        else{
-	            cTime = cTime + 1;
-
-				// Get a random item from minions and bomb spritesheet
-				var rand = minionArray[Math.floor(Math.random() * minionArray.length)];
-
-				// Create an object of a specific type using Factory method.
-				minionFactoryObj = new MinionFactory();
-				minion = minionFactoryObj.createMinions(this.game, rand).minion;
-
-				// Changing the x & y co-ordinates to appear from right side of screen.
-				minion.x = 960;
-				minion.y = 300;
-
-			    minion.events.onInputDown.add(this.selectt, minion);
-
-	            flyingMinions.add(minion);
-	            this.game.physics.enable(minion, Phaser.Physics.ARCADE);
-	            minion.body.collideWorldBounds = false;
-	            minion.body.velocity.y = this.game.rnd.realInRange(-300.0, -500.0);
-	            minion.body.velocity.x = this.game.rnd.realInRange(-150.0, -200.0);
-	            totalMinions++;
+	        else {
+	            this.addBalls(true);
 	        }
-
 	    }
 
 		// destroy object after it drop to bottom
@@ -171,16 +120,56 @@ SaveTheMinions.Game.prototype = {
 	        if(sprite.y >=500){
 	            sprite.destroy();
                 consecutiveCount = 0;
+
                 scoreIncrement = 1;
 	            healthScore++;
 			}
 
 	    });
 	},
+    addBalls: function(isRight) {
+        var randomX = Math.floor(Math.random()*800);
+        var randomY = Math.floor(Math.random()*960);
+        var y_1 = -300.0;
+        var y_2 = -500.0;
+        var x_1 = 150.0;
+        var x_2 = 200.0;
+
+        // Get a random item from minions and bomb spritesheet
+        var rand = minionArray[Math.floor(Math.random() * minionArray.length)];
+
+        // Create an object of a specific type using Factory method.
+        minionFactoryObj = new MinionFactory();
+        minion = minionFactoryObj.createMinions(this.game, rand).minion;
+
+
+        if (isRight) {
+            cTime = cTime + 1;
+            // Changing the x & y co-ordinates to appear from right side of screen.
+            minion.x = 960;
+            minion.y = 300;
+            x_1 = -150.0;
+            x_2 = -200.0;
+        } else {
+            cTime = this.game.time.totalElapsedSeconds();
+        }
+
+        minion.events.onInputDown.add(this.selectt, minion);
+
+        // add minion to flyingMinions group so you can loop all the obj in the flyingMinions group and exclude obj that not in flyingMinions
+        flyingMinions.add(minion);
+
+        // enable physics for minion. You have to do this or else your obj wont react to physics.
+        this.game.physics.enable(minion, Phaser.Physics.ARCADE);
+        minion.body.collideWorldBounds = false;
+        minion.body.velocity.y = this.game.rnd.realInRange(y_1, y_2);
+        minion.body.velocity.x = this.game.rnd.realInRange(x_1, x_2);
+        totalMinions++;
+    },
 	render: function() {
 	    health -= healthScore;
-        hungerMeter.animations.play(''+health);
-		this.decorateScore();
+        hungerMeter.animations.play(''+  health);
+		//this.decorateScore();
 	},
     decorateScore: function() {
         if(consecutiveCount > 2 && consecutiveCount < 4 ) {
@@ -193,8 +182,8 @@ SaveTheMinions.Game.prototype = {
     },
 	updateScore: function(event) {
 		if (event === 'addOne') {
+		    console.log(scoreIncrement);
 			score += scoreIncrement;
-			consecutiveCount+=1;
 			scoreText.setText(score);
 		}
 	},
@@ -202,7 +191,7 @@ SaveTheMinions.Game.prototype = {
         if(sprite.name == "Bomb") {
             bombSound.play();
             this.game.state.start('MainMenu');
-        }else {
+        } else {
             minionSelect.play();
             this.game.physics.arcade.moveToObject(sprite, transportation, 0, 50);
             sprite.lifespan = 55;
