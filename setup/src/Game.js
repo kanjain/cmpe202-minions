@@ -14,6 +14,13 @@ SaveTheMinions.Game = function(game) {
 
 	// define observer
 	onScoreChange = null;
+
+
+    var minionSelect =null;
+    var minionSound =null;
+    var bombSound = null;
+    var pauseSound = null;
+
 };
 SaveTheMinions.Game.prototype = {
 	create: function() {
@@ -23,6 +30,11 @@ SaveTheMinions.Game.prototype = {
         // physic global setup
         this.game.physics.startSystem(Phaser.Physics.ARCANE);
         this.game.physics.arcade.gravity.y = 500;
+        // Adding Sound
+        minionSelect =this.game.add.audio('minionSelect');
+        minionSound =this.game.add.audio('minionSound');
+        bombSound= this.game.add.audio('bombSound');
+        pauseSound= this.game.add.audio('pauseSound');
 
         //  Background image for our game.
         if (this.game.theme == "forest"){
@@ -58,11 +70,13 @@ SaveTheMinions.Game.prototype = {
 
     	pauseButton.events.onInputUp.add(function () {
         // When the paus button is pressed, we pause the game
+            pauseSound.play();
         	currentGame.paused = true;
     	});
 
     	this.game.input.onDown.add(function(){
     		console.log('Game Resumed!!!')
+            pauseSound.play();
     		currentGame.paused = false;
     	});
 
@@ -184,11 +198,15 @@ SaveTheMinions.Game.prototype = {
 			scoreText.setText(score);
 		}
 	},
-	selectt: function(sprite){
-		if(sprite.name == "Bomb")
-			this.game.state.start('MainMenu');
-		this.game.physics.arcade.moveToObject(sprite, transportation, 0, 50);
-		sprite.lifespan = 55;
-		onScoreChange.notify('addOne');
-	}
+    selectt: function(sprite){
+        if(sprite.name == "Bomb") {
+            bombSound.play();
+            this.game.state.start('MainMenu');
+        }else {
+            minionSelect.play();
+            this.game.physics.arcade.moveToObject(sprite, transportation, 0, 50);
+            sprite.lifespan = 55;
+            onScoreChange.notify('addOne');
+        }
+    }
 };
