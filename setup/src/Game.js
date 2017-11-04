@@ -8,12 +8,13 @@ SaveTheMinions.Game = function(game) {
     score = 0;//global score
 	transportation = null;
 	minionArray = ['Dave','Tim','Jerry','Bomb'];
-    eventScoreOne = "addOne";
-    eventScoreTwo = "addTwo";
-    eventScoreThree = "addThree";
+    eventOne = "addOne";
+    eventTwo = "addTwo";
+    eventThree = "addThree";
 
 	// define observer
 	onScoreChange = null;
+	onHealthChange = null;
 
     var minionSelect = null;
     var minionSound = null;
@@ -22,8 +23,6 @@ SaveTheMinions.Game = function(game) {
 };
 SaveTheMinions.Game.prototype = {
 	create: function() {
-        health = 0;
-
         // physic global setup
         this.game.physics.startSystem(Phaser.Physics.ARCANE);
         this.game.physics.arcade.gravity.y = 500;
@@ -83,22 +82,23 @@ SaveTheMinions.Game.prototype = {
 
         // instantiate the observer
         onScoreChange = new Observer();
+        onHealthChange = new Observer();
         // subscribe to a subject
         onScoreChange.subscribe(this.updateScore);
+        onHealthChange.subscribe(this.updateHealth);
 
         // add score background
         this.game.add.sprite(10, 10, 'score-bg');
         this.game.add.sprite(13, 13, 'score-bg-minion-icon');
+        scoreText = this.game.add.text(150, 20, "0", { font: "40px ComicBook", fill: "#FFCC00", align: "right" });
+
+        // add health meter
         health = 25;
         hungerMeter = this.add.sprite(635, 20, 'hunger-meter');
-
         for(var h = 0; h < 25; h++) {
             hungerMeter.animations.add(''+(25 - h), [h], 10, true);
         }
-
         hungerMeter.animations.play('25');
-
-        scoreText = this.game.add.text(150, 20, "0", { font: "40px ComicBook", fill: "#FFCC00", align: "right" });
 	},
 	update: function() {
 		// add ball randomly between 0-15 sec
@@ -117,9 +117,10 @@ SaveTheMinions.Game.prototype = {
 	    flyingMinions.forEach(function(sprite){
 	        if(sprite.y >=500){
 	            sprite.destroy();
-	            healthScore++;
+	            if (sprite.score != -1 && sprite.score != 1000) {
+	                onHealthChange.notify(eventOne);
+	            }
 			}
-
 	    });
 	},
     addBalls: function(isRight) {
@@ -136,7 +137,6 @@ SaveTheMinions.Game.prototype = {
         // Create an object of a specific type using Factory method.
         minionFactoryObj = new MinionFactory();
         minion = minionFactoryObj.createMinions(this.game, rand).minion;
-
 
         if (isRight) {
             cTime = cTime + 1;
@@ -162,23 +162,30 @@ SaveTheMinions.Game.prototype = {
         totalMinions++;
     },
 	render: function() {
-	    health -= healthScore;
-        hungerMeter.animations.play(''+  health);
+        if(health == 0) {
+            this.game.state.start('MainMenu');
+        }
 	},
 	updateScore: function(event) {
 	    var scoreIncrement = 0;
-		if (event === eventScoreOne) {
+		if (event === eventOne) {
 		    scoreIncrement = 1;
 		}
-		if (event === eventScoreTwo) {
+		if (event === eventTwo) {
 		    scoreIncrement = 2;
 		}
-		if (event === eventScoreThree) {
+		if (event === eventThree) {
             scoreIncrement = 3;
 		}
 
 		score += scoreIncrement;
         scoreText.setText(score);
+	},
+	updateHealth: function(event) {
+	    // hard-code gradually decrement health
+	    // no weighted penalty.
+        health -= 1;
+        hungerMeter.animations.play('' +  health);
 	},
     selectt: function(sprite){
         if(sprite.name == "Bomb") {
@@ -189,18 +196,19 @@ SaveTheMinions.Game.prototype = {
             minionSelect.play();
             this.game.physics.arcade.moveToObject(sprite, transportation, 0, 50);
             sprite.lifespan = 55;
+            sprite.score = 1000;
 
             // Notify of a score change.
             var eventName = "";
             switch(sprite.score) {
                 case 2:
-                    eventName = eventScoreTwo;
+                    eventName = eventTwo;
                     break;
                 case 3:
-                    eventName = eventScoreThree;
+                    eventName = eventThree;
                     break;
                 default:
-                    eventName = eventScoreOne;
+                    eventName = eventOne;
                     break;
             }
             onScoreChange.notify(eventName);

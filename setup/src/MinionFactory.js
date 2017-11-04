@@ -13,7 +13,7 @@ function MinionFactory(){
 		} else if (typeOfMinion === "Jerry") {
 			//console.log('Jerry is Created!');
             minionSprite = new Jerry(game);
-            console.log(minionSprite);
+            //console.log(minionSprite);
 		} else if (typeOfMinion === "Bomb") {
 			//console.log('Bomb is Created!');
             minionSprite = new Bomb(game);
@@ -55,6 +55,7 @@ var Jerry = function (game) {
 var Bomb = function (game) {
 	this.minion = game.add.sprite(0,300,'bomb');
 	this.minion.name="Bomb";
+	this.minion.score = -1;
     this.minion.anchor.setTo(0.5, 0.5);
     this.minion.frame=3;
     this.minion.inputEnabled = true;
