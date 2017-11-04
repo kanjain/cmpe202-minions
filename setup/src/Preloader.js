@@ -6,8 +6,9 @@ SaveTheMinions.Preloader.prototype = {
 	preload: function() {
 	this.game.stage.backgroundColor = '#000000';
 
-	this.preloadBar = this.add.sprite((640-311)/2, (960-27)/2, 'preloaderBar');
-	this.load.setPreloadSprite(this.preloadBar);
+    // DO NOT SHOW "Loading..."
+	//this.preloadBar = this.add.sprite((640-311)/2, (960-27)/2, 'preloaderBar');
+	//this.load.setPreloadSprite(this.preloadBar);
 
     /* Images */
     this.game.load.image('background_city', 'img/min2.png');
@@ -42,12 +43,9 @@ SaveTheMinions.Preloader.prototype = {
 	this.game.load.audio('minionSound','sound/saveMinionSound.mp3');
 	this.game.load.audio('pauseSound','sound/pauseSound.mp3');
 
-
         /* Sprites */
 	this.game.load.spritesheet('minions_spritesheet', 'img/minions_spritesheet.png', 78.2, 90, 3);
 	this.game.load.spritesheet('hunger-meter', 'img/hunger-meter.png', 289, 45);
-
-
 
 	},
 	create: function() {
