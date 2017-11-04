@@ -35,7 +35,15 @@ SaveTheMinions.Preloader.prototype = {
     this.game.load.text('font-ttf', 'fonts/comicbook.ttf');
     this.game.load.text('font-woff', 'fonts/comicbook.woff');
 
-    /* Sprites */
+	/*Sound Effect*/
+	this.game.load.audio('minionSelect','sound/minionSelect.mp3');
+	this.game.load.audio('menuSelect','sound/menu.wav');
+	this.game.load.audio('bombSound','sound/bomb.mp3');
+	this.game.load.audio('minionSound','sound/saveMinionSound.mp3');
+	this.game.load.audio('pauseSound','sound/pauseSound.mp3');
+
+
+        /* Sprites */
 	this.game.load.spritesheet('minions_spritesheet', 'img/minions_spritesheet.png', 78.2, 90, 3);
 	this.game.load.spritesheet('hunger-meter', 'img/hunger-meter.png', 289, 45);
 
