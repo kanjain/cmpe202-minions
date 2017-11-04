@@ -2,15 +2,15 @@ SaveTheMinions.Game = function(game) {
 	cTime = 0;
     healthScore = 0;
 	totalMinions = 0;
-	consecutiveCount = 0;
-	scoreIncrement = 1;
-    score = 0;
     health = 0;
     hungerMeter = null;
     scoreText = null;
-
+    score = 0;//global score
 	transportation = null;
 	minionArray = ['Dave','Tim','Jerry','Bomb'];
+    eventScoreOne = "addOne";
+    eventScoreTwo = "addTwo";
+    eventScoreThree = "addThree";
 
 	// define observer
 	onScoreChange = null;
@@ -19,11 +19,9 @@ SaveTheMinions.Game = function(game) {
     var minionSound = null;
     var bombSound = null;
     var pauseSound = null;
-
 };
 SaveTheMinions.Game.prototype = {
 	create: function() {
-        score = 0;
         health = 0;
 
         // physic global setup
@@ -119,9 +117,6 @@ SaveTheMinions.Game.prototype = {
 	    flyingMinions.forEach(function(sprite){
 	        if(sprite.y >=500){
 	            sprite.destroy();
-                consecutiveCount = 0;
-
-                scoreIncrement = 1;
 	            healthScore++;
 			}
 
@@ -169,33 +164,46 @@ SaveTheMinions.Game.prototype = {
 	render: function() {
 	    health -= healthScore;
         hungerMeter.animations.play(''+  health);
-		//this.decorateScore();
 	},
-    decorateScore: function() {
-        if(consecutiveCount > 2 && consecutiveCount < 4 ) {
-            scoreIncrement = 2 * scoreIncrement;
-        }
-
-        if(consecutiveCount > 4 && consecutiveCount < 8) {
-            scoreIncrement = 2 * scoreIncrement;
-        }
-    },
 	updateScore: function(event) {
-		if (event === 'addOne') {
-		    console.log(scoreIncrement);
-			score += scoreIncrement;
-			scoreText.setText(score);
+	    var scoreIncrement = 0;
+		if (event === eventScoreOne) {
+		    scoreIncrement = 1;
 		}
+		if (event === eventScoreTwo) {
+		    scoreIncrement = 2;
+		}
+		if (event === eventScoreThree) {
+            scoreIncrement = 3;
+		}
+
+		score += scoreIncrement;
+        scoreText.setText(score);
 	},
     selectt: function(sprite){
         if(sprite.name == "Bomb") {
             bombSound.play();
             this.game.state.start('MainMenu');
+         // OR a minion selected...
         } else {
             minionSelect.play();
             this.game.physics.arcade.moveToObject(sprite, transportation, 0, 50);
             sprite.lifespan = 55;
-            onScoreChange.notify('addOne');
+
+            // Notify of a score change.
+            var eventName = "";
+            switch(sprite.score) {
+                case 2:
+                    eventName = eventScoreTwo;
+                    break;
+                case 3:
+                    eventName = eventScoreThree;
+                    break;
+                default:
+                    eventName = eventScoreOne;
+                    break;
+            }
+            onScoreChange.notify(eventName);
         }
     }
 };
