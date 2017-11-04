@@ -5,11 +5,11 @@ function MinionFactory(){
 		if(typeOfMinion === 'Dave'){
 			//console.log('Dave is Created!');
 			minionSprite = new Dave(game);
-			console.log(minionSprite);
+			//console.log(minionSprite);
 		}else if (typeOfMinion === "Tim") {
 			//console.log('Tim is Created!');
             minionSprite = new Tim(game);
-            console.log(minionSprite);
+            //console.log(minionSprite);
 		} else if (typeOfMinion === "Jerry") {
 			//console.log('Jerry is Created!');
             minionSprite = new Jerry(game);
@@ -17,7 +17,7 @@ function MinionFactory(){
 		} else if (typeOfMinion === "Bomb") {
 			//console.log('Bomb is Created!');
             minionSprite = new Bomb(game);
-            console.log(minionSprite);
+            //console.log(minionSprite);
         }
 		minionSprite.type = typeOfMinion;
 
