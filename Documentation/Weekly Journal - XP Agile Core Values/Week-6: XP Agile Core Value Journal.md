@@ -14,3 +14,4 @@ As an owner of communication, I made sure that every person has the clear vision
 ## 4. Feedback (Owner - Trung)
 
 ## 5. Eliminate Waste (Owner - Saurabh)
+This week each team member while doing there tasks tried to improve the overall quality of the code by eliminating any piece of code that was unused and unnecessary or which was not adding any particular benefit to the logic of the game or worse was hindering the smooth functioning of the game. The goal is to get cleaner and good quality code at the end of the project.
