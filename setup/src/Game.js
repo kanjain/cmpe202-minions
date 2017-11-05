@@ -109,8 +109,10 @@ SaveTheMinions.Game.prototype = {
     
 	update: function() {
 
-        // add ball randomly between 0-15 sec
-        
+        if(health == 0) {
+            this.game.state.start('MainMenu');
+        }
+        // For lvl change. For now it is only going from 1-2-3-4 and the frequency of minion and bomb changes
         if (currentLvlState instanceof Lvl1State && score == 1) {currentLvlState.changeState();}
         else if (currentLvlState instanceof Lvl2State && score == 2) {currentLvlState.changeState();}
         else if (currentLvlState instanceof Lvl3State && score == 3) {currentLvlState.changeState();}
@@ -146,10 +148,10 @@ SaveTheMinions.Game.prototype = {
         totalMinions++;
     },
 	render: function() {
-        if(health == 0) {
-            this.game.state.start('MainMenu');
-        }
-	},
+        // don't do anything in here please this is for debug only 
+    },
+    
+    /*----------These are added function prototype for game logic------------*/
 	updateScore: function(event) {
 	    var scoreIncrement = 0;
 		if (event === eventOne) {
@@ -210,6 +212,9 @@ SaveTheMinions.Game.prototype = {
 };
 
 
+//================================================================================
+// These are the states for state design pattern
+//================================================================================
 var Lvl1State = function (game) {
     this.game = game;
     this.changeState = function () {
