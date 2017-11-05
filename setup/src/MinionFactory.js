@@ -26,28 +26,36 @@ function MinionFactory(){
 };
 
 var Dave = function (game) {
-	this.minion = game.add.sprite(0,300,'minions_spritesheet');
+    xVal = game.rnd.pick([0, 640]);
+    this.minion = new Minion({game:game, xVal, image:'minions_spritesheet'});
+	//this.minion = game.add.sprite(0,300,'minions_spritesheet');
     this.minion.anchor.setTo(0.5, 0.5);
     this.minion.frame=0;
     this.minion.inputEnabled = true;
 };
  
 var Tim = function (game) {
-	this.minion = game.add.sprite(0,300,'minions_spritesheet');
+    xVal = game.rnd.pick([0, 640]);
+    this.minion = new Minion({game:game, xVal, image:'minions_spritesheet'});
+	//this.minion = game.add.sprite(0,300,'minions_spritesheet');
     this.minion.anchor.setTo(0.5, 0.5);
     this.minion.frame=1;
     this.minion.inputEnabled = true;
 };
  
 var Jerry = function (game) {
-	this.minion = game.add.sprite(0,300,'minions_spritesheet');
+    xVal = game.rnd.pick([0, 640]);
+    this.minion = new Minion({game:game, xVal, image:'minions_spritesheet'});
+	//this.minion = game.add.sprite(0,300,'minions_spritesheet');
     this.minion.anchor.setTo(0.5, 0.5);
     this.minion.frame=2;
     this.minion.inputEnabled = true;
 };
  
 var Bomb = function (game) {
-	this.minion = game.add.sprite(0,300,'minions_spritesheet');
+    xVal = game.rnd.pick([0, 640]);
+    this.minion = new Minion({game:game, xVal, image:'minions_spritesheet'});
+	//this.minion = game.add.sprite(0,300,'minions_spritesheet');
     this.minion.anchor.setTo(0.5, 0.5);
     this.minion.frame=3;
     this.minion.inputEnabled = true;

@@ -8,10 +8,12 @@ SaveTheMinions.Game = function(game) {
     health = 0;
     hungerMeter = null;
     scoreText = null;
-
+    
 	transportation = null;
 	minionArray = ['Dave','Tim','Jerry'];
-
+    // state for level
+    currentLvlState = new Lvl1State(this);
+    lvlFrequency = 1.5;
 	// define observer
 	onScoreChange = null;
 };
@@ -71,61 +73,29 @@ SaveTheMinions.Game.prototype = {
         scoreText = this.game.add.text(150, 20, "0", { font: "40px ComicBook", fill: "#FFCC00", align: "right" });
 	},
 	update: function() {
-		// add ball randomly between 0-15 sec
-	    if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.integerInRange(0, 15)){
-	        // add ball in the bottom left corner
-	        if(this.game.rnd.integerInRange(0, 1) == 0){
-	            cTime = this.game.time.totalElapsedSeconds();
+        // add ball randomly between 0-15 sec
+        
+        if (currentLvlState instanceof Lvl1State && score == 1) {currentLvlState.changeState();}
+        else if (currentLvlState instanceof Lvl2State && score == 2) {currentLvlState.changeState();}
+        else if (currentLvlState instanceof Lvl3State && score == 3) {currentLvlState.changeState();}
+        else if (currentLvlState instanceof Lvl4State && score == 4) {currentLvlState.changeState();}
 
-				var randomX = Math.floor(Math.random()*800);
-				var randomY = Math.floor(Math.random()*960);
+	    if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.realInRange(lvlFrequency, 6.0)){	        
+            
+			cTime = this.game.time.totalElapsedSeconds();
 
-				// Get a random item from minions and bomb spritesheet
-				var rand = minionArray[Math.floor(Math.random() * minionArray.length)];
+			// Get a random item from minions and bomb spritesheet
+			var rand = minionArray[Math.floor(Math.random() * minionArray.length)];
 
-				// Create an object of a specific type using Factory method.
-				minionFactoryObj = new MinionFactory();
-				minion = minionFactoryObj.createMinions(this.game, rand).minion;
+			// Create an object of a specific type using Factory method.
+			minionFactoryObj = new MinionFactory();
+			minion = minionFactoryObj.createMinions(this.game, rand).minion;
 
-				minion.events.onInputDown.add(this.selectt, minion);
-
-			    // add minion to flyingMinions group so you can loop all the obj in the flyingMinions group and exclude obj that not in flyingMinions
-	            flyingMinions.add(minion);
-
-
-	            // enable physics for minion. You have to do this or else your obj wont react to physics.
-	            this.game.physics.enable(minion, Phaser.Physics.ARCADE);
-	            minion.body.collideWorldBounds = false;
-	            minion.body.velocity.y = this.game.rnd.realInRange(-300.0, -500.0);
-	            minion.body.velocity.x = this.game.rnd.realInRange(150.0, 200.0);
-	            totalMinions++;
-
-	        }
-	        // same logic as the block above but for right corner
-	        else{
-	            cTime = this.game.time.totalElapsedSeconds();
-
-				// Get a random item from minions and bomb spritesheet
-				var rand = minionArray[Math.floor(Math.random() * minionArray.length)];
-
-				// Create an object of a specific type using Factory method.
-				minionFactoryObj = new MinionFactory();
-				minion = minionFactoryObj.createMinions(this.game, rand).minion;
-
-				// Changing the x & y co-ordinates to appear from right side of screen.
-				minion.x = 640;
-				minion.y = 300;
-
-			    minion.events.onInputDown.add(this.selectt, minion);
-
-	            flyingMinions.add(minion);
-	            this.game.physics.enable(minion, Phaser.Physics.ARCADE);
-	            minion.body.collideWorldBounds = false;
-	            minion.body.velocity.y = this.game.rnd.realInRange(-300.0, -500.0);
-	            minion.body.velocity.x = this.game.rnd.realInRange(-150.0, -200.0);
-	            totalMinions++;
-	        }
-
+			// add event action when you click on the minion. I might have this selectt function moving to Minion class to make this cleaner
+			minion.events.onInputDown.add(this.selectt, minion);
+			flyingMinions.add(minion);
+            totalMinions++;
+            
 	    }
 
 		// destroy object after it drop to bottom
@@ -164,5 +134,52 @@ SaveTheMinions.Game.prototype = {
 		this.game.physics.arcade.moveToObject(sprite, transportation, 0, 50);
 		sprite.lifespan = 55;
 		onScoreChange.notify('addOne');
-	}
+    },
+    
+    changeLvlState: function(lvlState, freq) {
+        
+        currentLvlState = lvlState;
+        lvlFrequency = freq;
+    }
+
 };
+
+var Lvl1State = function (game) {
+    this.game = game;
+    this.changeState = function () {
+        console.log('lvl2');
+        this.game.changeLvlState(new Lvl2State(this.game), 1.5);
+        
+    }
+    
+}
+
+var Lvl2State = function (game) {
+    this.game = game;
+    this.changeState = function () {
+        console.log('lvl3');
+        this.game.changeLvlState(new Lvl3State(game), 1);
+
+    }
+    
+}
+
+var Lvl3State = function (game) {
+    this.game = game;
+    this.changeState = function () {
+        console.log('lvl4');
+        this.game.changeLvlState(new Lvl4State(game), 0.5);
+        
+    }
+    
+}
+
+var Lvl4State = function (game) {
+    this.game = game;
+    this.changeState = function () {
+        console.log('lvl1');
+        this.game.changeLvlState(new Lvl1State(game), 0);
+        
+    }
+
+}
