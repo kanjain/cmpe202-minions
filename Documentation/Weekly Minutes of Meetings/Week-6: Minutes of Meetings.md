@@ -1,4 +1,4 @@
-# Week-6 (10/22 - 10/28) - Minutes of Meeting
+# Week-6 (10/29 - 11/04) - Minutes of Meeting
 
 ## 1.  What did the team do the past week?
 * Created setup folder which contains all the developed code till now as the folder for final project delivery
