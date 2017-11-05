@@ -1,4 +1,4 @@
-# Week-5 (10/29 - 11/4) Weekly Progress : Saurabh
+# Week-6 (10/29 - 11/4) Weekly Progress : Saurabh
 
 * Created the new setup folder which contains all code the developed till now integrated. 
 It is the folder which would be the final deliverable and will contain all the code going forward.
