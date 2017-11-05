@@ -12,7 +12,7 @@ cmpe202-minions
 
 ### Week-6 (10/29 - 11/4)
 
-* [Minutes of Meeting]
+* [Minutes of Meeting](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Minutes%20of%20Meetings/Week-6:%20Minutes%20of%20Meetings.md)
 * [XP Agile Core Values - Journal](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Journal%20-%20XP%20Agile%20Core%20Values/Week-6:%20XP%20Agile%20Core%20Value%20Journal.md)
 * [Burndown Chart](https://docs.google.com/spreadsheets/d/1103kxZTyqbV2ZkrlPSGw9z_Hxl1gopFu2XpUbajYz4A/edit#gid=793730339)
 * [CFD](https://docs.google.com/a/sjsu.edu/spreadsheets/d/1ywqgSxxhLNuXJpvcGkD8-U0gqS3t0mgaTow4z22S518/edit?usp=sharing)
