@@ -9,6 +9,7 @@ As an owner of communication, I made sure that every person has the clear vision
  For simplicity, we decided to check in our changes in Github by following proper branching and merging techniques. So that no one's task should be overwritten and lost. 
 
 ## 3. Respect (Owner - Anusha)
+This week there was a lot of code we checked in. Giving due respect to each other, and not braking anyone's code we made sure to regularly pull and push from git. In case of conflicts,we resolved them wuth muatual discussions.
 
 
 ## 4. Feedback (Owner - Trung)
