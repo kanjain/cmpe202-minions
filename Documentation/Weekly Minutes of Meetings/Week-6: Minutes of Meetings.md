@@ -1,17 +1,18 @@
-# Week-5 (10/22 - 10/28) - Minutes of Meeting
+# Week-6 (10/22 - 10/28) - Minutes of Meeting
 
 ## 1.  What did the team do the past week?
-* Refactoring the code to organize it better.
-* Implemented dynamic scoring using Decorator Design Pattern. 
-* Implemented scoring using observer design pattern. 
-* Implemented themese using strategy design pattern.
-* Created a class diagram for the game.
+* Created setup folder which contains all the developed code till now as the folder for final project delivery
+* Reduced the frequency of minions and bombs
+* Added the pause game feature which allows user to pause the game and resume playing from rhe same state
+* Implemented score change and health bar with observer pattern
+* Change level when a score is reached
+* Added sound effects
 
 ## 2.  What is the team going to do next week?
-* Team will improve animations.
-* Team will implement more design patterns.
+* Create a loading bar
+* Create a "You lost the game" page on clicking a bomb
+* Prepare activity and sequence diagrams
 
 
 ## 3.  What are the current blockers/challenges the team is facing?
-* The concept of design patterns in Javascript is new to us.
-* Class diagram in Java Script is new for the team.     
+* Code merging since there were a lot of conflicts due to parallel work being done
