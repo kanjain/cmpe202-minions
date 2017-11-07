@@ -113,10 +113,10 @@ SaveTheMinions.Game.prototype = {
             this.game.state.start('MainMenu');
         }
         // For lvl change. For now it is only going from 1-2-3-4 and the frequency of minion and bomb changes
-        if (currentLvlState instanceof Lvl1State && score == 1) {currentLvlState.changeState();}
-        else if (currentLvlState instanceof Lvl2State && score == 2) {currentLvlState.changeState();}
-        else if (currentLvlState instanceof Lvl3State && score == 3) {currentLvlState.changeState();}
-        else if (currentLvlState instanceof Lvl4State && score == 4) {currentLvlState.changeState();}
+        if (currentLvlState instanceof Lvl1State && score >= 1 && score <= 3) {currentLvlState.changeState();}
+        else if (currentLvlState instanceof Lvl2State && score >= 4 && score <= 6) {currentLvlState.changeState();}
+        else if (currentLvlState instanceof Lvl3State && score >= 7 && score <= 9) {currentLvlState.changeState();}
+        else if (currentLvlState instanceof Lvl4State && score >= 10 && score <= 12) {currentLvlState.changeState();}
 
 	    if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.realInRange(lvlFrequency, 6.0)){	        
             
@@ -248,7 +248,7 @@ var Lvl3State = function (game) {
 var Lvl4State = function (game) {
     this.game = game;
     this.changeState = function () {
-        console.log('lvl1');
+        console.log('lvl5');
         this.game.changeLvlState(new Lvl1State(game), 0);
         
     }

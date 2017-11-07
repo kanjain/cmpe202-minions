@@ -9,6 +9,7 @@ var Minion = function ({game, xVal, image}) {
     this.score = 0;
     this.game = game;
     this.initProperties();
+    
 };
 
 
