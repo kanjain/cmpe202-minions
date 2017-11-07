@@ -5,6 +5,12 @@ SaveTheMinions.Game = function(game) {
     health = 0;
     hungerMeter = null;
     scoreText = null;
+
+	minionArray = ['Dave','Tim','Jerry'];
+    // state for level
+    currentLvlState = new Lvl1State(this);
+    lvlFrequency = 1.5;
+
     score = 0;//global score
 	transportation = null;
 	minionArray = ['Dave','Tim','Jerry','Bomb'];
@@ -99,19 +105,35 @@ SaveTheMinions.Game.prototype = {
             hungerMeter.animations.add(''+(25 - h), [h], 10, true);
         }
         hungerMeter.animations.play('25');
-	},
+    },
+    
 	update: function() {
-		// add ball randomly between 0-15 sec
-	    if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.integerInRange(0, 60)) {
-	        // add ball in the bottom left corner
-	        if(this.game.rnd.integerInRange(0, 1) == 0) {
-	            this.addBalls(false);
-	        }
-	        // same logic as the block above but for right corner
-	        else {
-	            this.addBalls(true);
-	        }
-	    }
+
+        if(health == 0) {
+            this.game.state.start('MainMenu');
+        }
+        // For lvl change. For now it is only going from 1-2-3-4 and the frequency of minion and bomb changes
+        if (currentLvlState instanceof Lvl1State && score == 1) {currentLvlState.changeState();}
+        else if (currentLvlState instanceof Lvl2State && score == 2) {currentLvlState.changeState();}
+        else if (currentLvlState instanceof Lvl3State && score == 3) {currentLvlState.changeState();}
+        else if (currentLvlState instanceof Lvl4State && score == 4) {currentLvlState.changeState();}
+
+	    if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.realInRange(lvlFrequency, 6.0)){	        
+            
+			cTime = this.game.time.totalElapsedSeconds();
+
+			// Get a random item from minions and bomb spritesheet
+			var rand = minionArray[Math.floor(Math.random() * minionArray.length)];
+
+			// Create an object of a specific type using Factory method.
+			minionFactoryObj = new MinionFactory();
+			minion = minionFactoryObj.createMinions(this.game, rand).minion;
+
+			// add event action when you click on the minion. I might have this selectt function moving to Minion class to make this cleaner
+			minion.events.onInputDown.add(this.selectt, minion);
+			flyingMinions.add(minion);
+            totalMinions++;
+        }
 
 		// destroy object after it drop to bottom
 	    flyingMinions.forEach(function(sprite){
@@ -122,50 +144,14 @@ SaveTheMinions.Game.prototype = {
 	            }
 			}
 	    });
-	},
-    addBalls: function(isRight) {
-        var randomX = Math.floor(Math.random()*800);
-        var randomY = Math.floor(Math.random()*960);
-        var y_1 = -300.0;
-        var y_2 = -500.0;
-        var x_1 = 150.0;
-        var x_2 = 200.0;
 
-        // Get a random item from minions and bomb spritesheet
-        var rand = minionArray[Math.floor(Math.random() * minionArray.length)];
-
-        // Create an object of a specific type using Factory method.
-        minionFactoryObj = new MinionFactory();
-        minion = minionFactoryObj.createMinions(this.game, rand).minion;
-
-        if (isRight) {
-            cTime = cTime + 1;
-            // Changing the x & y co-ordinates to appear from right side of screen.
-            minion.x = 960;
-            minion.y = 300;
-            x_1 = -150.0;
-            x_2 = -200.0;
-        } else {
-            cTime = this.game.time.totalElapsedSeconds();
-        }
-
-        minion.events.onInputDown.add(this.selectt, minion);
-
-        // add minion to flyingMinions group so you can loop all the obj in the flyingMinions group and exclude obj that not in flyingMinions
-        flyingMinions.add(minion);
-
-        // enable physics for minion. You have to do this or else your obj wont react to physics.
-        this.game.physics.enable(minion, Phaser.Physics.ARCADE);
-        minion.body.collideWorldBounds = false;
-        minion.body.velocity.y = this.game.rnd.realInRange(y_1, y_2);
-        minion.body.velocity.x = this.game.rnd.realInRange(x_1, x_2);
         totalMinions++;
     },
 	render: function() {
-        if(health == 0) {
-            this.game.state.start('MainMenu');
-        }
-	},
+        // don't do anything in here please this is for debug only 
+    },
+    
+    /*----------These are added function prototype for game logic------------*/
 	updateScore: function(event) {
 	    var scoreIncrement = 0;
 		if (event === eventOne) {
@@ -181,6 +167,14 @@ SaveTheMinions.Game.prototype = {
 		score += scoreIncrement;
         scoreText.setText(score);
 	},
+    
+    changeLvlState: function(lvlState, freq) {
+        
+        currentLvlState = lvlState;
+        lvlFrequency = freq;
+    },
+
+
 	updateHealth: function(event) {
 	    // hard-code gradually decrement health
 	    // no weighted penalty.
@@ -214,4 +208,49 @@ SaveTheMinions.Game.prototype = {
             onScoreChange.notify(eventName);
         }
     }
+
 };
+
+
+//================================================================================
+// These are the states for state design pattern
+//================================================================================
+var Lvl1State = function (game) {
+    this.game = game;
+    this.changeState = function () {
+        console.log('lvl2');
+        this.game.changeLvlState(new Lvl2State(this.game), 1.5);
+        
+    }
+    
+}
+
+var Lvl2State = function (game) {
+    this.game = game;
+    this.changeState = function () {
+        console.log('lvl3');
+        this.game.changeLvlState(new Lvl3State(game), 1);
+
+    }
+    
+}
+
+var Lvl3State = function (game) {
+    this.game = game;
+    this.changeState = function () {
+        console.log('lvl4');
+        this.game.changeLvlState(new Lvl4State(game), 0.5);
+        
+    }
+    
+}
+
+var Lvl4State = function (game) {
+    this.game = game;
+    this.changeState = function () {
+        console.log('lvl1');
+        this.game.changeLvlState(new Lvl1State(game), 0);
+        
+    }
+
+}
