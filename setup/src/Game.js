@@ -130,28 +130,6 @@ SaveTheMinions.Game.prototype = {
         else if (currentLvlState instanceof Lvl3State && score >= 7 && score <= 9) {currentLvlState.changeState();}
         else if (currentLvlState instanceof Lvl4State && score >= 10 && score <= 12) {currentLvlState.changeState();}
         this.updateLogic();
-
-	    if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.realInRange(lvlFrequency, 6.0)){
-			cTime = this.game.time.totalElapsedSeconds();
-			this.spawnMinion();
-        }
-
-		// destroy object after it drop to bottom
-	    flyingMinions.forEach(function(sprite){
-
-            // Adding rotation to the minions and bombs.
-            sprite.angle += sprite.rotateMe;
-
-	        if(sprite.y >=500){
-	            sprite.destroy();
-	            if (sprite.score != -1 && sprite.score != 1000) {
-	                onHealthChange.notify(eventOne);
-	            }
-			}
-
-	    });
-
-        totalMinions++;
     },
 	render: function() {
         // don't do anything in here please this is for debug only
