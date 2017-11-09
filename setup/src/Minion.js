@@ -1,15 +1,30 @@
+var UPS = function() {
+    this.move = function(sprite, xStart, xEnd, yStart, yEnd) {
+        sprite.body.velocity.y = sprite.game.rnd.realInRange(yStart, yEnd);
+        sprite.body.velocity.x = sprite.game.rnd.realInRange(xStart, xEnd);
+        sprite.body.collideWorldBounds = true;
+        sprite.body.bounce.set(1);
+    }
+};
+
+var UPSS = function() {
+    this.move = function(sprite, xStart, xEnd, yStart, yEnd) {
+        
+        sprite.body.velocity.y = sprite.game.rnd.realInRange(yStart, yEnd);
+        sprite.body.velocity.x = sprite.game.rnd.realInRange(xStart, xEnd);
+    }
+};
 //================================================================================
 // Minion required reference to game, a random xVal for init starting position 
 // and velocity, image for appearance. 
 //================================================================================
 
-var Minion = function ({game, xVal, image}) {
-    
+var Minion = function ({game, image}) {
+    xVal = game.rnd.pick([0, 950]);
     Phaser.Sprite.call(this, game, xVal, 300, image);
-    this.score = 0;
-    this.game = game;
     this.initProperties();
-    
+ 
+
 };
 
 
@@ -23,20 +38,21 @@ Minion.prototype.constructor = Minion;
 //================================================================================
 // Added prototypes
 //================================================================================
-
+Minion.prototype.moveStrategy = new UPSS();
 Minion.prototype.move = function (xStart, xEnd, yStart, yEnd){
-    this.body.velocity.y = this.game.rnd.realInRange(yStart, yEnd);
-    this.body.velocity.x = this.game.rnd.realInRange(xStart, xEnd);
+    
+    return this.moveStrategy.move(this, xStart, xEnd, yStart, yEnd);
+}
+
+Minion.prototype.setStrategy = function (strategy) {
+    this.moveStrategy = strategy;
 }
 
 Minion.prototype.initProperties = function () {
-    
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
     this.body.collideWorldBounds = false;
-    if(xVal == 0){
-        this.move(150.0, 200.0, -300.0, -500.0);
-    }
-    else{
-        this.move(-150.0, -200.0, -300.0, -500.0);
-    }
+    this.anchor.setTo(0.5, 0.5);
+    this.inputEnabled = true;
+
 }
+
