@@ -25,8 +25,10 @@ SaveTheMinions.Game = function(game) {
     var minionSound = null;
     var bombSound = null;
     var pauseSound = null;
+
 };
 SaveTheMinions.Game.prototype = {
+
 	create: function() {
         // physic global setup
         this.game.physics.startSystem(Phaser.Physics.ARCANE);
@@ -41,24 +43,25 @@ SaveTheMinions.Game.prototype = {
         if (this.game.theme == "forest"){
             this.game.add.sprite(0, 0, 'background_forest');
             // Adding a new transportation object to save the minions.
-            transportation = this.game.add.sprite(100, 608, 'truck');
+            transportation = this.game.add.sprite(100, 443, 'truck');
         }
         else if (this.game.theme == "city"){
             this.game.add.sprite(0, 0, 'background_city');
             // Adding a new transportation object to save the minions.
-            transportation = this.game.add.sprite(100, 608, 'truck');
+            transportation = this.game.add.sprite(100, 443, 'truck');
         }
         else if (this.game.theme == "space"){
             this.game.add.sprite(0, 0, 'background_space');
             // Adding a new transportation object to save the minions.
-            transportation = this.game.add.sprite(60, 628, 'spaceship');
+            transportation = this.game.add.sprite(60, 470, 'spaceship');
         }
         else {
             this.game.add.sprite(0, 0, 'background_city');
             // Adding a new transportation object to save the minions.
-            transportation = this.game.add.sprite(100, 608, 'truck');
+            transportation = this.game.add.sprite(100, 443, 'truck');
         }
 
+        transportation.anchor.setTo(0.5, 0.5);
 
         // Adding the pause button to pause the game.
         pauseButton = this.add.button(608, 40, 'pauseBtn', function(){console.log('Game Paused!!!')}, this, 1, 0, 2);
@@ -76,12 +79,16 @@ SaveTheMinions.Game.prototype = {
     	});
 
     	this.game.input.onDown.add(function(){
-    		console.log('Game Resumed!!!')
-            pauseSound.play();
-    		currentGame.paused = false;
+            if (currentGame.paused) {
+                console.log('Game Resumed!!!')
+                pauseSound.play();
+                currentGame.paused = false;
+            }
     	});
 
-        transportation.anchor.setTo(0.5,0.5);
+        // transportation.anchor.setTo(0.5,0.5);
+
+
         // add group
         flyingMinions = this.game.add.group();
 
@@ -104,8 +111,10 @@ SaveTheMinions.Game.prototype = {
             hungerMeter.animations.add(''+(25 - h), [h], 10, true);
         }
         hungerMeter.animations.play('25');
+
+        
     },
-    
+
 	update: function() {
 
         if(health == 0) {
@@ -123,9 +132,9 @@ SaveTheMinions.Game.prototype = {
 
     },
 	render: function() {
-        // don't do anything in here please this is for debug only 
+        // don't do anything in here please this is for debug only
     },
-    
+
     /*----------These are added function prototype for game logic------------*/
 	updateScore: function(event) {
 	    var scoreIncrement = 0;
@@ -142,9 +151,9 @@ SaveTheMinions.Game.prototype = {
 		score += scoreIncrement;
         scoreText.setText(score);
 	},
-    
+
     changeLvlState: function(lvlState, freq) {
-        
+
         currentLvlState = lvlState;
         lvlFrequency = freq;
     },
@@ -161,6 +170,7 @@ SaveTheMinions.Game.prototype = {
         if(sprite.name == "BadMinion") {
             bombSound.play();
             this.game.state.start('MainMenu');
+						score=0;
          // OR a minion selected...
         } else {
             minionSelect.play();
@@ -198,21 +208,26 @@ SaveTheMinions.Game.prototype = {
             minion = minionFactoryObj.createMinions(this.game, rand, currentLvlState);
             
 			// add event action when you click on the minion. I might have this selectt function moving to Minion class to make this cleaner
-			minion.events.onInputDown.add(this.selectt, minion);
+            minion.events.onInputDown.add(this.selectt, minion);
+            minion.rotateMe = (Math.random()*8)-4;
 			flyingMinions.add(minion);
             totalMinions++;
         }
 
-		// destroy object after it drop to bottom
-	    flyingMinions.forEach(function(sprite){
-	        if(sprite.y >=500){
-	            sprite.destroy();
-	            if (sprite.score != -1 && sprite.score != 1000) {
-	                onHealthChange.notify(eventOne);
-	            }
-			}
-	    });
+        // destroy object after it drop to bottom
+        flyingMinions.forEach(function (sprite) {
 
+            // Adding rotation to the minions and bombs.
+            sprite.angle += sprite.rotateMe;
+
+            if (sprite.y >= 500) {
+                sprite.destroy();
+                if (sprite.score != -1 && sprite.score != 1000) {
+                    onHealthChange.notify(eventOne);
+                }
+            }
+
+        });
     }
 
 };
@@ -250,6 +265,7 @@ var Lvl3State = function (game) {
     }
     
 };
+
 
 var Lvl4State = function (game) {
     //this.game = game;
