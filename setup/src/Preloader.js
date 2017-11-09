@@ -10,13 +10,8 @@ SaveTheMinions.Preloader.prototype = {
 	preload: function() {
         this.game.stage.backgroundColor = '#FFFFFF';
         this.preloadBar = this.add.sprite(300, 200, 'preloaderBar');
-        //this.load.setPreloadSprite(this.preloadBar);
-
-        if (this.startGame) {
-
-        } else {
-            this.addAssets();
-        }
+        this.load.setPreloadSprite(this.preloadBar);
+        this.addAssets();
 	},
 	addAssets: function() {
 	        /* Images */
@@ -58,11 +53,10 @@ SaveTheMinions.Preloader.prototype = {
 	},
 	create: function() {
         var delayInMilliseconds = 1000;
-        var nextState = this.startGame ? 'Game' : 'MainMenu';
         var that = this;
 
         setTimeout(function() {
-          that.game.state.start(nextState);
+          that.game.state.start('MainMenu');
         }, delayInMilliseconds);
 	}
 };
