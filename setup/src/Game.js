@@ -83,12 +83,12 @@ SaveTheMinions.Game.prototype = {
             if (currentGame.paused) {
                 console.log('Game Resumed!!!')
                 pauseSound.play();
-                currentGame.paused = false;    
+                currentGame.paused = false;
             }
-    	}); 
+    	});
 
         // transportation.anchor.setTo(0.5,0.5);
-        
+
 
         // add group
         flyingMinions = this.game.add.group();
@@ -132,7 +132,7 @@ SaveTheMinions.Game.prototype = {
             totalMinions++;
 
     },
-    
+
 	update: function() {
 
         if(health == 0) {
@@ -144,17 +144,17 @@ SaveTheMinions.Game.prototype = {
         else if (currentLvlState instanceof Lvl3State && score >= 7 && score <= 9) {currentLvlState.changeState();}
         else if (currentLvlState instanceof Lvl4State && score >= 10 && score <= 12) {currentLvlState.changeState();}
 
-	    if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.realInRange(lvlFrequency, 6.0)){	        
-            
+	    if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.realInRange(lvlFrequency, 6.0)){
+
 			cTime = this.game.time.totalElapsedSeconds();
 
 			this.spawnMinion();
 
-        }  
+        }
 
 		// destroy object after it drop to bottom
 	    flyingMinions.forEach(function(sprite){
-            
+
             // Adding rotation to the minions and bombs.
             sprite.angle += sprite.rotateMe;
 
@@ -164,15 +164,15 @@ SaveTheMinions.Game.prototype = {
 	                onHealthChange.notify(eventOne);
 	            }
 			}
-  
+
 	    });
 
         totalMinions++;
     },
 	render: function() {
-        // don't do anything in here please this is for debug only 
+        // don't do anything in here please this is for debug only
     },
-    
+
     /*----------These are added function prototype for game logic------------*/
 	updateScore: function(event) {
 	    var scoreIncrement = 0;
@@ -189,9 +189,9 @@ SaveTheMinions.Game.prototype = {
 		score += scoreIncrement;
         scoreText.setText(score);
 	},
-    
+
     changeLvlState: function(lvlState, freq) {
-        
+
         currentLvlState = lvlState;
         lvlFrequency = freq;
     },
@@ -207,6 +207,7 @@ SaveTheMinions.Game.prototype = {
         if(sprite.name == "Bomb") {
             bombSound.play();
             this.game.state.start('MainMenu');
+						score=0;
          // OR a minion selected...
         } else {
             minionSelect.play();
@@ -242,9 +243,9 @@ var Lvl1State = function (game) {
     this.changeState = function () {
         console.log('lvl2');
         this.game.changeLvlState(new Lvl2State(this.game), 1.5);
-        
+
     }
-    
+
 }
 
 var Lvl2State = function (game) {
@@ -254,7 +255,7 @@ var Lvl2State = function (game) {
         this.game.changeLvlState(new Lvl3State(game), 1);
 
     }
-    
+
 }
 
 var Lvl3State = function (game) {
@@ -262,9 +263,9 @@ var Lvl3State = function (game) {
     this.changeState = function () {
         console.log('lvl4');
         this.game.changeLvlState(new Lvl4State(game), 0.5);
-        
+
     }
-    
+
 }
 
 var Lvl4State = function (game) {
@@ -272,7 +273,7 @@ var Lvl4State = function (game) {
     this.changeState = function () {
         console.log('lvl5');
         this.game.changeLvlState(new Lvl1State(game), 0);
-        
+
     }
 
 }
