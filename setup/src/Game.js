@@ -100,12 +100,13 @@ SaveTheMinions.Game.prototype = {
         onHealthChange.subscribe(this.updateHealth);
 
         // add score background
+        score = 0; // reset the score on create.
         this.game.add.sprite(10, 10, 'score-bg');
         this.game.add.sprite(13, 13, 'score-bg-minion-icon');
         scoreText = this.game.add.text(150, 20, "0", { font: "40px ComicBook", fill: "#FFCC00", align: "right" });
 
         // add health meter
-        health = 25;
+        health = 25; //reset the health meter on create.
         hungerMeter = this.add.sprite(635, 20, 'hunger-meter');
         for(var h = 0; h < 25; h++) {
             hungerMeter.animations.add(''+(25 - h), [h], 10, true);
@@ -130,6 +131,27 @@ SaveTheMinions.Game.prototype = {
         else if (currentLvlState instanceof Lvl4State && score >= 10 && score <= 12) {currentLvlState.changeState();}
         this.updateLogic();
 
+	    if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.realInRange(lvlFrequency, 6.0)){
+			cTime = this.game.time.totalElapsedSeconds();
+			this.spawnMinion();
+        }
+
+		// destroy object after it drop to bottom
+	    flyingMinions.forEach(function(sprite){
+
+            // Adding rotation to the minions and bombs.
+            sprite.angle += sprite.rotateMe;
+
+	        if(sprite.y >=500){
+	            sprite.destroy();
+	            if (sprite.score != -1 && sprite.score != 1000) {
+	                onHealthChange.notify(eventOne);
+	            }
+			}
+
+	    });
+
+        totalMinions++;
     },
 	render: function() {
         // don't do anything in here please this is for debug only
@@ -170,13 +192,11 @@ SaveTheMinions.Game.prototype = {
         if(sprite.name == "BadMinion") {
             bombSound.play();
             this.game.state.start('MainMenu');
-						score=0;
          // OR a minion selected...
         } else {
             minionSelect.play();
             this.game.physics.arcade.moveToObject(sprite, transportation, 0, 50);
             sprite.lifespan = 55;
-            sprite.score = 1000;
 
             // Notify of a score change.
             var eventName = "";
@@ -191,6 +211,7 @@ SaveTheMinions.Game.prototype = {
                     eventName = eventOne;
                     break;
             }
+            sprite.score = 1000;// Set to arbitrary number to distinguish destroy after drop vs. click.
             onScoreChange.notify(eventName);
         }
     },
@@ -229,7 +250,6 @@ SaveTheMinions.Game.prototype = {
 
         });
     }
-
 };
 
 

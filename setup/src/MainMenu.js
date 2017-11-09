@@ -1,12 +1,13 @@
 SaveTheMinions.MainMenu = function(game) {
-	startButton = null;
-	howToButton = null;
-    var menu =null;
+	var startButton = null;
+	var howToButton = null;
+    var menu = null;
 
 };
+
 SaveTheMinions.MainMenu.prototype = {
 	create: function() {
-        menu =this.game.add.audio('menuSelect');
+        menu = this.game.add.audio('menuSelect');
         this.game.add.sprite(0, 0, 'background_city');
 
         // A button made from an image including text
