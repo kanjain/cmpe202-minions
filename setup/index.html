@@ -4,11 +4,14 @@
 	<meta charset="utf-8" />
 	<title>Save The Minions</title>
 	<link rel="stylesheet" type="text/css" href="./styles/default.css">
+
 </head>
 <body>
 <!--p id="gameCanvas" align="center" style="vertical-align: middle;margin: 0;"></p-->
 <script src="src/phaser.min.js"></script>
 <script src="src/Minion.js"></script>
+<script src="src/BadMinion.js"></script>
+<script src="src/GoodMinion.js"></script>
 <script src="src/Observer.js"></script>
 <script src="src/Boot.js"></script>
 <script src="src/Preloader.js"></script>
@@ -25,7 +28,7 @@
 	game.state.add('MainMenu', SaveTheMinions.MainMenu);
 	game.state.add('Game', SaveTheMinions.Game);
 	game.state.add('StoryHowto', SaveTheMinions.StoryHowto);
-    game.state.add('LevelSelect', SaveTheMinions.LevelSelect);
+  game.state.add('LevelSelect', SaveTheMinions.LevelSelect);
 	game.state.start('Boot');
 })();
 </script>
