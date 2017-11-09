@@ -13,6 +13,6 @@ SaveTheMinions.Boot.prototype = {
 		this.game.stage.scale.forcePortrait = true;
 		this.game.stage.scale.pageAlignHorizontally = true;
 		//this.game.stage.scale.setScreenSize(true);
-		this.game.state.start('Preloader');
+		this.game.state.start('Preloader', true, false, false);
 	}
 };

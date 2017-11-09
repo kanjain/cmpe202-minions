@@ -13,8 +13,7 @@ SaveTheMinions.MainMenu.prototype = {
         // A button made from an image including text
         startButton = this.add.button(320, 200, 'playBtn', function() {
             menu.play();
-            // TODO: Go to preload state first, and then redirect to game state.
-            this.game.state.start('Game');
+            this.game.state.start('Preloader', true, false, true);
         }, this, 1, 0, 2);
 
         startButton.input.useHandCursor = true;

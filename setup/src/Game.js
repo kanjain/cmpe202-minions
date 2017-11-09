@@ -1,4 +1,7 @@
 SaveTheMinions.Game = function(game) {
+    this.background = null;
+    this.preloadBar = null;
+
 	cTime = 0;
     healthScore = 0;
 	totalMinions = 0;
@@ -28,7 +31,10 @@ SaveTheMinions.Game = function(game) {
 
 };
 SaveTheMinions.Game.prototype = {
-
+    preload: function() {
+        this.preloadBar = this.add.sprite((640-311)/2, (960-27)/2, 'preloaderBar');
+        this.load.setPreloadSprite(this.preloadBar);
+    },
 	create: function() {
         // physic global setup
         this.game.physics.startSystem(Phaser.Physics.ARCANE);
