@@ -15,7 +15,7 @@ SaveTheMinions.Preloader.prototype = {
 	},
 	addAssets: function() {
 	        /* Images */
-            this.game.load.image('background_city', 'img/min2.png');
+            this.game.load.image('background_city', 'img/min3.png');
             this.game.load.image('background_forest', 'img/background_forest.jpg');
             this.game.load.image('background_space', 'img/background_space.jpg');
             this.game.load.image('score-bg', 'img/score-bg.png');

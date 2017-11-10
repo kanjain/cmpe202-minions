@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
 <html>
-<head>
+<head >
 	<meta charset="utf-8" />
 	<title>Save The Minions</title>
 	<link rel="stylesheet" type="text/css" href="./styles/default.css">
 
 </head>
-<body>
+<body style="margin-left:-10px;margin-top:-10px;">
 <!--p id="gameCanvas" align="center" style="vertical-align: middle;margin: 0;"></p-->
 <script src="src/phaser.min.js"></script>
 <script src="src/Minion.js"></script>
@@ -22,7 +22,7 @@
 <script src="src/MinionFactory.js"></script>
 <script>
 (function(){
-	var game = new Phaser.Game(950, 500, Phaser.CANVAS, 'game');
+	var game = new Phaser.Game(950*1.5, 600*1.5, Phaser.CANVAS, 'game');
 	game.state.add('Boot', SaveTheMinions.Boot);
 	game.state.add('Preloader', SaveTheMinions.Preloader);
 	game.state.add('MainMenu', SaveTheMinions.MainMenu);
