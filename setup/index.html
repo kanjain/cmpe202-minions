@@ -20,6 +20,7 @@
 <script src="src/Game.js"></script>
 <script src="src/LevelSelect.js"></script>
 <script src="src/MinionFactory.js"></script>
+<script src="src/End.js"></script>
 <script>
 (function(){
 	var game = new Phaser.Game(950, 500, Phaser.CANVAS, 'game');
@@ -29,6 +30,7 @@
 	game.state.add('Game', SaveTheMinions.Game);
 	game.state.add('StoryHowto', SaveTheMinions.StoryHowto);
   	game.state.add('LevelSelect', SaveTheMinions.LevelSelect);
+		game.state.add('EndOfGame', SaveTheMinions.EndOfGame);
 	game.state.start('Boot');
 })();
 </script>

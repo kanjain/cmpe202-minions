@@ -112,19 +112,20 @@ SaveTheMinions.Game.prototype = {
         }
         hungerMeter.animations.play('25');
 
-        
+
     },
 
 	update: function() {
 
         if(health == 0) {
-            this.game.state.start('MainMenu');
+						this.game.displayscore=score;
+            this.game.state.start('EndOfGame');
         }
         // For lvl change. For now it is only going from 1-2-3-4 and the frequency of minion and bomb changes
         if (currentLvlState instanceof Lvl1State && score >= 1 && score <= 3) {currentLvlState.changeState();}
         else if (currentLvlState instanceof Lvl2State && score >= 4 && score <= 6) {
             currentLvlState.changeState();
-            
+
         }
         else if (currentLvlState instanceof Lvl3State && score >= 7 && score <= 9) {currentLvlState.changeState();}
         else if (currentLvlState instanceof Lvl4State && score >= 10 && score <= 12) {currentLvlState.changeState();}
@@ -165,10 +166,11 @@ SaveTheMinions.Game.prototype = {
         hungerMeter.animations.play('' +  health);
 	},
     selectt: function(sprite){
-        
+
         if(sprite.name == "BadMinion") {
             bombSound.play();
-            this.game.state.start('MainMenu');
+						this.game.displayscore=score;
+            this.game.state.start('EndOfGame');
          // OR a minion selected...
         } else {
             minionSelect.play();
@@ -194,8 +196,8 @@ SaveTheMinions.Game.prototype = {
     },
 
     updateLogic: function () {
-        if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.realInRange(lvlFrequency, 6.0)){	        
-            
+        if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.realInRange(lvlFrequency, 6.0)){
+
 			cTime = this.game.time.totalElapsedSeconds();
 
 			// Get a random item from minions and bomb spritesheet
@@ -204,7 +206,7 @@ SaveTheMinions.Game.prototype = {
 			// Create an object of a specific type using Factory method.
             minionFactoryObj = new MinionFactory();
             minion = minionFactoryObj.createMinions(this.game, rand, currentLvlState);
-            
+
 			// add event action when you click on the minion. I might have this selectt function moving to Minion class to make this cleaner
             minion.events.onInputDown.add(this.selectt, minion);
             minion.rotateMe = (Math.random()*8)-4;
@@ -238,9 +240,9 @@ var Lvl1State = function (game) {
     this.changeState = function () {
         console.log('lvl2');
         game.changeLvlState(new Lvl2State(game), 1);
-        
+
     }
-    
+
 };
 
 var Lvl2State = function (game) {
@@ -250,7 +252,7 @@ var Lvl2State = function (game) {
         game.changeLvlState(new Lvl3State(game), 0.5);
 
     }
-    
+
 };
 
 var Lvl3State = function (game) {
@@ -258,9 +260,9 @@ var Lvl3State = function (game) {
     this.changeState = function () {
         console.log('lvl4');
         game.changeLvlState(new Lvl4State(game), 0.0);
-        
+
     }
-    
+
 };
 
 
@@ -269,7 +271,7 @@ var Lvl4State = function (game) {
     this.changeState = function () {
         console.log('lvl5');
         //this.game.changeLvlState(new Lvl1State(game), 0);
-        
+
     }
 
 };
