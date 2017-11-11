@@ -4,7 +4,6 @@
 	<meta charset="utf-8" />
 	<title>Save The Minions</title>
 	<link rel="stylesheet" type="text/css" href="./styles/default.css">
-
 </head>
 <body>
 <!--p id="gameCanvas" align="center" style="vertical-align: middle;margin: 0;"></p-->
@@ -17,6 +16,7 @@
 <script src="src/Preloader.js"></script>
 <script src="src/MainMenu.js"></script>
 <script src="src/StoryHowto.js"></script>
+<script src="src/LevelStates.js"></script>
 <script src="src/Game.js"></script>
 <script src="src/LevelSelect.js"></script>
 <script src="src/MinionFactory.js"></script>
@@ -30,7 +30,7 @@
 	game.state.add('Game', SaveTheMinions.Game);
 	game.state.add('StoryHowto', SaveTheMinions.StoryHowto);
   	game.state.add('LevelSelect', SaveTheMinions.LevelSelect);
-		game.state.add('EndOfGame', SaveTheMinions.EndOfGame);
+	game.state.add('EndOfGame', SaveTheMinions.EndOfGame);
 	game.state.start('Boot');
 })();
 </script>
