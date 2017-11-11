@@ -2,6 +2,7 @@ SaveTheMinions.Preloader = function(game) {
     this.background = null;
     this.preloadBar = null;
     this.startGame = null;
+    this.coordinates = [[30,-600], [70,-100], [-200,-300]]
 };
 SaveTheMinions.Preloader.prototype = {
     init: function(startGame) {
@@ -35,13 +36,6 @@ SaveTheMinions.Preloader.prototype = {
             this.game.load.image('loading', 'img/loading.png');
             this.game.load.image('story', 'img/story.png');
             this.game.load.image('bomb', 'img/bomb.png');
-            
-            
-            /* Fonts */
-            // this.game.load.text('font-ttf', 'fonts/comicbook.ttf');
-            // this.game.load.text('font-svg', 'fonts/comicbook.svg');
-            // this.game.load.text('font-ttf', 'fonts/comicbook.ttf');
-            // this.game.load.text('font-woff', 'fonts/comicbook.woff');
 
             /* Sound Effect */
             this.game.load.audio('minionSelect','sound/minionSelect.mp3');
@@ -52,7 +46,7 @@ SaveTheMinions.Preloader.prototype = {
             this.game.load.audio('minionSelect1','sound/clickMinion1.wav');
             this.game.load.audio('minionSelect2','sound/clickMinion2.wav');
             this.game.load.audio('minionSelect3','sound/clickMinion3.wav');
-            this.game.load.audio('homePageSound1','sound/GameHomePage.mp3');
+            this.game.load.audio('homePageSound','sound/GameHomePage.mp3');
             this.game.load.audio('homePageSound2','sound/GameHomePage.mp3');
             this.game.load.audio('homePageSound3','sound/GameHomePage.mp3');
             this.game.load.audio('homePageSound4','sound/GameHomePage.mp3');
@@ -65,42 +59,11 @@ SaveTheMinions.Preloader.prototype = {
     create: function() {
 
         
-        home =this.game.add.audio('homePageSound1');
+        home =this.game.add.audio('homePageSound');
 
-        //Get a random item from minions and bomb spritesheet
-                var rand = minionArray[Math.floor(Math.random() * minionArray.length)];
-
-                var min1 = this.game.add.sprite(this.game.world.centerX - 30, -600, 'minions_spritesheet');
-                min1.frame = 0;
-                min1.anchor.setTo(0.5, 0.5);
-            
-            // Add a simple bounce tween to each character's position.
-                var tween1 = this.game.add.tween(min1).to({y: this.game.world.centerY + 125}, 2000, Phaser.Easing.Bounce.Out, 
-                    true, 1000 + 400 * rand, 0);
-
-
-                var min2 = this.game.add.sprite(this.game.world.centerX - 70, -100, 'minions_spritesheet');
-                min2.frame = 1;
-                min2.anchor.setTo(0.5, 0.5);
-
-                tween1.repeat();
-            
-            // Add a simple bounce tween to each character's position.
-                var tween2 = this.game.add.tween(min2).to({y: this.game.world.centerY + 125}, 2000, Phaser.Easing.Bounce.Out, 
-                    true, 1000 + 400 * rand, 0);
-
-
-                var min3 = this.game.add.sprite(this.game.world.centerX + 200, -300, 'minions_spritesheet');
-                min3.frame = 2;
-                min3.anchor.setTo(0.5, 0.5);
-
-                tween2.repeat();
-            
-            // Add a simple bounce tween to each character's position.
-                var tween3 = this.game.add.tween(min3).to({y: this.game.world.centerY + 125}, 2000, Phaser.Easing.Bounce.Out, 
-                    true, 1000 + 400 * rand, 0);
-
-                tween3.repeat();
+        for (var i = 0; i < 3; i++) {
+                this.showMinions(i);
+            }
 
         home.play();
 
@@ -109,5 +72,22 @@ SaveTheMinions.Preloader.prototype = {
             this.game.state.start('MainMenu');
         }, this, 1, 0, 2);
 
+    },
+    showMinions: function(minionType) {
+
+                //Get a random item from minions and bomb spritesheet
+                var rand = minionArray[Math.floor(Math.random() * minionArray.length)];
+
+                var min1 = this.game.add.sprite(this.game.world.centerX - this.coordinates[minionType][0], 
+                    this.coordinates[minionType][1], 'minions_spritesheet');
+                min1.frame = minionType;
+                min1.anchor.setTo(0.5, 0.5);
+            
+                // Add a simple bounce tween to each character's position.
+                var tween1 = this.game.add.tween(min1).to({y: this.game.world.centerY + 125}, 2000, Phaser.Easing.Bounce.Out, 
+                    true, 1000 + 400 * rand, 0);
+
+                tween1.repeat();
     }
+
 };
