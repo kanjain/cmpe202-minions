@@ -11,8 +11,8 @@ SaveTheMinions.Preloader.prototype = {
     preload: function() {
         this.game.stage.backgroundColor = '#FFFFFF';
         this.add.sprite(0, 0, 'homePageImg');
-        this.preloadBar = this.add.sprite(this.game.world.centerX, 450, 'preloaderBar');
-        this.load.setPreloadSprite(this.preloadBar);
+        //this.preloadBar = this.add.sprite(this.game.world.centerX, 450, 'preloaderBar');
+        //this.load.setPreloadSprite(this.preloadBar);
         this.addAssets();
     },
     addAssets: function() {
@@ -52,13 +52,12 @@ SaveTheMinions.Preloader.prototype = {
             this.game.load.audio('homePageSound4','sound/GameHomePage.mp3');
             this.game.load.audio('homePageSound5','sound/GameHomePage.mp3');
 
-                /* Sprites */
+            /* Sprites */
             this.game.load.spritesheet('minions_spritesheet', 'img/minions_spritesheet.png', 78.2, 90, 3);
             this.game.load.spritesheet('hunger-meter', 'img/hunger-meter.png', 289, 45);
     },
     create: function() {
-
-        
+      
         home =this.game.add.audio('homePageSound');
 
         for (var i = 0; i < 3; i++) {
