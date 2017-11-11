@@ -11,8 +11,6 @@ SaveTheMinions.Preloader.prototype = {
     preload: function() {
         this.game.stage.backgroundColor = '#FFFFFF';
         this.add.sprite(0, 0, 'homePageImg');
-        //this.preloadBar = this.add.sprite(this.game.world.centerX, 450, 'preloaderBar');
-        //this.load.setPreloadSprite(this.preloadBar);
         this.addAssets();
     },
     addAssets: function() {
@@ -57,36 +55,41 @@ SaveTheMinions.Preloader.prototype = {
             this.game.load.spritesheet('hunger-meter', 'img/hunger-meter.png', 289, 45);
     },
     create: function() {
-      
-        home =this.game.add.audio('homePageSound');
+        home = this.game.add.audio('homePageSound');
+        var delayInMilliseconds = 2000;
+        var that = this;
 
-        for (var i = 0; i < 3; i++) {
-                this.showMinions(i);
-            }
+        var loadingbar = this.game.add.sprite(this.game.world.centerX, 440, 'loadingbar');
+        var playAnimation = loadingbar.animations.add('playAnimation');
+        loadingbar.animations.play('playAnimation', 7, false, true);
 
         home.play();
 
-        startButton = this.add.button(this.game.world.centerX + 100, 10, 'continueBtn', function() {
-            home.stop();
-            this.game.state.start('MainMenu');
-        }, this, 1, 0, 2);
+        setTimeout(function() {
+            for (var i = 0; i < 3; i++) {
+                that.showMinions(i);
+            }
 
+            startButton = that.add.button(that.game.world.centerX + 100, 10, 'continueBtn', function() {
+                home.stop();
+                that.game.state.start('MainMenu');
+            }, this, 1, 0, 2);
+        }, delayInMilliseconds);
     },
     showMinions: function(minionType) {
+        //Get a random item from minions and bomb spritesheet
+        var rand = minionArray[Math.floor(Math.random() * minionArray.length)];
 
-                //Get a random item from minions and bomb spritesheet
-                var rand = minionArray[Math.floor(Math.random() * minionArray.length)];
+        var min1 = this.game.add.sprite(this.game.world.centerX - this.coordinates[minionType][0],
+            this.coordinates[minionType][1], 'minions_spritesheet');
+        min1.frame = minionType;
+        min1.anchor.setTo(0.5, 0.5);
 
-                var min1 = this.game.add.sprite(this.game.world.centerX - this.coordinates[minionType][0], 
-                    this.coordinates[minionType][1], 'minions_spritesheet');
-                min1.frame = minionType;
-                min1.anchor.setTo(0.5, 0.5);
-            
-                // Add a simple bounce tween to each character's position.
-                var tween1 = this.game.add.tween(min1).to({y: this.game.world.centerY + 125}, 2000, Phaser.Easing.Bounce.Out, 
-                    true, 1000 + 400 * rand, 0);
+        // Add a simple bounce tween to each character's position.
+        var tween1 = this.game.add.tween(min1).to({y: this.game.world.centerY + 125}, 2000, Phaser.Easing.Bounce.Out,
+            true, 1000 + 400 * rand, 0);
 
-                tween1.repeat();
+        //tween1.repeat();
     }
 
 };

@@ -3,7 +3,7 @@ SaveTheMinions.Boot = function(game){};
 SaveTheMinions.Boot.prototype = {
 	preload: function() {
 	    // preload the loading indicator first before anything else
-		//this.game.load.image('preloaderBar', 'img/loading.png');
+		this.game.load.spritesheet('loadingbar', 'img/loadingbar-sprite.png', 400, 40, 11);
 		this.game.load.image('homePageImg', 'img/Home-Page.png');
 	},
 	create: function(){
