@@ -49,6 +49,9 @@ SaveTheMinions.Preloader.prototype = {
             this.game.load.audio('bombSound','sound/bomb.mp3');
             this.game.load.audio('minionSound','sound/saveMinionSound.mp3');
             this.game.load.audio('pauseSound','sound/pauseSound.mp3');
+            this.game.load.audio('minionSelect1','sound/clickMinion1.wav');
+            this.game.load.audio('minionSelect2','sound/clickMinion2.wav');
+            this.game.load.audio('minionSelect3','sound/clickMinion3.wav');
             this.game.load.audio('homePageSound1','sound/GameHomePage.mp3');
             this.game.load.audio('homePageSound2','sound/GameHomePage.mp3');
             this.game.load.audio('homePageSound3','sound/GameHomePage.mp3');

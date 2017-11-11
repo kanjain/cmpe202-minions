@@ -21,7 +21,9 @@ SaveTheMinions.Game = function(game) {
 	onScoreChange = null;
 	onHealthChange = null;
 
-    var minionSelect = null;
+    var minionSelect1 = null
+    var minionSelect2 = null
+    var minionSelect3 = null
     var minionSound = null;
     var bombSound = null;
     var pauseSound = null;
@@ -33,7 +35,9 @@ SaveTheMinions.Game.prototype = {
         this.game.physics.startSystem(Phaser.Physics.ARCANE);
         this.game.physics.arcade.gravity.y = 500;
         // Adding Sound
-        minionSelect =this.game.add.audio('minionSelect');
+        minionSelect1 =this.game.add.audio('minionSelect1');
+        minionSelect2 =this.game.add.audio('minionSelect2');
+        minionSelect3 =this.game.add.audio('minionSelect3');
         minionSound =this.game.add.audio('minionSound');
         bombSound= this.game.add.audio('bombSound');
         pauseSound= this.game.add.audio('pauseSound');
@@ -173,7 +177,14 @@ SaveTheMinions.Game.prototype = {
             this.game.state.start('EndOfGame');
          // OR a minion selected...
         } else {
-            minionSelect.play();
+
+            if(sprite.name == "Dave")
+                minionSelect1.play();
+            if(sprite.name == "Tim")
+                minionSelect2.play();
+            if(sprite.name == "Jerry")
+                minionSelect3.play();
+
             this.game.physics.arcade.moveToObject(sprite, transportation, 0, 50);
             sprite.lifespan = 55;
 
