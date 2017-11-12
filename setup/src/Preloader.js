@@ -20,6 +20,9 @@ SaveTheMinions.Preloader.prototype = {
             this.game.load.image('background_space', 'img/background_space.jpg');
             this.game.load.image('score-bg', 'img/score-bg.png');
             this.game.load.image('score-bg-minion-icon', 'img/minion-icon.png');
+            this.game.load.image('score-1-points', 'img/score_1_points.png');
+            this.game.load.image('score-2-points', 'img/score_2_points.png');
+            this.game.load.image('score-3-points', 'img/score_3_points.png');
 
             this.game.load.image('levelBtn', 'img/btn_select_level.png');
             this.game.load.image('backBtn', 'img/btn_back.png');

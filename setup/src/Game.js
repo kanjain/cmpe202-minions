@@ -169,21 +169,35 @@ SaveTheMinions.Game.prototype = {
         health -= 1;
         hungerMeter.animations.play('' +  health);
 	},
-    selectt: function(sprite){
-
+    selectt: function(sprite) {
         if(sprite.name == "BadMinion") {
             bombSound.play();
-						this.game.displayscore=score;
+            this.game.displayscore = score;
             this.game.state.start('EndOfGame');
          // OR a minion selected...
         } else {
+            // Get the current sprite position
+            var spriteX = sprite.world.x;
+            var spriteY = sprite.world.y;
+            var scoreMinion = null;
 
-            if(sprite.name == "Dave")
+            if(sprite.name == "Dave") {
                 minionSelect1.play();
-            if(sprite.name == "Tim")
-                minionSelect2.play();
-            if(sprite.name == "Jerry")
+                scoreMinion = this.game.add.sprite(spriteX, spriteY, 'score-1-points');
+            }
+            if(sprite.name == "Jerry") {
                 minionSelect3.play();
+                scoreMinion = this.game.add.sprite(spriteX, spriteY, 'score-2-points');
+            }
+            if(sprite.name == "Tim") {
+                minionSelect2.play();
+                scoreMinion = this.game.add.sprite(spriteX, spriteY, 'score-3-points');
+            }
+
+            var playAnimation = scoreMinion.animations.add('playAnimation');
+            scoreMinion.anchor.setTo(0.5, 0.5);
+            scoreMinion.alpha = 0;
+            this.game.add.tween(scoreMinion).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None , true, 0, 0, true);
 
             this.game.physics.arcade.moveToObject(sprite, transportation, 0, 50);
             sprite.lifespan = 55;
@@ -201,14 +215,14 @@ SaveTheMinions.Game.prototype = {
                     eventName = eventOne;
                     break;
             }
-            sprite.score = 1000;// Set to arbitrary number to distinguish destroy after drop vs. click.
+
+            sprite.scored = true;
             onScoreChange.notify(eventName);
         }
     },
 
     updateLogic: function () {
         if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.realInRange(lvlFrequency, 6.0)){
-
 			cTime = this.game.time.totalElapsedSeconds();
 
 			// Get a random item from minions and bomb spritesheet
@@ -227,17 +241,18 @@ SaveTheMinions.Game.prototype = {
 
         // destroy object after it drop to bottom
         flyingMinions.forEach(function (sprite) {
-
             // Adding rotation to the minions and bombs.
             sprite.angle += sprite.rotateMe;
 
             if (sprite.y >= 500) {
                 sprite.destroy();
-                if (sprite.score != -1 && sprite.score != 1000) {
+                // Decrease health.
+                if (sprite.score != -1 && // not when it is a bomb.
+                // not when you scored a point.
+                !sprite.scored) {
                     onHealthChange.notify(eventOne);
                 }
             }
-
         });
     }
 };
