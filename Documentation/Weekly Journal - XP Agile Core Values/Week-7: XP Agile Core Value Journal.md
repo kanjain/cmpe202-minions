@@ -10,7 +10,7 @@ We started devlopment with simle usability features like Simple Scoring, No Musi
 
 
 ## 3. Respect (Owner - Anusha)
-
+We are discussing enhancements in the game. We make sure we respect each one's views, hear them out and come to a reasonable understanding as to what is important and what is not within our time constraints and are implementing accordingly
 
 ## 4. Feedback (Owner - Trung)
 
