@@ -4,11 +4,11 @@
 
 * Fixed the merge conflict issues multiple times. 
 
-* Added the loading bar before the main menu screen. Added animation to loading bar for realistic user experience.
+* Added the **loading bar** before the main menu screen. Added animation to loading bar for realistic user experience.
 
 * Also created the landing screen for the game and did animate the loading bar.
 
-* Added another feature of animating the score on every minion click to make the game more realistic and for good user experience.
+* Added another feature of **animating the score** on every minion click to make the game more realistic and for good user experience.
  
 * Altered/refractored the code following SOLID single responsibilty principle.
 
