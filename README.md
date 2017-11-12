@@ -18,7 +18,7 @@ cmpe202-minions
 * [CFD](https://docs.google.com/a/sjsu.edu/spreadsheets/d/1ywqgSxxhLNuXJpvcGkD8-U0gqS3t0mgaTow4z22S518/edit?usp=sharing)
 * Links to Individual Weekly Progress:
      * [Anusha Mulumoodi]
-     * [Kanika Jain] (https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Kanika/Week-7:%20Weekly%20Progress%20-%20Kanika.md)
+     * [Kanika Jain](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Kanika/Week-7:%20Weekly%20Progress%20-%20Kanika.md)
      * [Manish Pandey]
      * [Saurabh Ghotane](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Saurabh/Week-7:%20Weekly%20Progress%20-%20Saurabh.md)
      * [Trung Huynh (Ryan)]
