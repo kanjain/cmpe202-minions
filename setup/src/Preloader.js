@@ -35,6 +35,7 @@ SaveTheMinions.Preloader.prototype = {
             this.game.load.image('spaceship', 'img/spaceship.png');
             this.game.load.image('howToBtn','img/btn_how_to.png');
             this.game.load.image('loading', 'img/loading.png');
+            this.game.load.image('storybg', 'img/wood1.png');
             this.game.load.image('story', 'img/story.png');
             this.game.load.image('bomb', 'img/bomb.png');
 
