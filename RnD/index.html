@@ -1,57 +1,40 @@
-<!doctype html> 
-<html lang="en"> 
-<head> 
-	<meta charset="UTF-8" />
-	<title>Save the Minions : CMPE 202</title>
-	<script type="text/javascript" src="src/phaser.min.js"></script>
-    <style type="text/css">
-        body {
-            margin: 0;
-            text-align: center;
-        }
-    </style>
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Save The Minions</title>
+	<link rel="stylesheet" type="text/css" href="styles/default.css">
 </head>
 <body>
 
-<p id="gameCanvas" align="center" style="vertical-align: middle;"></p>
+<script src="src/phaser.min.js"></script>
+<script src="src/Minion.js"></script>
+<script src="src/BadMinion.js"></script>
+<script src="src/GoodMinion.js"></script>
+<script src="src/Observer.js"></script>
+<script src="src/Boot.js"></script>
+<script src="src/Preloader.js"></script>
+<script src="src/MainMenu.js"></script>
+<script src="src/StoryHowto.js"></script>
+<script src="src/LevelStates.js"></script>
+<script src="src/Game.js"></script>
+<script src="src/LevelSelect.js"></script>
+<script src="src/MinionFactory.js"></script>
+<script src="src/End.js"></script>
 
-<script type="text/javascript">
 
-var game = new Phaser.Game(800, 600, Phaser.CANVAS, "gameCanvas", { preload: preload, create: create, update: update });
-
-function preload() {
-	game.load.image('sjsu', 'img/sjsu.png');
-	game.load.image('playBtn', 'img/btn_play.png');
-    game.load.image('settingsBtn', 'img/settingsBtnBg.png');
-}
-
-function create() {
-	
-    //  Background image for our game.
-    game.add.sprite(0, 0, 'sjsu');
-    
-    // A button made from an image including text
-    startButton = this.add.button(300, 300, 'playBtn', function(){alert("Starting Game")}, this, 1, 0, 2);
-    startButton.input.useHandCursor = true;
-
-    // A button made with just plain solid background color image.
-    settingsButton = this.add.button(370, 400, 'settingsBtn', function(){alert("Change Settings Screen")}, this, 0, 1, 0);
-
-    settingsButton.anchor.setTo(0.5,0.5);
-
-    // This property is needed to display Hand cursor everytime. By default it only displays it once before being clicked. After that normal arrow head cursor is displayed.
-    settingsButton.input.useHandCursor = true;
-    
-    // adding text to the screen over the settings button image to give it a text.
-    var btnText = game.add.text(settingsButton.x, settingsButton.y, "Settings",
-        {font:"20px Arial",fill:"#000", align:"center"})
-    btnText.anchor.setTo(0.5,0.5);
-}
-
-function update() {
-}
-
+<script>
+(function(){
+	var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.CANVAS, 'game');
+	game.state.add('Boot', SaveTheMinions.Boot);
+	game.state.add('Preloader', SaveTheMinions.Preloader);
+	game.state.add('MainMenu', SaveTheMinions.MainMenu);
+	game.state.add('Game', SaveTheMinions.Game);
+	game.state.add('StoryHowto', SaveTheMinions.StoryHowto);
+  	game.state.add('LevelSelect', SaveTheMinions.LevelSelect);
+	game.state.add('EndOfGame', SaveTheMinions.EndOfGame);
+	game.state.start('Boot');
+})();
 </script>
-
 </body>
 </html>
