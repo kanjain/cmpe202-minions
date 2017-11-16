@@ -13,7 +13,10 @@ SaveTheMinions.StoryHowto.prototype = {
 		var howToText = this.game.add.sprite(250,0, 'how_to_text');
 		var bomb = this.game.add.sprite(750,275, 'bomb');
 		var minionIcon = this.game.add.sprite(650,150,'minions_spritesheet');
-		var minionIcon = this.game.add.sprite(720,400,'minion_falling');
+
+        minionEmitter = this.game.add.emitter(this.game.world.centerX + 70, 420, 0);
+        minionEmitter.makeParticles('minion_falling');
+        minionEmitter.start(false, 100, 50);
 
 		playButton = this.add.button(800, 640, 'playBtn', function(){this.game.state.start('Game')}, this, 1, 0, 2);
 		playButton.input.useHandCursor = true;
