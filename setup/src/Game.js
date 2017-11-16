@@ -31,35 +31,36 @@ SaveTheMinions.Game = function(game) {
 };
 SaveTheMinions.Game.prototype = {
 	create: function() {
+	    var background = {};
         // physic global setup
         this.game.physics.startSystem(Phaser.Physics.ARCANE);
         this.game.physics.arcade.gravity.y = 500;
         // Adding Sound
-        minionSelect1 =this.game.add.audio('minionSelect1');
-        minionSelect2 =this.game.add.audio('minionSelect2');
-        minionSelect3 =this.game.add.audio('minionSelect3');
-        minionSound =this.game.add.audio('minionSound');
-        bombSound= this.game.add.audio('bombSound');
-        pauseSound= this.game.add.audio('pauseSound');
+        minionSelect1 = this.game.add.audio('minionSelect1');
+        minionSelect2 = this.game.add.audio('minionSelect2');
+        minionSelect3 = this.game.add.audio('minionSelect3');
+        minionSound = this.game.add.audio('minionSound');
+        bombSound = this.game.add.audio('bombSound');
+        pauseSound = this.game.add.audio('pauseSound');
 
         //  Background image for our game.
         if (this.game.theme == "forest"){
-            this.game.add.sprite(0, 0, 'background_forest');
+            background = this.game.add.sprite(0, 0, 'background_forest');
             // Adding a new transportation object to save the minions.
             transportation = this.game.add.sprite(this.game.world.centerX, this.game.world.height - 100, 'woodencart');
         }
         else if (this.game.theme == "city"){
-            this.game.add.sprite(0, 0, 'mall_background');
+            background = this.game.add.sprite(0, 0, 'mall_background');
             // Adding a new transportation object to save the minions.
             transportation = this.game.add.sprite(100, this.game.world.height - 100, 'ship');
         }
         else if (this.game.theme == "space"){
-            this.game.add.sprite(0, 0, 'background_space');
+            background = this.game.add.sprite(0, 0, 'background_space');
             // Adding a new transportation object to save the minions.
             transportation = this.game.add.sprite(this.game.world.centerX, 150, 'spaceship');
         }
         else {
-            this.game.add.sprite(0, 0, 'mall_background');
+            background = this.game.add.sprite(0, 0, 'mall_background');
             // Adding a new transportation object to save the minions.
             transportation = this.game.add.sprite(300, this.game.world.height - 100, 'ship');
         }
@@ -67,7 +68,10 @@ SaveTheMinions.Game.prototype = {
         transportation.anchor.setTo(0.5, 0.5);
 
         // Adding the pause button to pause the game.
-        pauseButton = this.add.button(this.game.world.width - 325, 40, 'pauseBtn', function(){console.log('Game Paused!!!')}, this, 1, 0, 2);
+        pauseButton = this.add.button(this.game.world.width - 325, 40, 'pauseBtn', function() {
+                                        console.log('Game Paused!!!');
+                                        background.tint = 0xFD9731;
+                                        }, this, 1, 0, 2);
 		pauseButton.input.useHandCursor = true;
 		pauseButton.anchor.setTo(0.5,0.5);
 
@@ -76,7 +80,7 @@ SaveTheMinions.Game.prototype = {
     	currentGame = this.game;
 
     	pauseButton.events.onInputUp.add(function () {
-        // When the paus button is pressed, we pause the game
+        // When the pause button is pressed, we pause the game
             pauseSound.play();
         	currentGame.paused = true;
     	});
@@ -86,11 +90,9 @@ SaveTheMinions.Game.prototype = {
                 console.log('Game Resumed!!!')
                 pauseSound.play();
                 currentGame.paused = false;
+                background.tint = 0xFFFFFF;
             }
     	});
-
-        // transportation.anchor.setTo(0.5,0.5);
-
 
         // add group
         flyingMinions = this.game.add.group();
@@ -115,8 +117,6 @@ SaveTheMinions.Game.prototype = {
             hungerMeter.animations.add(''+(25 - h), [h], 10, true);
         }
         hungerMeter.animations.play('25');
-
-
     },
 
 	update: function() {
