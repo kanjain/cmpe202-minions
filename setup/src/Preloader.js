@@ -20,9 +20,10 @@ SaveTheMinions.Preloader.prototype = {
     },
     addAssets: function() {
             /* Images */
-            this.game.load.image('background_city', 'img/min2.png');
             this.game.load.image('background_forest', 'img/background_forest.png');
             this.game.load.image('background_space', 'img/background_space.jpg');
+            this.game.load.image('how_to_text', 'img/howToText.png');
+            this.game.load.image('minion_falling', 'img/minion_falling.png');
             this.game.load.image('score-bg', 'img/score-bg.png');
             this.game.load.image('score-bg-minion-icon', 'img/minion-icon.png');
             this.game.load.image('score-1-points', 'img/plusOne.gif');
@@ -40,7 +41,6 @@ SaveTheMinions.Preloader.prototype = {
             this.game.load.image('spaceship', 'img/spaceship.png');
             this.game.load.image('howToBtn','img/btn_how_to.png');
             this.game.load.image('loading', 'img/loading.png');
-            this.game.load.image('storybg', 'img/wood1.png');
             this.game.load.image('story', 'img/story.png');
             this.game.load.image('bomb', 'img/bomb.png');
 

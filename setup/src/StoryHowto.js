@@ -5,29 +5,32 @@ SaveTheMinions.StoryHowto = function(game) {
 SaveTheMinions.StoryHowto.prototype = {
 	create: function() {
 		this.showStory();
+		this.state = 'story';
 	},
 	showStory: function() {
-		this.game.add.sprite(0, 0, 'background_city');
-		this.game.add.sprite(190, 60, 'storybg');
-		//this.game.add.sprite(100, 100, 'story');
-		//this.game.add.sprite(0, 0, 'screen-story');
-		this.state = 'story';
+		var background = this.game.add.sprite(0, 0, 'main_menu_background');
+		background.tint = 0xFFFFBF;
+		var howToText = this.game.add.sprite(250,0, 'how_to_text');
+		var bomb = this.game.add.sprite(750,275, 'bomb');
+		var minionIcon = this.game.add.sprite(650,150,'minions_spritesheet');
+		var minionIcon = this.game.add.sprite(720,400,'minion_falling');
 
-		var style = { font: "30px ComicBook", fill: "black", align: "center" };
-    var text = this.game.add.text(500, 120, "Click on a minion to save it. Beware of ", style);
-		var text1 = this.game.add.text(500, 180, "bombs! Clicking on a bomb will end ", style);
-		var text3 = this.game.add.text(500, 240, "your game", style);
+		playButton = this.add.button(800, 640, 'playBtn', function(){this.game.state.start('Game')}, this, 1, 0, 2);
+		playButton.input.useHandCursor = true;
+		playButton.anchor.setTo(0.5,0.5);
 
-		text.anchor.set(0.5);
-		text1.anchor.set(0.5);
-		text3.anchor.set(0.5);
-
-		startButton = this.add.button(820, 450, 'playBtn', function(){this.game.state.start('Game')}, this, 1, 0, 2);
-		startButton.input.useHandCursor = true;
-		startButton.anchor.setTo(0.5,0.5);
-
-		backButton = this.add.button(120, 450, 'backBtn', function(){this.game.state.start('MainMenu')}, this, 1, 0, 2);
+		backButton = this.add.button(650, 640, 'backBtn', function(){this.game.state.start('MainMenu')}, this, 1, 0, 2);
 		backButton.input.useHandCursor = true;
 		backButton.anchor.setTo(0.5,0.5);
+
+		var buttonInterval = setInterval(function() {
+		    if (playButton.x < 1200) {
+		        playButton.x += 20;
+            }
+
+            if (backButton.x > 300) {
+		        backButton.x -= 20;
+		    }
+		}, 100);
 	}
 };
