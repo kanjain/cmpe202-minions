@@ -46,28 +46,28 @@ SaveTheMinions.Game.prototype = {
         if (this.game.theme == "forest"){
             this.game.add.sprite(0, 0, 'background_forest');
             // Adding a new transportation object to save the minions.
-            transportation = this.game.add.sprite(100, 443, 'truck');
+            transportation = this.game.add.sprite(this.game.world.centerX, this.game.world.height - 100, 'woodencart');
         }
         else if (this.game.theme == "city"){
-            this.game.add.sprite(0, 0, 'background_city');
+            this.game.add.sprite(0, 0, 'mall_background');
             // Adding a new transportation object to save the minions.
-            transportation = this.game.add.sprite(100, 443, 'truck');
+            transportation = this.game.add.sprite(100, this.game.world.height - 100, 'ship');
         }
         else if (this.game.theme == "space"){
             this.game.add.sprite(0, 0, 'background_space');
             // Adding a new transportation object to save the minions.
-            transportation = this.game.add.sprite(60, 470, 'spaceship');
+            transportation = this.game.add.sprite(this.game.world.centerX, 150, 'spaceship');
         }
         else {
-            this.game.add.sprite(0, 0, 'background_city');
+            this.game.add.sprite(0, 0, 'mall_background');
             // Adding a new transportation object to save the minions.
-            transportation = this.game.add.sprite(100, 443, 'truck');
+            transportation = this.game.add.sprite(300, this.game.world.height - 100, 'ship');
         }
 
         transportation.anchor.setTo(0.5, 0.5);
 
         // Adding the pause button to pause the game.
-        pauseButton = this.add.button(608, 40, 'pauseBtn', function(){console.log('Game Paused!!!')}, this, 1, 0, 2);
+        pauseButton = this.add.button(this.game.world.width - 325, 40, 'pauseBtn', function(){console.log('Game Paused!!!')}, this, 1, 0, 2);
 		pauseButton.input.useHandCursor = true;
 		pauseButton.anchor.setTo(0.5,0.5);
 
@@ -110,7 +110,7 @@ SaveTheMinions.Game.prototype = {
 
         // add health meter
         health = 25; //reset the health meter on create.
-        hungerMeter = this.add.sprite(635, 20, 'hunger-meter');
+        hungerMeter = this.add.sprite(this.game.world.width-300, 20, 'hunger-meter');
         for(var h = 0; h < 25; h++) {
             hungerMeter.animations.add(''+(25 - h), [h], 10, true);
         }

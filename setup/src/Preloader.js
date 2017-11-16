@@ -2,7 +2,9 @@ SaveTheMinions.Preloader = function(game) {
     this.background = null;
     this.preloadBar = null;
     this.startGame = null;
-    this.coordinates = [[30,-600], [70,-100], [-200,-300]]
+
+    // New coordinates for bigger minions on loading intro screen.
+    this.coordinates = [[300,-600], [450,-100], [600,-300]]
 };
 SaveTheMinions.Preloader.prototype = {
     init: function(startGame) {
@@ -11,12 +13,15 @@ SaveTheMinions.Preloader.prototype = {
     preload: function() {
         this.game.stage.backgroundColor = '#FFFFFF';
         this.add.sprite(0, 0, 'homePageImg');
+
+        // Adding 3 minions that are looking up.
+        this.add.sprite(this.game.world.centerX, this.game.world.height-300, 'minions_looking_up');
         this.addAssets();
     },
     addAssets: function() {
             /* Images */
             this.game.load.image('background_city', 'img/min2.png');
-            this.game.load.image('background_forest', 'img/background_forest.jpg');
+            this.game.load.image('background_forest', 'img/background_forest.png');
             this.game.load.image('background_space', 'img/background_space.jpg');
             this.game.load.image('score-bg', 'img/score-bg.png');
             this.game.load.image('score-bg-minion-icon', 'img/minion-icon.png');
@@ -31,13 +36,20 @@ SaveTheMinions.Preloader.prototype = {
             this.game.load.image('moderate', 'img/btn_moderate.png');
             this.game.load.image('hard', 'img/btn_hard.png');
             this.game.load.image('continueBtn', 'img/btn_continue.png');
-            this.game.load.image('truck', 'img/truck.png');
+            
             this.game.load.image('spaceship', 'img/spaceship.png');
             this.game.load.image('howToBtn','img/btn_how_to.png');
             this.game.load.image('loading', 'img/loading.png');
             this.game.load.image('storybg', 'img/wood1.png');
             this.game.load.image('story', 'img/story.png');
             this.game.load.image('bomb', 'img/bomb.png');
+
+            /* New Images for HD UI Effect */
+            this.game.load.image('game_title', 'img/game_title.png');
+            this.game.load.image('main_menu_background', 'img/main_menu_background.jpg');
+            this.game.load.image('mall_background', 'img/mall_background.png');
+            this.game.load.image('ship', 'img/ship.png');
+            this.game.load.image('woodencart', 'img/woodencart.png');
 
             /* Sound Effect */
             this.game.load.audio('minionSelect','sound/minionSelect.mp3');
@@ -49,21 +61,20 @@ SaveTheMinions.Preloader.prototype = {
             this.game.load.audio('minionSelect2','sound/clickMinion2.wav');
             this.game.load.audio('minionSelect3','sound/clickMinion3.wav');
             this.game.load.audio('homePageSound','sound/GameHomePage.mp3');
-            this.game.load.audio('homePageSound2','sound/GameHomePage.mp3');
-            this.game.load.audio('homePageSound3','sound/GameHomePage.mp3');
-            this.game.load.audio('homePageSound4','sound/GameHomePage.mp3');
-            this.game.load.audio('homePageSound5','sound/GameHomePage.mp3');
 
             /* Sprites */
             this.game.load.spritesheet('minions_spritesheet', 'img/minions_spritesheet.png', 78.2, 90, 3);
             this.game.load.spritesheet('hunger-meter', 'img/hunger-meter.png', 289, 45);
+
+            // Adding new spritesheet for bigger minions.
+            this.game.load.spritesheet('big_minions', 'img/big_minions_spritesheet.png', 165, 250, 3);
     },
     create: function() {
         home = this.game.add.audio('homePageSound');
         var delayInMilliseconds = 2000;
         var that = this;
 
-        var loadingbar = this.game.add.sprite(this.game.world.centerX, 440, 'loadingbar');
+        var loadingbar = this.game.add.sprite(200, this.game.world.height-50, 'loadingbar');
         var playAnimation = loadingbar.animations.add('playAnimation');
         loadingbar.animations.play('playAnimation', 7, false, true);
 
@@ -74,26 +85,34 @@ SaveTheMinions.Preloader.prototype = {
                 that.showMinions(i);
             }
 
-            startButton = that.add.button(that.game.world.centerX + 100, 10, 'continueBtn', function() {
+            startButton = that.add.button(that.game.world.centerX, that.game.world.centerY + 50, 'continueBtn', function() {
                 home.stop();
                 that.game.state.start('MainMenu');
             }, this, 1, 0, 2);
+
+            startButton.anchor.set(0.5,0.5);
+
+            var game_title = that.add.sprite(that.world.centerX, that.world.centerY - 80, 'game_title');
+            game_title.anchor.set(0.5,0.5);
+            
         }, delayInMilliseconds);
+
+
     },
     showMinions: function(minionType) {
         //Get a random item from minions and bomb spritesheet
         var rand = minionArray[Math.floor(Math.random() * minionArray.length)];
 
-        var min1 = this.game.add.sprite(this.game.world.centerX - this.coordinates[minionType][0],
-            this.coordinates[minionType][1], 'minions_spritesheet');
-        min1.frame = minionType;
-        min1.anchor.setTo(0.5, 0.5);
+        var big_min1 = this.game.add.sprite(this.coordinates[minionType][0],
+            this.coordinates[minionType][1], 'big_minions');
+        big_min1.frame = minionType;
+        big_min1.anchor.setTo(0.5, 0.5);
 
         // Add a simple bounce tween to each character's position.
-        var tween1 = this.game.add.tween(min1).to({y: this.game.world.centerY + 125}, 2000, Phaser.Easing.Bounce.Out,
+        var big_tween1 = this.game.add.tween(big_min1).to({y: this.game.world.height - 140}, 2000, Phaser.Easing.Bounce.Out,
             true, 1000 + 400 * rand, 0);
 
-        //tween1.repeat();
+        big_tween1.repeat();
     }
 
 };
