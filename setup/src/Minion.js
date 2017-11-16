@@ -20,7 +20,7 @@ var UPSS = function() {
 //================================================================================
 
 var Minion = function ({game, image}) {
-    xVal = game.rnd.pick([0, 950]);
+    xVal = game.rnd.pick([0, game.world.width]);
     Phaser.Sprite.call(this, game, xVal, 300, image);
     this.initProperties();
  

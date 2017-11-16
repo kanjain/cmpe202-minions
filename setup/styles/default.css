@@ -1,6 +1,5 @@
 body {
-    margin-left: 250px;
-    margin-top: 50px;
+    margin:0;
     background: #00695C;
 }
 @font-face {
