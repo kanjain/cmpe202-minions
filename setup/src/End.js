@@ -22,8 +22,8 @@ SaveTheMinions.EndOfGame.prototype = {
 		tryAgainButton.input.useHandCursor = true;
 		tryAgainButton.anchor.setTo(0.5,0.5);
 
-		backButton = this.add.button(1100, 350, 'backToMainButton', function(){this.game.state.start('MainMenu');}, this, 1, 0, 2);
-		backButton.input.useHandCursor = true;
-		backButton.anchor.setTo(0.5,0.5);
+		backToMainButton = this.add.button(1100, 350, 'backToMainButton', function(){this.game.state.start('MainMenu');}, this, 1, 0, 2);
+		backToMainButton.input.useHandCursor = true;
+		backToMainButton.anchor.setTo(0.5,0.5);
 	}
 };
