@@ -6,7 +6,7 @@ var Lvl1State = function (game) {
     this.changeState = function () {
         console.log('lvl2');
         game.changeLvlState(new Lvl2State(game), 1);
-
+        
     }
 
 };

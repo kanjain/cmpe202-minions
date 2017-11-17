@@ -35,7 +35,7 @@ SaveTheMinions.Game = function(game) {
 };
 SaveTheMinions.Game.prototype = {
 	create: function() {
-	    background = {};
+	    //background = {};
 	    pausedImageSprite = null;
 	    pauseButtonDisabled = false;
 
@@ -52,22 +52,22 @@ SaveTheMinions.Game.prototype = {
 
         //  Background image for our game.
         if (this.game.theme == "forest"){
-            background = this.game.add.sprite(0, 0, 'background_forest');
+            this.background = this.game.add.sprite(0, 0, 'background_forest');
             // Adding a new transportation object to save the minions.
             transportation = this.game.add.sprite(this.game.world.centerX, this.game.world.height - 100, 'woodencart');
         }
         else if (this.game.theme == "city"){
-            background = this.game.add.sprite(0, 0, 'mall_background');
+            this.background = this.game.add.sprite(0, 0, 'mall_background');
             // Adding a new transportation object to save the minions.
             transportation = this.game.add.sprite(100, this.game.world.height - 100, 'ship');
         }
         else if (this.game.theme == "space"){
-            background = this.game.add.sprite(0, 0, 'background_space');
+            this.background = this.game.add.sprite(0, 0, 'background_space');
             // Adding a new transportation object to save the minions.
             transportation = this.game.add.sprite(this.game.world.centerX, 150, 'spaceship');
         }
         else {
-            background = this.game.add.sprite(0, 0, 'mall_background');
+            this.background = this.game.add.sprite(0, 0, 'mall_background');
             // Adding a new transportation object to save the minions.
             transportation = this.game.add.sprite(300, this.game.world.height - 100, 'ship');
         }
@@ -150,7 +150,8 @@ SaveTheMinions.Game.prototype = {
 
 				if(score ==5 || score ==6 || score == 7)
 					onLevelUp.notify(this);
-	},
+    },
+    
 	changeEnvironment: function(el){
 		//background = el.game.add.sprite(0, 0, 'background_forest');
 		// Adding a new transportation object to save the minions.
@@ -187,6 +188,7 @@ SaveTheMinions.Game.prototype = {
             this.game.paused = !this.game.paused;
         }
     },
+
     selectt: function(sprite) {
         if (this.game.paused == true) return;
         if(sprite.name == "BadMinion") {
@@ -276,3 +278,4 @@ SaveTheMinions.Game.prototype = {
         });
     }
 };
+
