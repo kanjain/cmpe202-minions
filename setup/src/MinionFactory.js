@@ -1,5 +1,5 @@
 function MinionFactory(){
-	this.createMinions = function(game, typeOfMinion, currentLvlState){
+	this.createMinions = function(game, typeOfMinion, currentLvlState, strategy){
 		var minionSprite;
 	
 		if (typeOfMinion === "BadMinion") {

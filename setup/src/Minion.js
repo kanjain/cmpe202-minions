@@ -1,5 +1,6 @@
 var UPS = function() {
     this.move = function(sprite, xStart, xEnd, yStart, yEnd) {
+        
         sprite.body.velocity.y = sprite.game.rnd.realInRange(yStart, yEnd);
         sprite.body.velocity.x = sprite.game.rnd.realInRange(xStart, xEnd);
         sprite.body.collideWorldBounds = true;
