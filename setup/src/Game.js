@@ -39,8 +39,6 @@ SaveTheMinions.Game.prototype = {
 	    pausedImageSprite = null;
 	    pauseButtonDisabled = false;
 
-	    this.game.sound.stopAll();
-
         // physic global setup
         this.game.physics.startSystem(Phaser.Physics.ARCANE);
         this.game.physics.arcade.gravity.y = 500;
