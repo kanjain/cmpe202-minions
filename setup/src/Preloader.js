@@ -21,6 +21,8 @@ SaveTheMinions.Preloader.prototype = {
     addAssets: function() {
             /* Images */
             this.game.load.image('background_forest', 'img/background_forest.png');
+            this.game.load.image('minion_end_game', 'img/minion_end_game.jpg');
+            this.game.load.image('minion_game_over', 'img/minion_game_over.jpg');
             this.game.load.image('background_space', 'img/background_space.jpg');
             this.game.load.image('how_to_text', 'img/howToText.png');
             this.game.load.image('minion_falling', 'img/minion_falling.png');
@@ -38,11 +40,11 @@ SaveTheMinions.Preloader.prototype = {
             this.game.load.image('moderate', 'img/btn_moderate.png');
             this.game.load.image('hard', 'img/btn_hard.png');
             this.game.load.image('continueBtn', 'img/btn_continue.png');
-            
+            this.game.load.image('restartButton', 'img/button-restart.png');
+            this.game.load.image('backToMainButton', 'img/button-back.png');
+
             this.game.load.image('spaceship', 'img/spaceship.png');
             this.game.load.image('howToBtn','img/btn_how_to.png');
-            this.game.load.image('loading', 'img/loading.png');
-            this.game.load.image('story', 'img/story.png');
             this.game.load.image('bomb', 'img/bomb.png');
 
             /* New Images for HD UI Effect */
