@@ -5,6 +5,9 @@ SaveTheMinions.Game = function(game) {
     health = 0;
     hungerMeter = null;
     scoreText = null;
+    pauseButtonDisabled = false;
+    background = {};
+    pausedImageSprite = null;
 
     // state for level
     currentLvlState = new Lvl1State(this);
@@ -31,7 +34,10 @@ SaveTheMinions.Game = function(game) {
 };
 SaveTheMinions.Game.prototype = {
 	create: function() {
-	    var background = {};
+	    background = {};
+	    pausedImageSprite = null;
+	    pauseButtonDisabled = false;
+
         // physic global setup
         this.game.physics.startSystem(Phaser.Physics.ARCANE);
         this.game.physics.arcade.gravity.y = 500;
@@ -68,31 +74,12 @@ SaveTheMinions.Game.prototype = {
         transportation.anchor.setTo(0.5, 0.5);
 
         // Adding the pause button to pause the game.
-        pauseButton = this.add.button(this.game.world.width - 325, 40, 'pauseBtn', function() {
-                                        console.log('Game Paused!!!');
-                                        background.tint = 0xFD9731;
-                                        }, this, 1, 0, 2);
+        pauseButton = this.add.button(this.game.world.width - 350, 20, 'pauseBtn', this.managePause, this);
 		pauseButton.input.useHandCursor = true;
-		pauseButton.anchor.setTo(0.5,0.5);
 
-		pauseButton.inputEnabled = true;
 
-    	currentGame = this.game;
-
-    	pauseButton.events.onInputUp.add(function () {
-        // When the pause button is pressed, we pause the game
-            pauseSound.play();
-        	currentGame.paused = true;
-    	});
-
-    	this.game.input.onDown.add(function(){
-            if (currentGame.paused) {
-                console.log('Game Resumed!!!')
-                pauseSound.play();
-                currentGame.paused = false;
-                background.tint = 0xFFFFFF;
-            }
-    	});
+        pausedImageSprite = this.game.add.sprite(400,180, 'paused');
+        pausedImageSprite.visible = false;
 
         // add group
         flyingMinions = this.game.add.group();
@@ -101,8 +88,8 @@ SaveTheMinions.Game.prototype = {
         onScoreChange = new Observer();
         onHealthChange = new Observer();
         // subscribe to a subject
-        onScoreChange.subscribe(this.updateScore);
-        onHealthChange.subscribe(this.updateHealth);
+        onScoreChange.subscribe(this.updateScore, this);
+        onHealthChange.subscribe(this.updateHealth, this);
 
         // add score background
         score = 0; // reset the score on create.
@@ -120,9 +107,8 @@ SaveTheMinions.Game.prototype = {
     },
 
 	update: function() {
-
         if(health == 0) {
-						this.game.displayscore=score;
+            this.game.displayscore = score;
             this.game.state.start('EndOfGame');
         }
         // For lvl change. For now it is only going from 1-2-3-4 and the frequency of minion and bomb changes
@@ -141,6 +127,7 @@ SaveTheMinions.Game.prototype = {
 
     /*----------These are added function prototype for game logic------------*/
 	updateScore: function(event) {
+        if (this.game.paused === true) return;
 	    var scoreIncrement = 0;
 		if (event === eventOne) {
 		    scoreIncrement = 1;
@@ -155,21 +142,37 @@ SaveTheMinions.Game.prototype = {
 		score += scoreIncrement;
         scoreText.setText(score);
 	},
+    updateHealth: function(event) {
+        if (this.game.paused === true) return;
+        // hard-code gradually decrement health
+        // no weighted penalty.
+        health -= 1;
+        hungerMeter.animations.play('' +  health);
+    },
 
     changeLvlState: function(lvlState, freq) {
-
         currentLvlState = lvlState;
         lvlFrequency = freq;
     },
 
-
-	updateHealth: function(event) {
-	    // hard-code gradually decrement health
-	    // no weighted penalty.
-        health -= 1;
-        hungerMeter.animations.play('' +  health);
-	},
+    managePause:  function() {
+        if(!pauseButtonDisabled) {
+            if(this.game.paused == false) {
+                console.log('Game Paused!!!');
+                pauseSound.play();
+                background.tint = 0xFD9731;
+                pausedImageSprite.visible = true;
+            } else {
+                console.log('Game Resumed!!!');
+                pauseSound.play();
+                background.tint = 0xFFFFFF;
+                pausedImageSprite.visible = false;
+            }
+            this.game.paused = !this.game.paused;
+        }
+    },
     selectt: function(sprite) {
+        if (this.game.paused == true) return;
         if(sprite.name == "BadMinion") {
             bombSound.play();
             this.game.displayscore = score;
@@ -217,11 +220,12 @@ SaveTheMinions.Game.prototype = {
             }
 
             sprite.scored = true;
-            onScoreChange.notify(eventName);
+            onScoreChange.notify(eventName, this);
         }
     },
 
     updateLogic: function () {
+        var that = this;
         if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.realInRange(lvlFrequency, 6.0)){
 			cTime = this.game.time.totalElapsedSeconds();
 
@@ -250,7 +254,7 @@ SaveTheMinions.Game.prototype = {
                 if (sprite.score != -1 && // not when it is a bomb.
                 // not when you scored a point.
                 !sprite.scored) {
-                    onHealthChange.notify(eventOne);
+                    onHealthChange.notify(eventOne, that);
                 }
             }
         });

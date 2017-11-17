@@ -1,11 +1,13 @@
 // http://www.dofactory.com/javascript/observer-design-pattern
 function Observer() {
     this.handlers = [];  // observers
+    this.handlersThisObj = [];
 }
  
 Observer.prototype = {
-    subscribe: function(fn) {
+    subscribe: function(fn, thisObj) {
         this.handlers.push(fn);
+        this.handlersThisObj.push(thisObj);
     },
  
     unsubscribe: function(fn) {

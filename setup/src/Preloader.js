@@ -31,6 +31,7 @@ SaveTheMinions.Preloader.prototype = {
             this.game.load.image('score-3-points', 'img/plusThree.gif');
 
             this.game.load.image('levelBtn', 'img/btn_select_level.png');
+            this.game.load.image('paused', 'img/paused.png');
             this.game.load.image('backBtn', 'img/btn_back.png');
             this.game.load.image('playBtn', 'img/btn_play.png');
             this.game.load.image('pauseBtn', 'img/btn_pause.png');
