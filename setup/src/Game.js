@@ -153,7 +153,8 @@ SaveTheMinions.Game.prototype = {
 		// Adding a new transportation object to save the minions.
 		//transportation = el.game.add.sprite(el.game.world.centerX, el.game.world.height - 100, 'woodencart');
 		el.game.score=score;
-		el.game.state.start('GameAdvanced');
+		
+		el.game.state.start('LevelUp');
 	},
     updateHealth: function(event) {
         if (this.game.paused === true) return;
