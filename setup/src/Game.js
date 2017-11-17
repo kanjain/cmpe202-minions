@@ -39,6 +39,8 @@ SaveTheMinions.Game.prototype = {
 	    pausedImageSprite = null;
 	    pauseButtonDisabled = false;
 
+	    this.game.sound.stopAll();
+
         // physic global setup
         this.game.physics.startSystem(Phaser.Physics.ARCANE);
         this.game.physics.arcade.gravity.y = 500;
@@ -78,6 +80,9 @@ SaveTheMinions.Game.prototype = {
         pauseButton = this.add.button(this.game.world.width - 350, 20, 'pauseBtn', this.managePause, this);
 		pauseButton.input.useHandCursor = true;
 
+		//Adding the exit/quit/bail button to abort the game.
+		exitButton = this.add.button(this.game.world.width - 400, 20, 'exitBtn', function(){this.game.state.start('MainMenu');}, this);
+        exitButton.input.useHandCursor = true;
 
         pausedImageSprite = this.game.add.sprite(400,180, 'paused');
         pausedImageSprite.visible = false;
