@@ -10,6 +10,19 @@ cmpe202-minions
 
 ## Weekly Progress
 
+### Week-7 (11/5 - 11/11)
+
+* [Minutes of Meeting](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Minutes%20of%20Meetings/Week-7:%20Minutes%20of%20Meetings.md)
+* [XP Agile Core Values - Journal](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Journal%20-%20XP%20Agile%20Core%20Values/Week-7:%20XP%20Agile%20Core%20Value%20Journal.md)
+* [Burndown Chart](https://docs.google.com/spreadsheets/d/1103kxZTyqbV2ZkrlPSGw9z_Hxl1gopFu2XpUbajYz4A/edit#gid=793730339)
+* [CFD](https://docs.google.com/a/sjsu.edu/spreadsheets/d/1ywqgSxxhLNuXJpvcGkD8-U0gqS3t0mgaTow4z22S518/edit?usp=sharing)
+* Links to Individual Weekly Progress:
+     * [Anusha Mulumoodi](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Anusha/Week-7:%20Weekly%20Progress%20-%20Anusha.md)
+     * [Kanika Jain](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Kanika/Week-7:%20Weekly%20Progress%20-%20Kanika.md)
+     * [Manish Pandey](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Manish/Week-7:%20Weekly%20Progress%20-%20Manish.md)
+     * [Saurabh Ghotane](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Individual%20Progress/Saurabh/Week-7:%20Weekly%20Progress%20-%20Saurabh.md)
+     * [Trung Huynh (Ryan)]
+
 ### Week-6 (10/29 - 11/4)
 
 * [Minutes of Meeting](https://github.com/nguyensjsu/cmpe202-minions/blob/master/Documentation/Weekly%20Minutes%20of%20Meetings/Week-6:%20Minutes%20of%20Meetings.md)

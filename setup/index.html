@@ -4,7 +4,6 @@
 	<meta charset="utf-8" />
 	<title>Save The Minions</title>
 	<link rel="stylesheet" type="text/css" href="./styles/default.css">
-
 </head>
 <body>
 <!--p id="gameCanvas" align="center" style="vertical-align: middle;margin: 0;"></p-->
@@ -17,18 +16,23 @@
 <script src="src/Preloader.js"></script>
 <script src="src/MainMenu.js"></script>
 <script src="src/StoryHowto.js"></script>
+<script src="src/LevelStates.js"></script>
 <script src="src/Game.js"></script>
+<script src="src/GameAdvanced.js"></script>
 <script src="src/LevelSelect.js"></script>
 <script src="src/MinionFactory.js"></script>
+<script src="src/End.js"></script>
 <script>
 (function(){
-	var game = new Phaser.Game(950, 500, Phaser.CANVAS, 'game');
+	var game = new Phaser.Game(1440, 710, Phaser.CANVAS, 'game');
 	game.state.add('Boot', SaveTheMinions.Boot);
 	game.state.add('Preloader', SaveTheMinions.Preloader);
 	game.state.add('MainMenu', SaveTheMinions.MainMenu);
 	game.state.add('Game', SaveTheMinions.Game);
+	game.state.add('GameAdvanced', SaveTheMinions.GameAdvanced);
 	game.state.add('StoryHowto', SaveTheMinions.StoryHowto);
-    game.state.add('LevelSelect', SaveTheMinions.LevelSelect);
+  	game.state.add('LevelSelect', SaveTheMinions.LevelSelect);
+	game.state.add('EndOfGame', SaveTheMinions.EndOfGame);
 	game.state.start('Boot');
 })();
 </script>

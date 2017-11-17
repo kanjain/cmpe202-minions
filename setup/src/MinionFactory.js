@@ -1,12 +1,12 @@
-function MinionFactory(){
-	this.createMinions = function(game, typeOfMinion, currentLvlState, strategy){
+function MinionFactory() {
+	this.createMinions = function(game, typeOfMinion, currentLvlState) {
 		var minionSprite;
 	
 		if (typeOfMinion === "BadMinion") {
 			minionSprite = new BadMinion({game:game, image:'bomb', currentLvlState:currentLvlState});
 			minionSprite.name="BadMinion";
 			minionSprite.score = -1;
-        }else {
+        } else {
 			
 			minionSprite = new GoodMinion({game:game, image:'minions_spritesheet'});
 			
@@ -14,23 +14,22 @@ function MinionFactory(){
 			// check type of minino and set minions' properties accordingly
 			if (typeOfMinion === 'Dave') {
 				minionSprite.name = "Dave";
-				minionSprite.score = 1;
+				minionSprite.score = 1; // slim minion
 				minionSprite.frame = 1;
 
 			} else if (typeOfMinion === "Tim") {
 				minionSprite.name = "Tim";
-				minionSprite.score = 2;
+				minionSprite.score = 3; // fat minion
 				minionSprite.frame = 2;
 
 			} else if (typeOfMinion === "Jerry") {
 				minionSprite.name = "Jerry";
-				minionSprite.score = 3;
+				minionSprite.score = 2; // slender minion
 				minionSprite.frame = 3;
 
 			}
-			
         }
 		
 		return minionSprite;
 	}
-}
+};
