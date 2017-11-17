@@ -1,4 +1,4 @@
-SaveTheMinions.Game = function(game) {
+SaveTheMinions.GameAdvanced = function(game) {
 	cTime = 0;
     healthScore = 0;
 	totalMinions = 0;
@@ -13,7 +13,7 @@ SaveTheMinions.Game = function(game) {
     currentLvlState = new Lvl1State(this);
     lvlFrequency = 1.5;
 
-    score = 0;//global score
+    //score = 0;//global score
 	transportation = null;
 	minionArray = ['Dave','Tim','Jerry','BadMinion'];
     eventOne = "addOne";
@@ -33,7 +33,7 @@ SaveTheMinions.Game = function(game) {
     var pauseSound = null;
 
 };
-SaveTheMinions.Game.prototype = {
+SaveTheMinions.GameAdvanced.prototype = {
 	create: function() {
 	    background = {};
 	    pausedImageSprite = null;
@@ -51,12 +51,12 @@ SaveTheMinions.Game.prototype = {
         pauseSound = this.game.add.audio('pauseSound');
 
         //  Background image for our game.
-        if (this.game.theme == "forest"){
+        //if (this.game.theme == "forest"){
             background = this.game.add.sprite(0, 0, 'background_forest');
             // Adding a new transportation object to save the minions.
             transportation = this.game.add.sprite(this.game.world.centerX, this.game.world.height - 100, 'woodencart');
-        }
-        else if (this.game.theme == "city"){
+      //  }
+      /*if (this.game.theme == "city"){
             background = this.game.add.sprite(0, 0, 'mall_background');
             // Adding a new transportation object to save the minions.
             transportation = this.game.add.sprite(100, this.game.world.height - 100, 'ship');
@@ -70,7 +70,7 @@ SaveTheMinions.Game.prototype = {
             background = this.game.add.sprite(0, 0, 'mall_background');
             // Adding a new transportation object to save the minions.
             transportation = this.game.add.sprite(300, this.game.world.height - 100, 'ship');
-        }
+        }*/
 
         transportation.anchor.setTo(0.5, 0.5);
 
@@ -95,7 +95,7 @@ SaveTheMinions.Game.prototype = {
 				onLevelUp.subscribe(this.changeEnvironment, this);
 
         // add score background
-        score = 0; // reset the score on create.
+        score = this.game.score; // reset the score on create.
         this.game.add.sprite(10, 10, 'score-bg');
         this.game.add.sprite(13, 13, 'score-bg-minion-icon');
         scoreText = this.game.add.text(150, 20, "0", { font: "40px ComicBook", fill: "#FFCC00", align: "right" });
@@ -149,11 +149,10 @@ SaveTheMinions.Game.prototype = {
 					onLevelUp.notify(this);
 	},
 	changeEnvironment: function(el){
-		//background = el.game.add.sprite(0, 0, 'background_forest');
+		background = el.game.add.sprite(0, 0, 'background_forest');
 		// Adding a new transportation object to save the minions.
-		//transportation = el.game.add.sprite(el.game.world.centerX, el.game.world.height - 100, 'woodencart');
-		el.game.score=score;
-		el.game.state.start('GameAdvanced');
+		transportation = el.game.add.sprite(el.game.world.centerX, el.game.world.height - 100, 'woodencart');
+
 	},
     updateHealth: function(event) {
         if (this.game.paused === true) return;
