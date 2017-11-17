@@ -96,9 +96,10 @@ SaveTheMinions.GameAdvanced.prototype = {
 
         // add score background
         score = this.game.score; // reset the score on create.
+				this.game.displayscore = score;
         this.game.add.sprite(10, 10, 'score-bg');
         this.game.add.sprite(13, 13, 'score-bg-minion-icon');
-        scoreText = this.game.add.text(150, 20, "0", { font: "40px ComicBook", fill: "#FFCC00", align: "right" });
+        scoreText = this.game.add.text(150, 20, score, { font: "40px ComicBook", fill: "#FFCC00", align: "right" });
 
         // add health meter
         health = 25; //reset the health meter on create.
@@ -145,8 +146,8 @@ SaveTheMinions.GameAdvanced.prototype = {
 		score += scoreIncrement;
         scoreText.setText(score);
 
-				if(score ==5 || score ==6 || score == 7)
-					onLevelUp.notify(this);
+				//if(score ==5 || score ==6 || score == 7)
+					//onLevelUp.notify(this);
 	},
 	changeEnvironment: function(el){
 		background = el.game.add.sprite(0, 0, 'background_forest');

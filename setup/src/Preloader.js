@@ -24,6 +24,8 @@ SaveTheMinions.Preloader.prototype = {
             this.game.load.image('minion_end_game', 'img/minion_end_game.jpg');
             this.game.load.image('minion_game_over', 'img/minion_game_over.jpg');
             this.game.load.image('background_space', 'img/background_space.jpg');
+            this.game.load.image('congrats', 'img/congrats.jpg');
+
             this.game.load.image('how_to_text', 'img/howToText.png');
             this.game.load.image('minion_falling', 'img/minion_falling.png');
             this.game.load.image('score-bg', 'img/score-bg.png');
@@ -98,7 +100,7 @@ SaveTheMinions.Preloader.prototype = {
 
             var game_title = that.add.sprite(that.world.centerX, that.world.centerY - 80, 'game_title');
             game_title.anchor.set(0.5,0.5);
-            
+
         }, delayInMilliseconds);
 
 
