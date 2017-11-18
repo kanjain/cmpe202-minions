@@ -15,11 +15,11 @@ SaveTheMinions.GameAdvanced = function(game) {
 
     //score = 0;//global score
 	transportation = null;
-	minionArray = ['Dave','Tim','Jerry','BadMinion'];
+	minionArray1 = ['Dave','Tim','Jerry','BadMinion', 'Bomb'];
     eventOne = "addOne";
     eventTwo = "addTwo";
     eventThree = "addThree";
-
+    eventBad = "Bad"
 	// define observer
 	onScoreChange = null;
 	onHealthChange = null;
@@ -141,6 +141,9 @@ SaveTheMinions.GameAdvanced.prototype = {
 		}
 		if (event === eventThree) {
             scoreIncrement = 3;
+        }
+        if (event === eventBad) {
+            scoreIncrement = -10;
 		}
 
 		score += scoreIncrement;
@@ -186,7 +189,7 @@ SaveTheMinions.GameAdvanced.prototype = {
     },
     selectt: function(sprite) {
         if (this.game.paused == true) return;
-        if(sprite.name == "BadMinion") {
+        if(sprite.name == "Bomb") {
             bombSound.play();
             this.game.displayscore = score;
             this.game.state.start('EndOfGame');
@@ -209,7 +212,12 @@ SaveTheMinions.GameAdvanced.prototype = {
                 minionSelect2.play();
                 scoreMinion = this.game.add.sprite(spriteX, spriteY, 'score-3-points');
             }
-
+            if(sprite.name == "BadMinion") {
+                // sound for badminion
+                minionSelect2.play();
+                // score for badminion
+                scoreMinion = this.game.add.sprite(spriteX, spriteY, 'score-3-points');
+            }
             var playAnimation = scoreMinion.animations.add('playAnimation');
             scoreMinion.anchor.setTo(0.5, 0.5);
             scoreMinion.alpha = 0;
@@ -227,6 +235,9 @@ SaveTheMinions.GameAdvanced.prototype = {
                 case 3:
                     eventName = eventThree;
                     break;
+                case -10:
+                    eventName = eventBad;
+                    break;
                 default:
                     eventName = eventOne;
                     break;
@@ -238,12 +249,13 @@ SaveTheMinions.GameAdvanced.prototype = {
     },
 
     updateLogic: function () {
+        
         var that = this;
         if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.realInRange(lvlFrequency, 6.0)){
 			cTime = this.game.time.totalElapsedSeconds();
 
 			// Get a random item from minions and bomb spritesheet
-			var rand = minionArray[Math.floor(Math.random() * minionArray.length)];
+			var rand = minionArray1[Math.floor(Math.random() * minionArray1.length)];
 
 			// Create an object of a specific type using Factory method.
             minionFactoryObj = new MinionFactory();

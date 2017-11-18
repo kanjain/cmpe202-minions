@@ -73,7 +73,7 @@ SaveTheMinions.Preloader.prototype = {
             /* Sprites */
             this.game.load.spritesheet('minions_spritesheet', 'img/minions_spritesheet.png', 78.2, 90, 3);
             this.game.load.spritesheet('hunger-meter', 'img/hunger-meter.png', 289, 45);
-
+            this.game.load.image('badminion', 'img/badminion.png');
             // Adding new spritesheet for bigger minions.
             this.game.load.spritesheet('big_minions', 'img/big_minions_spritesheet.png', 165, 250, 3);
     },
