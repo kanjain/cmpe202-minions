@@ -6,7 +6,16 @@ function MinionFactory() {
 			minionSprite = new BadMinion({game:game, image:'bomb', currentLvlState:currentLvlState});
 			minionSprite.name="Bomb";
 			minionSprite.score = -1;
-		} else {
+		}
+
+		else if (typeOfMinion === "BadMinion") {
+			minionSprite = new BadMinion({game:game, image:'badminion', currentLvlState:currentLvlState});
+			minionSprite.scale.setTo(0.1, 0.1);
+			minionSprite.name="BadMinion";
+			minionSprite.score = -10;
+		}
+
+		else {
 			
 			minionSprite = new GoodMinion({game:game, image:'minions_spritesheet'});
 			
