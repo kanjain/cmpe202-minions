@@ -8,14 +8,14 @@ SaveTheMinions.Game = function(game) {
     pauseButtonDisabled = false;
     background = {};
     pausedImageSprite = null;
-
+    lvlTime = 0;
     // state for level
     currentLvlState = new Lvl1State(this);
     lvlFrequency = 1.5;
 
     score = 0;//global score
 	transportation = null;
-	minionArray = ['Dave','Tim','Jerry','BadMinion'];
+	minionArray = ['Dave','Tim','Jerry','Bomb'];
     eventOne = "addOne";
     eventTwo = "addTwo";
     eventThree = "addThree";
@@ -35,6 +35,8 @@ SaveTheMinions.Game = function(game) {
 };
 SaveTheMinions.Game.prototype = {
 	create: function() {
+        // time to level up
+        lvlTime = this.game.time.totalElapsedSeconds();
 	    //background = {};
 	    pausedImageSprite = null;
 	    pauseButtonDisabled = false;
@@ -113,18 +115,19 @@ SaveTheMinions.Game.prototype = {
     },
 
 	update: function() {
+        elapTime = this.game.time.totalElapsedSeconds() - lvlTime;
         if(health == 0) {
             this.game.displayscore = score;
             this.game.state.start('EndOfGame');
         }
         // For lvl change. For now it is only going from 1-2-3-4 and the frequency of minion and bomb changes
-        if (currentLvlState instanceof Lvl1State && score >= 1 && score <= 3) {currentLvlState.changeState();}
-        else if (currentLvlState instanceof Lvl2State && score >= 4 && score <= 6) {
+        if (currentLvlState instanceof Lvl1State && elapTime >= 5) {currentLvlState.changeState();}
+        else if (currentLvlState instanceof Lvl2State && elapTime >= 10) {
             currentLvlState.changeState();
 
         }
-        else if (currentLvlState instanceof Lvl3State && score >= 7 && score <= 9) {currentLvlState.changeState();}
-        else if (currentLvlState instanceof Lvl4State && score >= 10 && score <= 12) {currentLvlState.changeState();}
+        else if (currentLvlState instanceof Lvl3State && elapTime >= 15) {currentLvlState.changeState();}
+        else if (currentLvlState instanceof Lvl4State && elapTime >= 20) {currentLvlState.changeState();}
         this.updateLogic();
     },
 	render: function() {
@@ -192,7 +195,7 @@ SaveTheMinions.Game.prototype = {
 
     selectt: function(sprite) {
         if (this.game.paused == true) return;
-        if(sprite.name == "BadMinion") {
+        if(sprite.name == "Bomb") {
             bombSound.play();
             this.game.displayscore = score;
             this.game.state.start('EndOfGame');
@@ -254,7 +257,7 @@ SaveTheMinions.Game.prototype = {
 			// Create an object of a specific type using Factory method.
             minionFactoryObj = new MinionFactory();
             minion = minionFactoryObj.createMinions(this.game, rand, currentLvlState);
-
+            
 			// add event action when you click on the minion. I might have this selectt function moving to Minion class to make this cleaner
             minion.events.onInputDown.add(this.selectt, minion);
             minion.rotateMe = (Math.random()*8)-4;

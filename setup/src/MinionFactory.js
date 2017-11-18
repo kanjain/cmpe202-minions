@@ -1,12 +1,12 @@
 function MinionFactory() {
 	this.createMinions = function(game, typeOfMinion, currentLvlState) {
 		var minionSprite;
-	
-		if (typeOfMinion === "BadMinion") {
+		console.log(typeOfMinion);
+		if (typeOfMinion === "Bomb") {
 			minionSprite = new BadMinion({game:game, image:'bomb', currentLvlState:currentLvlState});
-			minionSprite.name="BadMinion";
+			minionSprite.name="Bomb";
 			minionSprite.score = -1;
-        } else {
+		} else {
 			
 			minionSprite = new GoodMinion({game:game, image:'minions_spritesheet'});
 			
