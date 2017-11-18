@@ -25,11 +25,11 @@ SaveTheMinions.MainMenu.prototype = {
 
         // A button made from an image to select levels
 
-        howToButton = this.add.button(this.game.world.centerX, this.game.world.centerY + 100, 'levelBtn', function(){menu.play();this.game.state.start('LevelSelect')}, this, 1, 0, 2);
-        howToButton.anchor.setTo(0.5,0.5);
+        selectLevelButton = this.add.button(this.game.world.centerX, this.game.world.centerY + 100, 'levelBtn', function(){menu.play();this.game.state.start('LevelSelect')}, this, 1, 0, 2);
+        selectLevelButton.anchor.setTo(0.5,0.5);
 
         // This property is needed to display Hand cursor everytime. By default it only displays it once before being clicked.
         // After that normal arrow head cursor is displayed.
-        howToButton.input.useHandCursor = true;
+        selectLevelButton.input.useHandCursor = true;
 	}
 };
