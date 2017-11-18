@@ -16,7 +16,7 @@ The main feature of the BDD test is that it focuses on Acceptance testing. It ma
 User should get the latest score everytime.
 
 
-**Scenario:** Overall score
+***Scenario:*** Overall score
 
 The overall ongoing score for the game is always up-to-date while the game is in progress.
 
@@ -29,7 +29,7 @@ The overall ongoing score for the game is always up-to-date while the game is in
 **And** I should get the latest score
 
 
-**Scenario:** Instant Increment value
+***Scenario:*** Instant Increment value
 
 The increment in score based on the type of minion is always reflected for score clarity.
 
