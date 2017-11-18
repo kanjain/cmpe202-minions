@@ -148,7 +148,7 @@ SaveTheMinions.Game.prototype = {
 		score += scoreIncrement;
         scoreText.setText(score);
 
-				if(score ==5 || score ==6 || score == 7)
+				if(score ==30 || score ==31 || score == 32)
 					onLevelUp.notify(this);
 	},
 	changeEnvironment: function(el){
@@ -156,7 +156,7 @@ SaveTheMinions.Game.prototype = {
 		// Adding a new transportation object to save the minions.
 		//transportation = el.game.add.sprite(el.game.world.centerX, el.game.world.height - 100, 'woodencart');
 		el.game.score=score;
-		
+
 		el.game.state.start('LevelUp');
 	},
     updateHealth: function(event) {

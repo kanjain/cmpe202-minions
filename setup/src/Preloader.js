@@ -24,7 +24,9 @@ SaveTheMinions.Preloader.prototype = {
             this.game.load.image('minion_end_game', 'img/minion_end_game.jpg');
             this.game.load.image('minion_game_over', 'img/minion_game_over.jpg');
             this.game.load.image('background_space', 'img/background_space.jpg');
-            this.game.load.image('congrats', 'img/congrats.jpg');
+            this.game.load.image('congrats', 'img/singlemin.jpg');
+            this.game.load.image('CongratsText', 'img/CongratulationsText.gif');
+            this.game.load.image('LevelUp', 'img/LevelUp.png');
 
             this.game.load.image('how_to_text', 'img/howToText.png');
             this.game.load.image('minion_falling', 'img/minion_falling.png');

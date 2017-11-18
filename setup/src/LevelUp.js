@@ -10,8 +10,10 @@ SaveTheMinions.LevelUp.prototype = {
     },
 
     createButton:function () {
-        this.game.add.sprite(-200, -100, 'congrats');
-        startButton = this.add.button(this.game.world.centerX, this.game.world.centerY + 50, 'continueBtn', function() {
+        this.game.add.sprite(0, -200, 'congrats');
+        this.game.add.sprite(-160, -20, 'CongratsText');
+        this.game.add.sprite(-150, 300, 'LevelUp');
+        startButton = this.add.button(50, 550, 'continueBtn', function() {
             //home.stop();
             this.game.state.start('GameAdvanced');
         }, this, 1, 0, 2);
