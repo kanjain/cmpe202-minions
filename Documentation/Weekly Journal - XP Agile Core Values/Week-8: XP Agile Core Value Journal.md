@@ -8,9 +8,8 @@ This week we were left with mostly implementing last minute features to the game
 ## 2. Simplicity (Owner - Manish)
 
 
-
 ## 3. Respect (Owner - Anusha)
-
+This week we had a lot of ideas for last minute enhancements in the game. All ideas were great but we had to execute them carefully and sequentially to ensure nothing breaks in the last moment and each ones code doent conflict with the other. A lot of mutual respect and understanding helped us achieve this.
 
 ## 4. Feedback (Owner - Trung)
 
