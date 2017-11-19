@@ -1,4 +1,4 @@
-# Week-7 (11/12 - 11/18) - Minutes of Meeting
+# Week-8 (11/12 - 11/18) - Minutes of Meeting
 
 ## 1.  What did the team do the past week?
 * Created a levelup feature which changes the game environment and difficulty level
