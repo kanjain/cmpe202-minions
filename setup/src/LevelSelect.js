@@ -10,11 +10,11 @@ SaveTheMinions.LevelSelect.prototype = {
     },
 
     createButton:function () {
-        this.game.add.sprite(0, 0, 'background_city');
+        this.game.add.sprite(0, 0, 'main_menu_background');
 
-        var forestBtn =this.add.button(480, 130, 'moderate', function(){this.setGameStrategicTheme(new forestTheme())}, this, 1, 0, 3);
-        var spaceBtn =this.add.button(495, 220, 'hard', function(){this.setGameStrategicTheme(new spaceTheme())}, this, 1, 0, 4);
-        var backBtn =this.add.button(840, 460, 'backBtn', function(){this.game.state.start('MainMenu')}, this, 1, 0, 4);
+        var forestBtn =this.add.button(this.game.world.centerX, this.game.world.centerY - 100, 'moderate', function(){this.setGameStrategicTheme(new forestTheme())}, this, 1, 0, 3);
+        var spaceBtn =this.add.button(this.game.world.centerX, this.game.world.centerY, 'hard', function(){this.setGameStrategicTheme(new spaceTheme())}, this, 1, 0, 4);
+        var backBtn =this.add.button(this.game.world.centerX, this.game.world.centerY + 100, 'backBtn', function(){this.game.state.start('MainMenu')}, this, 1, 0, 4);
         forestBtn.input.useHandCursor = true;
         forestBtn.anchor.setTo(0.5,0.5);
 

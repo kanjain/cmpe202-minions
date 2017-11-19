@@ -55,7 +55,7 @@ SaveTheMinions.Preloader.prototype = {
             /* New Images for HD UI Effect */
             this.game.load.image('game_title', 'img/game_title.png');
             this.game.load.image('main_menu_background', 'img/main_menu_background.jpg');
-            this.game.load.image('mall_background', 'img/mall_background.png');
+            this.game.load.image('background_city', 'img/background_city.png');
             this.game.load.image('ship', 'img/ship.png');
             this.game.load.image('woodencart', 'img/woodencart.png');
 

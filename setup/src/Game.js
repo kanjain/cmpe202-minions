@@ -59,7 +59,7 @@ SaveTheMinions.Game.prototype = {
             transportation = this.game.add.sprite(this.game.world.centerX, this.game.world.height - 100, 'woodencart');
         }
         else if (this.game.theme == "city"){
-            this.background = this.game.add.sprite(0, 0, 'mall_background');
+            this.background = this.game.add.sprite(0, 0, 'background_city');
             // Adding a new transportation object to save the minions.
             transportation = this.game.add.sprite(100, this.game.world.height - 100, 'ship');
         }
@@ -69,7 +69,7 @@ SaveTheMinions.Game.prototype = {
             transportation = this.game.add.sprite(this.game.world.centerX, 150, 'spaceship');
         }
         else {
-            this.background = this.game.add.sprite(0, 0, 'mall_background');
+            this.background = this.game.add.sprite(0, 0, 'background_city');
             // Adding a new transportation object to save the minions.
             transportation = this.game.add.sprite(300, this.game.world.height - 100, 'ship');
         }
