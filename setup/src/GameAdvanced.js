@@ -282,6 +282,7 @@ SaveTheMinions.GameAdvanced.prototype = {
                 sprite.destroy();
                 // Decrease health.
                 if (sprite.score != -1 && // not when it is a bomb.
+                    sprite.score != -10 &&
                 // not when you scored a point.
                 !sprite.scored) {
                     onHealthChange.notify(eventOne, that);
