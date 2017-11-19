@@ -1,4 +1,4 @@
-# Week-7 (11/5 - 11/11) - Minutes of Meeting
+# Week-7 (11/12 - 11/18) - Minutes of Meeting
 
 ## 1.  What did the team do the past week?
 * Created a levelup feature which changes the game environment and difficulty level
@@ -7,6 +7,8 @@
 * Redesigned HowTo page
 * Redesigned 'Game Over' page
 * Introduced the concept of bad minions in Level2 which reduce score
+* Activity diagram was created 
+* Sequence diagram was also created 
 
 ## 2.  What is the team going to do next week?
 * Test and fix any existing bugs
