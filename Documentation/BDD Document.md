@@ -42,3 +42,19 @@ The increment in score based on the type of minion is always reflected for score
 **And** I should see the score changing for overall score.
 
 
+### **Feature:** Pause the game
+
+User should be able to pause the game.
+
+
+***Scenario:*** Pause Game
+
+The user should be able to pause the game so that the game state is maintained as is and user is able to resume playing from the same state.
+
+**Given** I am playing the game
+
+**When** I am clicking the pause button
+
+**Then** then game should be paused 
+
+**And** I should pause screen indicating that game is paused.
