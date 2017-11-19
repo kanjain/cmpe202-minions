@@ -147,6 +147,11 @@ SaveTheMinions.GameAdvanced.prototype = {
 		}
 
 		score += scoreIncrement;
+
+		if (score < 0) {
+		    score = 0;
+		}
+
         scoreText.setText(score);
 
 				//if(score ==5 || score ==6 || score == 7)
