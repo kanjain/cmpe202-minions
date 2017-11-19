@@ -15,3 +15,5 @@ This week we were left with mostly implementing last minute features to the game
 ## 4. Feedback (Owner - Trung)
 
 ## 5. Eliminate Waste (Owner - Saurabh)
+
+This week we improved the code further and removed / eliminated some code which was either redundant or could have been written more efficiently. We also eliminated old smaller and poor resolution images and used new high quality images. 
