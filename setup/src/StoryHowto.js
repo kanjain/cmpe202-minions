@@ -10,13 +10,13 @@ SaveTheMinions.StoryHowto.prototype = {
 	showStory: function() {
 		var background = this.game.add.sprite(0, 0, 'main_menu_background');
 		background.tint = 0xFFFFBF;
-		var howToText = this.game.add.sprite(250,0, 'how_to_text');
-		var bomb = this.game.add.sprite(750,275, 'bomb');
-		var minionIcon = this.game.add.sprite(650,150,'minions_spritesheet');
+		var howToText = this.game.add.sprite(330,0, 'how_to_text');
+		var bomb = this.game.add.sprite(710,300, 'bomb');
+		var badminion = this.game.add.sprite(1250,290, 'badminion_small');
 
-        minionEmitter = this.game.add.emitter(this.game.world.centerX + 70, 420, 0);
-        minionEmitter.makeParticles('minion_falling');
-        minionEmitter.start(false, 100, 50);
+		var minionIcon = this.game.add.sprite(700,110,'minions_spritesheet');
+        var minionFalling = this.game.add.sprite(this.game.world.centerX + 130, 400, "minion_falling");
+        this.startBounceTween(minionFalling);
 
 		playButton = this.add.button(800, 640, 'playBtn', function(){this.game.state.start('Game')}, this, 1, 0, 2);
 		playButton.input.useHandCursor = true;
@@ -35,5 +35,11 @@ SaveTheMinions.StoryHowto.prototype = {
 		        backButton.x -= 20;
 		    }
 		}, 100);
-	}
+	},
+	startBounceTween : function(minionFalling) {
+        var bounce = this.game.add.tween(minionFalling)
+                                  .to({ y: this.game.world.height - minionFalling.height }, 1000 + Math.random() * 3000, Phaser.Easing.Bounce.In);
+        bounce.onComplete.add(this.startBounceTween, this);
+        bounce.start();
+    }
 };

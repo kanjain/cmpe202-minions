@@ -35,6 +35,7 @@ SaveTheMinions.Preloader.prototype = {
             this.game.load.image('score-1-points', 'img/plusOne.gif');
             this.game.load.image('score-2-points', 'img/plusTwo.gif');
             this.game.load.image('score-3-points', 'img/plusThree.gif');
+            this.game.load.image('score-minus-ten', 'img/minusTen.gif');
 
             this.game.load.image('levelBtn', 'img/btn_select_level.png');
             this.game.load.image('paused', 'img/paused.png');
@@ -74,6 +75,7 @@ SaveTheMinions.Preloader.prototype = {
             this.game.load.spritesheet('minions_spritesheet', 'img/minions_spritesheet.png', 78.2, 90, 3);
             this.game.load.spritesheet('hunger-meter', 'img/hunger-meter.png', 289, 45);
             this.game.load.image('badminion', 'img/badminion.png');
+            this.game.load.image('badminion_small', 'img/badminion_small.png');
             // Adding new spritesheet for bigger minions.
             this.game.load.spritesheet('big_minions', 'img/big_minions_spritesheet.png', 165, 250, 3);
     },

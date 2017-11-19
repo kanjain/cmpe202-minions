@@ -221,7 +221,7 @@ SaveTheMinions.GameAdvanced.prototype = {
                 // sound for badminion
                 minionSelect2.play();
                 // score for badminion
-                scoreMinion = this.game.add.sprite(spriteX, spriteY, 'score-3-points');
+                scoreMinion = this.game.add.sprite(spriteX, spriteY, 'score-minus-ten');
             }
             var playAnimation = scoreMinion.animations.add('playAnimation');
             scoreMinion.anchor.setTo(0.5, 0.5);
