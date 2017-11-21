@@ -51,6 +51,8 @@ SaveTheMinions.Game.prototype = {
         minionSound = this.game.add.audio('minionSound');
         bombSound = this.game.add.audio('bombSound');
         pauseSound = this.game.add.audio('pauseSound');
+        backGroundSound = this.game.add.audio('backGroundSound');
+        backGroundSound.loopFull(0.2);
 
         //  Background image for our game.
         if (this.game.theme == "forest"){
@@ -186,6 +188,7 @@ SaveTheMinions.Game.prototype = {
             } else {
                 console.log('Game Resumed!!!');
                 pauseSound.play();
+
                 background.tint = 0xFFFFFF;
                 pausedImageSprite.visible = false;
             }

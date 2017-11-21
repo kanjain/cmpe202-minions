@@ -69,7 +69,9 @@ SaveTheMinions.Preloader.prototype = {
             this.game.load.audio('minionSelect1','sound/clickMinion1.wav');
             this.game.load.audio('minionSelect2','sound/clickMinion2.wav');
             this.game.load.audio('minionSelect3','sound/clickMinion3.wav');
+            this.game.load.audio('minionSelect4','sound/evil_minion.mp3');
             this.game.load.audio('homePageSound','sound/GameHomePage.mp3');
+            this.game.load.audio('backGroundSound','sound/Minions_Background_Sound.mp3');
 
             /* Sprites */
             this.game.load.spritesheet('minions_spritesheet', 'img/minions_spritesheet.png', 78.2, 90, 3);

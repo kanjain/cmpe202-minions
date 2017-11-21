@@ -46,9 +46,12 @@ SaveTheMinions.GameAdvanced.prototype = {
         minionSelect1 = this.game.add.audio('minionSelect1');
         minionSelect2 = this.game.add.audio('minionSelect2');
         minionSelect3 = this.game.add.audio('minionSelect3');
+        minionSelect4 = this.game.add.audio('minionSelect4');
         minionSound = this.game.add.audio('minionSound');
         bombSound = this.game.add.audio('bombSound');
         pauseSound = this.game.add.audio('pauseSound');
+        backGroundSound = this.game.add.audio('backGroundSound');
+        backGroundSound.loopFull(0.2);
 
         //  Background image for our game.
         //if (this.game.theme == "forest"){
@@ -190,6 +193,7 @@ SaveTheMinions.GameAdvanced.prototype = {
             } else {
                 console.log('Game Resumed!!!');
                 pauseSound.play();
+
                 background.tint = 0xFFFFFF;
                 pausedImageSprite.visible = false;
             }
@@ -223,7 +227,7 @@ SaveTheMinions.GameAdvanced.prototype = {
             }
             if(sprite.name == "BadMinion") {
                 // sound for badminion
-                minionSelect2.play();
+                minionSelect4.play();
                 // score for badminion
                 scoreMinion = this.game.add.sprite(spriteX, spriteY, 'score-minus-ten');
             }
