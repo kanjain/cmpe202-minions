@@ -12,7 +12,7 @@ SaveTheMinions.Game = function(game) {
     // state for level
     currentLvlState = new Lvl1State(this);
     lvlFrequency = 1.5;
-
+    continousMinion =0;
     score = 0;//global score
 	transportation = null;
 	minionArray = ['Dave','Tim','Jerry','Bomb'];
@@ -94,12 +94,12 @@ SaveTheMinions.Game.prototype = {
 
         // instantiate the observer
         onScoreChange = new Observer();
-				onLevelUp = new Observer();
+        onLevelUp = new Observer();
         onHealthChange = new Observer();
         // subscribe to a subject
-        onScoreChange.subscribe(this.updateScore, this);
+        onScoreChange.subscribe(this.decorateScore, this);
         onHealthChange.subscribe(this.updateHealth, this);
-				onLevelUp.subscribe(this.changeEnvironment, this);
+        onLevelUp.subscribe(this.changeEnvironment, this);
 
         // add score background
         score = 0; // reset the score on create.
@@ -137,17 +137,20 @@ SaveTheMinions.Game.prototype = {
     },
 
     /*----------These are added function prototype for game logic------------*/
-	updateScore: function(event) {
+	decorateScore: function(event) {
         if (this.game.paused === true) return;
 	    var scoreIncrement = 0;
 		if (event === eventOne) {
 		    scoreIncrement = 1;
+		    continousMinion+=1;
 		}
 		if (event === eventTwo) {
 		    scoreIncrement = 2;
+            continousMinion+=1;
 		}
 		if (event === eventThree) {
             scoreIncrement = 3;
+            continousMinion+=1;
 		}
 
 		score += scoreIncrement;
@@ -156,8 +159,8 @@ SaveTheMinions.Game.prototype = {
 				if(score ==30 || score ==31 || score == 32)
 					onLevelUp.notify(this);
     },
-    
-	changeEnvironment: function(el){
+
+    changeEnvironment: function(el){
 		//background = el.game.add.sprite(0, 0, 'background_forest');
 		// Adding a new transportation object to save the minions.
 		//transportation = el.game.add.sprite(el.game.world.centerX, el.game.world.height - 100, 'woodencart');
