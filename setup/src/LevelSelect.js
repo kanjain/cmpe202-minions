@@ -43,7 +43,7 @@ SaveTheMinions.LevelSelect.prototype = {
 var forestTheme = function() {
   this.applyTheme=function(){
     this.game.theme="forest";
-    this.game.state.start('Game');
+    this.game.state.start('GameAdvanced');
   }
 };
 

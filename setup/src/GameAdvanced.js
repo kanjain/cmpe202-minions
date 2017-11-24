@@ -103,6 +103,8 @@ SaveTheMinions.GameAdvanced.prototype = {
 
         // add score background
         score = this.game.score; // reset the score on create.
+				if (score==undefined)
+					score=0;
 				this.game.displayscore = score;
         this.game.add.sprite(10, 10, 'score-bg');
         this.game.add.sprite(13, 13, 'score-bg-minion-icon');
@@ -262,7 +264,7 @@ SaveTheMinions.GameAdvanced.prototype = {
     },
 
     updateLogic: function () {
-        
+
         var that = this;
         if (this.game.time.totalElapsedSeconds() - cTime >= this.game.rnd.realInRange(lvlFrequency, 6.0)){
 			cTime = this.game.time.totalElapsedSeconds();
