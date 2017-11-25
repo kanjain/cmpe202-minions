@@ -287,15 +287,21 @@ SaveTheMinions.GameAdvanced.prototype = {
                     sprite.score != -10 &&
                 // not when you scored a point.
                 !sprite.scored) {
-									continousClick =0;
+									continousClick=0;
                     onHealthChange.notify(eventOne, that);
                 }
 								if (sprite.score != -1 && // not when it is a bomb.
-										sprite.score == -10 &&
-								// not when you scored a point.
-								sprite.scored) {
-									continousClick =0;
-								}
+                    sprite.score == -10 &&
+                // not when you scored a point.
+                sprite.scored) {
+									continousClick=0;
+                }
+								if (sprite.score != -1 && // not when it is a bomb.
+                    sprite.score != -10 &&
+                // not when you scored a point.
+                sprite.scored) {
+									continousClick += 1;
+                }
             }
         });
     }
