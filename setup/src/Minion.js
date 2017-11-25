@@ -1,14 +1,14 @@
-var UPS = function() {
+var BigBombStrategy = function() {
     this.move = function(sprite, xStart, xEnd, yStart, yEnd) {
         
         sprite.body.velocity.y = sprite.game.rnd.realInRange(yStart, yEnd);
         sprite.body.velocity.x = sprite.game.rnd.realInRange(xStart, xEnd);
-        sprite.body.collideWorldBounds = true;
-        sprite.body.bounce.set(1);
+        sprite.scale.setTo(1.5,1.5);
+        
     }
 };
 
-var UPSS = function() {
+var NormalStrategy = function() {
     this.move = function(sprite, xStart, xEnd, yStart, yEnd) {
         
         sprite.body.velocity.y = sprite.game.rnd.realInRange(yStart, yEnd);
@@ -39,7 +39,7 @@ Minion.prototype.constructor = Minion;
 //================================================================================
 // Added prototypes
 //================================================================================
-Minion.prototype.moveStrategy = new UPSS();
+Minion.prototype.moveStrategy = new NormalStrategy();
 Minion.prototype.move = function (xStart, xEnd, yStart, yEnd){
     
     return this.moveStrategy.move(this, xStart, xEnd, yStart, yEnd);
