@@ -24,6 +24,10 @@ SaveTheMinions.Game = function(game) {
 	onScoreChange = null;
 	onHealthChange = null;
  onLevelUp=null;
+ // Decorator Variables
+    continousClick =0;
+    continousClickLimit=3;
+    decoratedValue =2;
 
     var minionSelect1 = null
     var minionSelect2 = null
@@ -97,7 +101,7 @@ SaveTheMinions.Game.prototype = {
         onLevelUp = new Observer();
         onHealthChange = new Observer();
         // subscribe to a subject
-        onScoreChange.subscribe(this.decorateScore, this);
+        onScoreChange.subscribe(this.updateScore, this);
         onHealthChange.subscribe(this.updateHealth, this);
         onLevelUp.subscribe(this.changeEnvironment, this);
 
@@ -137,25 +141,13 @@ SaveTheMinions.Game.prototype = {
     },
 
     /*----------These are added function prototype for game logic------------*/
-	decorateScore: function(event) {
+	updateScore: function(event) {
         if (this.game.paused === true) return;
-	    var scoreIncrement = 0;
-		if (event === eventOne) {
-		    scoreIncrement = 1;
-		    continousMinion+=1;
-		}
-		if (event === eventTwo) {
-		    scoreIncrement = 2;
-            continousMinion+=1;
-		}
-		if (event === eventThree) {
-            scoreIncrement = 3;
-            continousMinion+=1;
-		}
-
-		score += scoreIncrement;
-        scoreText.setText(score);
-
+				   var sc = new ScoreChange();
+            var decorated = new ScoreChangeDecorator();
+                score+= decorated.decorateScoreChange(sc,event,continousClick,continousClickLimit,decoratedValue);
+                console.log(score);
+                scoreText.setText(score);
 				if(score ==30 || score ==31 || score == 32)
 					onLevelUp.notify(this);
     },
@@ -202,6 +194,7 @@ SaveTheMinions.Game.prototype = {
     selectt: function(sprite) {
         if (this.game.paused == true) return;
         if(sprite.name == "Bomb") {
+					 continousClick = 0;
             bombSound.play();
             this.game.displayscore = score;
             this.game.state.start('EndOfGame');
@@ -263,7 +256,7 @@ SaveTheMinions.Game.prototype = {
 			// Create an object of a specific type using Factory method.
             minionFactoryObj = new MinionFactory();
             minion = minionFactoryObj.createMinions(this.game, rand, currentLvlState);
-            
+
 			// add event action when you click on the minion. I might have this selectt function moving to Minion class to make this cleaner
             minion.events.onInputDown.add(this.selectt, minion);
             minion.rotateMe = (Math.random()*8)-4;
@@ -282,10 +275,16 @@ SaveTheMinions.Game.prototype = {
                 if (sprite.score != -1 && // not when it is a bomb.
                 // not when you scored a point.
                 !sprite.scored) {
+									continousClick =0;
                     onHealthChange.notify(eventOne, that);
                 }
+								if (sprite.score != -1 && // not when it is a bomb.
+                    // not when you scored a point.
+                    sprite.scored) {
+                    continousClick +=1;
+                }
+
             }
         });
     }
 };
-

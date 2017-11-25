@@ -19,7 +19,10 @@ SaveTheMinions.GameAdvanced = function(game) {
     eventOne = "addOne";
     eventTwo = "addTwo";
     eventThree = "addThree";
-    eventBad = "Bad"
+    eventBad = "Bad";
+		continousClick =0;
+    continousClickLimit=3;
+    decoratedValue =4;
 	// define observer
 	onScoreChange = null;
 	onHealthChange = null;
@@ -140,28 +143,16 @@ SaveTheMinions.GameAdvanced.prototype = {
 
     /*----------These are added function prototype for game logic------------*/
 	updateScore: function(event) {
-        if (this.game.paused === true) return;
-	    var scoreIncrement = 0;
-		if (event === eventOne) {
-		    scoreIncrement = 1;
-		}
-		if (event === eventTwo) {
-		    scoreIncrement = 2;
-		}
-		if (event === eventThree) {
-            scoreIncrement = 3;
-        }
-        if (event === eventBad) {
-            scoreIncrement = -10;
-		}
+		if (this.game.paused === true) return;
+			 var sc = new ScoreChange();
+			 var decorated = new ScoreChangeDecorator();
+			 score+= decorated.decorateScoreChange(sc,event,continousClick,continousClickLimit,decoratedValue);
 
-		score += scoreIncrement;
-
-		if (score < 0) {
-		    score = 0;
-		}
-
-        scoreText.setText(score);
+	 	 		if (score < 0) {
+			 score = 0;
+	 				}
+	 		console.log(score);
+			 scoreText.setText(score);
 
 				//if(score ==5 || score ==6 || score == 7)
 					//onLevelUp.notify(this);
@@ -205,6 +196,7 @@ SaveTheMinions.GameAdvanced.prototype = {
     selectt: function(sprite) {
         if (this.game.paused == true) return;
         if(sprite.name == "Bomb") {
+					continousClick = 0;
             bombSound.play();
             this.game.displayscore = score;
             this.game.state.start('EndOfGame');
@@ -295,8 +287,15 @@ SaveTheMinions.GameAdvanced.prototype = {
                     sprite.score != -10 &&
                 // not when you scored a point.
                 !sprite.scored) {
+									continousClick =0;
                     onHealthChange.notify(eventOne, that);
                 }
+								if (sprite.score != -1 && // not when it is a bomb.
+										sprite.score == -10 &&
+								// not when you scored a point.
+								sprite.scored) {
+									continousClick =0;
+								}
             }
         });
     }
