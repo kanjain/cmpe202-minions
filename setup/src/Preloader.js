@@ -2,7 +2,7 @@ SaveTheMinions.Preloader = function(game) {
     this.background = null;
     this.preloadBar = null;
     this.startGame = null;
-
+    this.minionArray = ['Dave','Tim','Jerry', 'Bomb'];
     // New coordinates for bigger minions on loading intro screen.
     this.coordinates = [[300,-600], [450,-100], [600,-300]]
 };
@@ -113,7 +113,7 @@ SaveTheMinions.Preloader.prototype = {
     },
     showMinions: function(minionType) {
         //Get a random item from minions and bomb spritesheet
-        var rand = minionArray[Math.floor(Math.random() * minionArray.length)];
+        var rand = this.minionArray[Math.floor(Math.random() * this.minionArray.length)];
 
         var big_min1 = this.game.add.sprite(this.coordinates[minionType][0],
             this.coordinates[minionType][1], 'big_minions');
