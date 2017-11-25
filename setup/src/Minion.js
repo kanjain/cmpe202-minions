@@ -3,7 +3,7 @@ var BigBombStrategy = function() {
         
         sprite.body.velocity.y = sprite.game.rnd.realInRange(yStart, yEnd);
         sprite.body.velocity.x = sprite.game.rnd.realInRange(xStart, xEnd);
-        sprite.scale.setTo(2,2);
+        sprite.scale.setTo(1.5,1.5);
         
     }
 };

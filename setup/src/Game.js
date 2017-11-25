@@ -142,13 +142,13 @@ SaveTheMinions.Game.prototype = {
     /*----------These are added function prototype for game logic------------*/
 	updateScore: function(event) {
         if (this.game.paused === true) return;
-				   var sc = new ScoreChange();
+			var sc = new ScoreChange();
             var decorated = new ScoreChangeDecorator();
-                score+= decorated.decorateScoreChange(sc,event,continousClick,continousClickLimit,decoratedValue);
-                console.log(score);
-                scoreText.setText(score);
-				if(score ==30 || score ==31 || score == 32)
-					onLevelUp.notify(this);
+            score+= decorated.decorateScoreChange(sc,event,continousClick,continousClickLimit,decoratedValue);
+            console.log(score);
+            scoreText.setText(score);
+			if(score >= 30 && score < 37)
+				onLevelUp.notify(this);
     },
 
     changeEnvironment: function(el){
