@@ -22,10 +22,10 @@ SaveTheMinions.Game = function(game) {
     eventThree = "addThree";
 
 	// define observer
-	onScoreChange = null;
-	onHealthChange = null;
- onLevelUp=null;
- // Decorator Variables
+	scoreBarObserver = null;
+	healthBarObserver = null;
+    onLevelUp=null;
+    // Decorator Variables
     continousClick =0;
     continousClickLimit=3;
     decoratedValue =2;
@@ -100,12 +100,12 @@ SaveTheMinions.Game.prototype = {
         flyingMinions = this.game.add.group();
 
         // instantiate the observer
-        onScoreChange = new Observer();
+        scoreBarObserver = new ScoreBarObserver(this.game);
+        healthBarObserver = new HealthBarObserver(this.game);
         onLevelUp = new Observer();
-        onHealthChange = new Observer();
         // subscribe to a subject
-        onScoreChange.subscribe(this.updateScore, this);
-        onHealthChange.subscribe(this.updateHealth, this);
+        scoreBarObserver.subscribe(this.updateScore, this);
+        healthBarObserver.subscribe(this.updateHealth, this);
         onLevelUp.subscribe(this.changeEnvironment, this);
 
         // add score background
@@ -241,7 +241,7 @@ SaveTheMinions.Game.prototype = {
             }
 
             sprite.scored = true;
-            onScoreChange.notify(eventName, this);
+            scoreBarObserver.notify(eventName, this);
         }
     },
 
@@ -276,7 +276,7 @@ SaveTheMinions.Game.prototype = {
                 // not when you scored a point.
                 !sprite.scored) {
 									continousClick =0;
-                    onHealthChange.notify(eventOne, that);
+                    healthBarObserver.notify(eventOne, that);
                 }
 								if (sprite.score != -1 && // not when it is a bomb.
                     // not when you scored a point.
