@@ -99,9 +99,9 @@ SaveTheMinions.GameAdvanced.prototype = {
         flyingMinions = this.game.add.group();
 
         // instantiate the observer
-        onScoreChange = new Observer();
-				onLevelUp = new Observer();
-        onHealthChange = new Observer();
+        onScoreChange = new Subject();
+				onLevelUp = new Subject();
+        onHealthChange = new Subject();
         // subscribe to a subject
         onScoreChange.subscribe(this.updateScore, this);
         onHealthChange.subscribe(this.updateHealth, this);
