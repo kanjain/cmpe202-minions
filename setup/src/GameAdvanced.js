@@ -20,13 +20,13 @@ SaveTheMinions.GameAdvanced = function(game) {
     eventTwo = "addTwo";
     eventThree = "addThree";
     eventBad = "Bad";
-		continousClick =0;
+	continousClick =0;
     continousClickLimit=3;
     decoratedValue =4;
 	// define observer
 	onScoreChange = null;
 	onHealthChange = null;
- onLevelUp=null;
+    onLevelUp=null;
 
     var minionSelect1 = null
     var minionSelect2 = null

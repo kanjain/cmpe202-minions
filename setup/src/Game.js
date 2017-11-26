@@ -21,10 +21,15 @@ SaveTheMinions.Game = function(game) {
     eventTwo = "addTwo";
     eventThree = "addThree";
 
-	// define observer
-	scoreBarObserver = null;
-	healthBarObserver = null;
+	// define subject
+	scoreBarSubject = null;
+	healthBarSubject = null;
     onLevelUp=null;
+
+    // define observable
+    scoreBarObserver = null;
+    healthBarObserver = null;
+
     // Decorator Variables
     continousClick =0;
     continousClickLimit=3;
@@ -99,14 +104,20 @@ SaveTheMinions.Game.prototype = {
         // add group
         flyingMinions = this.game.add.group();
 
-        // instantiate the observer
-        scoreBarObserver = new ScoreBarObserver(this.game);
-        healthBarObserver = new HealthBarObserver(this.game);
-        onLevelUp = new Observer();
+        scoreBarObserver = new ScoreBarObserver();
+        healthBarObserver = new HealthBarObserver();
+
+
+        scoreBarSubject = new Subject(this.game);
+        healthBarSubject = new Subject(this.game);
+        onLevelUp = new Subject();
         // subscribe to a subject
-        scoreBarObserver.subscribe(this.updateScore, this);
-        healthBarObserver.subscribe(this.updateHealth, this);
+        scoreBarSubject.subscribe(scoreBarObserver.update, this);
+        healthBarSubject.subscribe(healthBarObserver.update, this);
         onLevelUp.subscribe(this.changeEnvironment, this);
+
+        scoreBarSubject.subscribe(this.updateScore, this);
+        healthBarSubject.subscribe(this.updateHealth, this);
 
         // add score background
         score = 0; // reset the score on create.
@@ -241,7 +252,8 @@ SaveTheMinions.Game.prototype = {
             }
 
             sprite.scored = true;
-            scoreBarObserver.notify(eventName, this);
+
+            scoreBarSubject.notify(eventName, this);
         }
     },
 
@@ -276,7 +288,7 @@ SaveTheMinions.Game.prototype = {
                 // not when you scored a point.
                 !sprite.scored) {
 									continousClick =0;
-                    healthBarObserver.notify(eventOne, that);
+                    healthBarSubject.notify(eventOne, that);
                 }
 								if (sprite.score != -1 && // not when it is a bomb.
                     // not when you scored a point.

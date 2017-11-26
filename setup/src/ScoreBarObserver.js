@@ -1,9 +1,12 @@
 // Implement Observer
 function ScoreBarObserver(theSubject) {
    this.observerState;
-   this.subject = theSubject;// game
+   this.subject = theSubject;
 
 }
 
 // implement Observer
-ScoreBarObserver.prototype = new Observer();
+ScoreBarObserver.prototype = Object.create(Observer);
+
+ScoreBarObserver.prototype.update = function() {
+};
