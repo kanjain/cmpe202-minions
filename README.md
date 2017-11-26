@@ -1,5 +1,5 @@
 # Team Name
-cmpe202-minions
+cmpe202-minions.  
 
 ## Team Members
 * [Anusha Mulumoodi](https://sjsu.instructure.com/courses/1244332/users/4298854) 
@@ -7,6 +7,9 @@ cmpe202-minions
 * [Manish Pandey](https://sjsu.instructure.com/courses/1244332/users/4298858)
 * [Trung Huynh (Ryan)](https://sjsu.instructure.com/courses/1244332/users/4298725)
 * [Saurabh Ghotane](https://sjsu.instructure.com/courses/1244332/users/4298852)
+
+# Project.  
+setup folder
 
 ## Weekly Progress
 
